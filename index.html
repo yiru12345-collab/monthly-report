@@ -110,6 +110,24 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 .refund-table td{padding:8px 12px;border-bottom:1px solid #fff1f0}
 .refund-table tr:last-child td{border-bottom:none}
 @media(max-width:900px){body{padding:12px}.kpis{grid-template-columns:repeat(2,1fr)}.row2,.row3{grid-template-columns:1fr}}
+/* 可点击数值 */
+.kpi-card .value.clickable{color:#1677ff;cursor:pointer;text-decoration:underline;text-underline-offset:4px;transition:color .15s}
+.kpi-card .value.clickable:hover{color:#4096ff}
+/* 明细弹窗 */
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:9999;justify-content:center;align-items:center;padding:20px}
+.modal-overlay.show{display:flex}
+.modal-box{background:#fff;border-radius:12px;max-width:900px;width:100%;max-height:85vh;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.18);display:flex;flex-direction:column}
+.modal-hd{padding:16px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f0f0f0;flex-shrink:0}
+.modal-hd h3{font-size:16px;font-weight:600;color:#141414}
+.modal-close{background:none;border:none;font-size:22px;color:#8c8c8c;cursor:pointer;padding:4px 8px;border-radius:4px;line-height:1}
+.modal-close:hover{background:#f5f5f5;color:#141414}
+.modal-bd{overflow-y:auto;padding:16px 24px 24px;flex:1}
+.modal-bd table{font-size:12px;width:100%}
+.modal-bd table th{background:#fafafa;font-weight:600;color:#595959;padding:9px 10px;text-align:left;border-bottom:2px solid #e8e8e8;white-space:nowrap}
+.modal-bd table td{padding:8px 10px;border-bottom:1px solid #fafafa;vertical-align:top}
+.modal-bd table tr:hover td{background:#f5f8ff}
+.modal-bd .tag-ok{display:inline-block;padding:1px 7px;border-radius:3px;font-size:11px;background:#f6ffed;color:#389e0d}
+.modal-bd .tag-no{display:inline-block;padding:1px 7px;border-radius:3px;font-size:11px;background:#fff1f0;color:#cf1322}
 </style>
 </head>
 <body>
@@ -127,13 +145,13 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 <div class="kpis">
   <div class="kpi-card">
     <div class="label">小屋净到款（万元）</div>
-    <div class="value">64.1</div>
+    <div class="value clickable" onclick="showDetail('payment')">64.1</div>
     <div class="sub"><span class="tag tag-warn">98.6%</span><span style="color:#8c8c8c">目标65万</span><span style="color:#cf1322;font-size:11px">已扣退款13万</span></div>
     <div class="bar-bg"><div class="bar-fill" style="width:98.6%;background:#1677ff"></div></div>
   </div>
   <div class="kpi-card">
     <div class="label">6月退款（万元）</div>
-    <div class="value" style="color:#cf1322">13.0</div>
+    <div class="value clickable" style="color:#cf1322" onclick="showDetail('refund')">13.0</div>
     <div class="sub"><span class="tag tag-red">⚠ 3笔</span><span style="color:#8c8c8c">占毛到款16.9%</span></div>
     <div class="bar-bg"><div class="bar-fill" style="width:16.9%;background:#ff4d4f"></div></div>
   </div>
@@ -145,7 +163,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
   </div>
   <div class="kpi-card">
     <div class="label">引流上会·业绩口径（人）</div>
-    <div class="value">17</div>
+    <div class="value clickable" onclick="showDetail('yinliu')">17</div>
     <div class="sub"><span class="tag tag-down">47.2%</span><span style="color:#8c8c8c">目标36人</span></div>
     <div class="bar-bg"><div class="bar-fill" style="width:47%;background:#ff4d4f"></div></div>
   </div>
@@ -782,6 +800,105 @@ initChart('chartOpc',{
 });
 
 })();
+
+/* ========== 明细弹窗 ========== */
+var detailData = {
+  payment: [
+    ["6/1","孙德国","杲明哲","0.60","产品","2张","老客户"],
+    ["6/10","赵云峰","李幸秋","1.00","订金","—","元气堂"],
+    ["6/10","皇甫毅","王雪琪","0.19","产品","—","AIOPC"],
+    ["6/15","郑毅","金振生","5.00","全款","17张","元气堂"],
+    ["6/26","蔡东辉","杨亚峰","2.50","订金","—","元气堂"],
+    ["6/26","赵云峰","马光荣","1.00","订金","—","元气堂"],
+    ["6/30","赵云峰","任海涛","13.50","全款","45张","元气堂"],
+    ["6/30","孙德国","吕建军","13.50","全款","45张","元气堂"],
+    ["6/30","蔡东辉","杨亚峰","10.00","尾款","45张","元气堂"],
+    ["6/30","赵云峰","庞至茹","8.50","订金","—","元气堂"],
+    ["6/30","皇甫毅","金璐瑶","21.50","订金","—","元气堂"],
+    ["6/30","皇甫毅","—","0.30","产品","1张","AIOPC"]
+  ],
+  refund: [
+    ["6/2","蔡东辉","高宝晶","2.00","订金","2026-5","原5月订金"],
+    ["6/18","赵云峰","杨小莉","10.00","订金","2026-4","原4月订金"],
+    ["6/26","赵云峰","徐迥旬","1.00","订金","2026-5","原5月订金"]
+  ],
+  yinliu: [
+    ["赵云峰","已核实","索瑞云","6/12","沙龙","1.0","西安子公司沙龙会","西安十三朝文化产业有限公司"],
+    ["赵云峰","已核实","常勇","6/12","沙龙","1.0","西安子公司沙龙会","西安御园地产开发有限公司"],
+    ["郑毅","已核实","李遵东","6/12","沙龙","1.0","西安子公司沙龙会","西安博水机电设备有限公司"],
+    ["赵云峰","已核实","林东旭","6/17","沙龙","1.0","呼和浩特子公司沙龙","鄂尔多斯市昊鑫农牧业有限公司"],
+    ["孙德国","已核实","徐兆玉","6/17","沙龙","1.0","呼和浩特子公司沙龙","内蒙古北方能投电力建设有限公司"],
+    ["孙德国","已核实","孙振余","6/17","沙龙","1.0","呼和浩特子公司沙龙","内蒙古恩航建设工程劳务有限公司"],
+    ["郑毅","已核实","崔秀峰","6/17","沙龙","1.0","呼和浩特子公司沙龙","内蒙古德晟二矿有限公司"],
+    ["黄佳佳","已核实","李详和","6/17","沙龙","1.0","呼和浩特子公司沙龙","内蒙古恒祥进出口贸易有限责任公司"],
+    ["黄佳佳","已核实","刑福国","6/17","沙龙","1.0","呼和浩特子公司沙龙","内蒙古恒祥进出口贸易有限责任公司"],
+    ["蔡东辉","已核实","常红柱","6/17","沙龙","1.0","西安子公司沙龙会","洋县康原生态农业有限责任公司"],
+    ["蔡东辉","不符合","叶琛","6/17","沙龙","1.0","西安子公司沙龙会","济南成际铁路物资有限公司"],
+    ["蔡东辉","已核实","董桂荣","6/17","沙龙","1.0","西安子公司沙龙会","陕西欣宇装修装饰有限公司"],
+    ["郑毅","已核实","孙立清","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","北京同裕亨商贸有限公司"],
+    ["郑毅","已核实","张清","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","北京财道汇咨询有限公司"],
+    ["黄佳佳","已核实","纪承东","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","北京朝海诚咨询有限公司"],
+    ["黄佳佳","已核实","李金梅","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","北京时月科技有限公司"],
+    ["黄佳佳","已核实","王茜","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","河北古月合餐饮管理有限公司"],
+    ["黄佳佳","已核实","马灵","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","河北转动科技有限公司"],
+    ["赵云峰","已核实","李洪香","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","北京神采飞扬科技有限公司"],
+    ["赵云峰","已核实","孙芳","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","北京首信智慧交通基础设施管理有限公司"],
+    ["孙德国","已核实","李俊基","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","泰伦斯（深圳）信息咨询有限公司"],
+    ["孙德国","已核实","李皓","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","北京君天首业商贸有限公司"],
+    ["孙德国","已核实","周立霞","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","河北鑫圣元工程项目管理有限公司"],
+    ["孙德国","已核实","芦山","6/26","OPC沙龙","0.5","AIOPC营销突围公益私享会","北京同仁堂兴安保健科技有限责任公司"]
+  ]
+};
+
+function showDetail(type) {
+  var title, cols, rows;
+  if (type === 'payment') {
+    title = '6月到款明细（共' + detailData.payment.length + '笔，毛到款¥77.6万）';
+    cols = ['日期','业务员','客户','金额(万)','款项','售卡','业务类型'];
+    rows = detailData.payment;
+    var sum = 0; rows.forEach(function(r) { sum += parseFloat(r[3]); });
+    rows.push(['<b>合计</b>','','','<b>' + sum.toFixed(2) + '</b>','','','']);
+  } else if (type === 'refund') {
+    title = '6月退款明细（共3笔，合计¥13万）';
+    cols = ['退款日期','业务员','客户','金额(万)','原款项','原到款月','备注'];
+    rows = detailData.refund;
+  } else if (type === 'yinliu') {
+    var ok = detailData.yinliu.filter(function(r) { return r[1] === '已核实'; });
+    title = '6月引流上会明细（共' + detailData.yinliu.length + '条，已核实' + ok.length + '条）';
+    cols = ['业务员','状态','客户','日期','大会类型','业绩人数','会议名称','客户公司'];
+    rows = detailData.yinliu.map(function(r) {
+      return [r[0], r[1] === '已核实' ? '<span class="tag-ok">✓ 已核实</span>' : '<span class="tag-no">✗ 不符合</span>', r[2], r[3], r[4], r[5], r[6], r[7]];
+    });
+  }
+  document.getElementById('modalTitle').innerHTML = title;
+  var h = '<table><thead><tr>';
+  cols.forEach(function(c) { h += '<th>' + c + '</th>'; });
+  h += '</tr></thead><tbody>';
+  rows.forEach(function(r) {
+    h += '<tr>';
+    r.forEach(function(c) { h += '<td>' + c + '</td>'; });
+    h += '</tr>';
+  });
+  h += '</tbody></table>';
+  document.getElementById('modalBody').innerHTML = h;
+  document.getElementById('modalOverlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
 </script>
+<!-- 明细弹窗 -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-hd">
+      <h3 id="modalTitle">明细</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-bd" id="modalBody"></div>
+  </div>
+</div>
 </body>
 </html>
