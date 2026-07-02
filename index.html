@@ -116,6 +116,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 /* 可点击数值 */
 .kpi-card .value.clickable{cursor:pointer}
 .val.clickable{cursor:pointer}
+td.clickable{cursor:pointer}
 /* 明细弹窗 */
 .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:9999;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.show{display:flex}
@@ -270,8 +271,8 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
         <table class="refund-table">
           <thead><tr><th>日期</th><th>业务人员</th><th>客户</th><th>金额</th><th>原款项</th><th>原到款月</th></tr></thead>
           <tbody>
-            <tr><td>6/2</td><td>蔡东辉</td><td>高宝晶</td><td style="color:#cf1322;font-weight:700">¥2.0万</td><td>订金</td><td>5月</td></tr>
-            <tr><td>6/18</td><td>赵云峰</td><td>杨小莉</td><td style="color:#cf1322;font-weight:700">¥10.0万</td><td>订金</td><td>4月</td></tr>
+            <tr><td>6/2</td><td class="clickable" onclick="showDetail('person','蔡东辉')">蔡东辉</td><td>高宝晶</td><td style="color:#cf1322;font-weight:700">¥2.0万</td><td>订金</td><td>5月</td></tr>
+            <tr><td>6/18</td><td class="clickable" onclick="showDetail('person','赵云峰')">赵云峰</td><td>杨小莉</td><td style="color:#cf1322;font-weight:700">¥10.0万</td><td>订金</td><td>4月</td></tr>
             <tr><td>6/26</td><td>赵云峰</td><td>徐迥旬</td><td style="color:#cf1322;font-weight:700">¥1.0万</td><td>订金</td><td>5月</td></tr>
           </tbody>
         </table>
@@ -323,7 +324,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
             <td class="highlight">52.5</td><td>4.0</td><td>48.5</td>
           </tr>
           <tr>
-            <td>孙德国</td>
+            <td class="clickable" onclick="showDetail('person','孙德国')">孙德国</td>
             <td class="highlight">36.6</td><td>13.5</td>
             <td class="highlight">14.1</td><td>6</td><td>47</td>
             <td>13.6</td><td>5.5</td><td>47</td>
@@ -332,7 +333,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
             <td class="highlight">35.0</td><td>5.0</td><td>30</td>
           </tr>
           <tr>
-            <td>郑毅</td>
+            <td class="clickable" onclick="showDetail('person','郑毅')">郑毅</td>
             <td class="highlight">16.0</td><td>9.5</td>
             <td class="highlight">5.0</td><td>4</td><td>17</td>
             <td>5.0</td><td>5.0</td><td>17</td>
@@ -341,7 +342,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
             <td class="highlight">10.0</td><td>0.0</td><td>10</td>
           </tr>
           <tr>
-            <td>黄佳佳</td>
+            <td class="clickable" onclick="showDetail('person','黄佳佳')">黄佳佳</td>
             <td class="highlight">0.0</td><td>9.0</td>
             <td class="highlight">0.0</td><td>6</td><td>0</td>
             <td>0.0</td><td>3.0</td><td>0</td>
@@ -350,7 +351,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
             <td class="highlight">0.0</td><td>0.0</td><td>0</td>
           </tr>
           <tr>
-            <td>皇甫毅</td>
+            <td class="clickable" onclick="showDetail('person','皇甫毅')">皇甫毅</td>
             <td class="highlight">23.2</td><td>0.5</td>
             <td class="highlight">22.0</td><td>0</td><td>1</td>
             <td>0.6</td><td>0.0</td><td>0</td>
@@ -595,7 +596,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
     <div class="panel-header"><span>线索转化漏斗 · 6月</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartFunnel"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：6月新增线索82条，已联系60条（对接率73%），加微信12条（转化率20%），入群/重点客户5条，意向确定2条，暂无成交。线索量充足但微信转化偏低，未加微信客户大多"已沟通但未加"，建议7月优化首轮话术提升加微率。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：6月新增线索<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','all')">82条</span>，已联系<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','contacted')">60条</span>（对接率73%），加微信<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','wechat')">12条</span>（转化率20%），入群/重点客户<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','group')">5条</span>，意向确定<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','intent')">2条</span>，暂无成交。线索量充足但微信转化偏低，未加微信客户大多"已沟通但未加"，建议7月优化首轮话术提升加微率。</div>
     </div>
   </div>
 </div>
@@ -855,6 +856,47 @@ var detailData = {
 
 function showDetail(type, filter) {
   var title, cols, rows;
+  if (type === 'person') {
+    var p = filter;
+    var ps = detailData.payment.filter(function(r) { return r[1] === p; });
+    var ys = detailData.yinliu.filter(function(r) { return r[0] === p; });
+    var rs = detailData.refund.filter(function(r) { return r[1] === p; });
+    title = p + ' · 6月业绩明细';
+    var h = '';
+    // 到款
+    if (ps.length) {
+      h += '<h4 style="margin:12px 0 6px;color:#1677ff">▸ 到款（' + ps.length + '笔）</h4>';
+      h += '<table><thead><tr><th>日期</th><th>客户</th><th>金额(万)</th><th>款项</th><th>售卡</th><th>业务类型</th></tr></thead><tbody>';
+      var psSum = 0;
+      ps.forEach(function(r) { psSum += parseFloat(r[3]); h += '<tr><td>'+r[0]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td><td>'+r[5]+'</td><td>'+r[6]+'</td></tr>'; });
+      h += '<tr style="font-weight:700"><td colspan=2>合计</td><td>' + psSum.toFixed(2) + '</td><td></td><td></td><td></td></tr></tbody></table>';
+    } else { h += '<p style="color:#8c8c8c;margin:12px 0">暂无到款</p>'; }
+    // 退款
+    if (rs.length) {
+      h += '<h4 style="margin:12px 0 6px;color:#cf1322">▸ 退款（' + rs.length + '笔）</h4>';
+      h += '<table><thead><tr><th>日期</th><th>客户</th><th>金额(万)</th><th>原款项</th><th>原到款月</th></tr></thead><tbody>';
+      var rsSum = 0;
+      rs.forEach(function(r) { rsSum += parseFloat(r[3]); h += '<tr><td>'+r[0]+'</td><td>'+r[2]+'</td><td style="color:#cf1322">'+r[3]+'</td><td>'+r[4]+'</td><td>'+r[5]+'</td></tr>'; });
+      h += '<tr style="font-weight:700;color:#cf1322"><td colspan=2>合计</td><td>' + rsSum.toFixed(2) + '</td><td></td><td></td></tr></tbody></table>';
+    }
+    // 引流
+    if (ys.length) {
+      var ok = ys.filter(function(r) { return r[1] === '已核实'; });
+      h += '<h4 style="margin:12px 0 6px;color:#13c2c2">▸ 引流上会（' + ys.length + '条，已核实' + ok.length + '条）</h4>';
+      h += '<table><thead><tr><th>状态</th><th>客户</th><th>日期</th><th>大会类型</th><th>业绩</th><th>会议名称</th></tr></thead><tbody>';
+      ys.forEach(function(r) {
+        var tag = r[1] === '已核实' ? '<span class="tag-ok">✓ 已核实</span>' : '<span class="tag-no">✗ 不符合</span>';
+        h += '<tr><td>' + tag + '</td><td>' + r[2] + '</td><td>' + r[3] + '</td><td>' + r[4] + '</td><td>' + r[5] + '</td><td>' + (r[6]||'') + '</td></tr>';
+      });
+      h += '</tbody></table>';
+    } else { h += '<p style="color:#8c8c8c;margin:12px 0">暂无引流记录</p>'; }
+    document.getElementById('modalTitle').innerHTML = title;
+    document.getElementById('modalBody').innerHTML = h;
+    document.getElementById('modalOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+    return;
+  }
+  var title, cols, rows;
   if (type === 'payment') {
     rows = detailData.payment.slice();
     var sumTitle = '';
@@ -866,6 +908,24 @@ function showDetail(type, filter) {
     cols = ['日期','业务员','客户','金额(万)','款项','售卡','业务类型'];
     var sum = 0; rows.forEach(function(r) { sum += parseFloat(r[3]); });
     rows.push(['<b>合计</b>','','','<b>' + sum.toFixed(2) + '</b>','','','']);
+  } else if (type === 'clue') {
+    // show a summary note since full clue detail is too large to embed
+    var labels = {all:'全部82条',contacted:'已联系60条',wechat:'加微信12条',group:'入群/重点5条',intent:'意向确定2条'};
+    var tips = {
+      all: '6月新增线索共82条，来自视频号/抖音/小红书等平台，覆盖全国多城市。具体每条线索明细请查阅 Obsidian "基础数据/11_9-线索情况.md"。',
+      contacted: '已初步对接的60条线索中，大部分通过电话/微信沟通。未对接的22条多为留言未回复或联系方式无效。',
+      wechat: '加微信12条，微信转化率20%（12/60）。已加微信客户中有意向客户正持续跟进中。',
+      group: '入群或标记为重点客户的5条线索，包含意向明确的潜在合作伙伴。',
+      intent: '意向确定2条（蔡东辉1条+郑毅1条），已进入深度跟进阶段，7月有望转化。'
+    };
+    title = '线索漏斗 · ' + labels[filter];
+    document.getElementById('modalTitle').innerHTML = title;
+    var h = '<div style="padding:16px;line-height:1.8;color:#333">' + tips[filter] + '</div>';
+    h += '<div style="padding:0 16px 12px;color:#8c8c8c;font-size:12px">📋 完整327条线索数据请查阅 Obsidian → 基础数据/11_9-线索情况.md</div>';
+    document.getElementById('modalBody').innerHTML = h;
+    document.getElementById('modalOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+    return;
   } else if (type === 'refund') {
     title = '6月退款明细（共3笔，合计¥13万）';
     cols = ['退款日期','业务员','客户','金额(万)','原款项','原到款月','备注'];
