@@ -306,7 +306,7 @@ td.clickable{cursor:pointer}
         </thead>
         <tbody>
           <tr>
-            <td>赵云峰</td>
+            <td class="clickable" onclick="showDetail('person','赵云峰')">赵云峰</td>
             <td class="highlight">65.5</td><td>13.5</td>
             <td class="highlight">24.0</td><td>5</td><td>45</td>
             <td>11.0</td><td>6.0</td><td>10</td>
@@ -596,7 +596,7 @@ td.clickable{cursor:pointer}
     <div class="panel-header"><span>线索转化漏斗 · 6月</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartFunnel"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：6月新增线索<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','all')">82条</span>，已联系<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','contacted')">60条</span>（对接率73%），加微信<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','wechat')">12条</span>（转化率20%），入群/重点客户<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','group')">5条</span>，意向确定<span class="clickable" style="cursor:pointer;border-bottom:1px dashed #1677ff" onclick="showDetail('clue','intent')">2条</span>，暂无成交。线索量充足但微信转化偏低，未加微信客户大多"已沟通但未加"，建议7月优化首轮话术提升加微率。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：6月新增线索<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','all')">82条</span>，已联系<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','contacted')">60条</span>（对接率73%），加微信<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','wechat')">12条</span>（转化率20%），入群/重点客户<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','group')">5条</span>，意向确定<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','intent')">2条</span>，暂无成交。线索量充足但微信转化偏低，未加微信客户大多"已沟通但未加"，建议7月优化首轮话术提升加微率。</div>
     </div>
   </div>
 </div>
