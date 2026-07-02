@@ -117,6 +117,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 .kpi-card .value.clickable{cursor:pointer}
 .val.clickable{cursor:pointer}
 td.clickable{cursor:pointer}
+span.clickable{cursor:pointer}
 /* 明细弹窗 */
 .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:9999;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.show{display:flex}
@@ -315,7 +316,7 @@ td.clickable{cursor:pointer}
             <td class="highlight">65.5</td><td>35.5</td><td>30</td>
           </tr>
           <tr>
-            <td>蔡东辉</td>
+            <td class="clickable" onclick="showDetail('person','蔡东辉')">蔡东辉</td>
             <td class="highlight">56.3</td><td>7.0</td>
             <td class="highlight">12.5</td><td>2</td><td>45</td>
             <td>31.5</td><td>0.0</td><td>107</td>
@@ -667,7 +668,7 @@ td.clickable{cursor:pointer}
 </div>
 
 <div class="footnote">
-  <b>数据口径说明</b>：KPI到款为净到款（毛77.1万-退款13万=64.1万），趋势图同口径。大会类型分布图使用「自然人」口径（23人）。业务人员表格到款为毛到款口径。线索漏斗为6月单月数据（82条），非历史累计。数据来源：健康小屋-BI.xlsx → Obsidian yiru_new/基础数据/。
+  <b>数据口径说明</b>：KPI到款为净到款（毛77.1万-退款13万=64.1万），趋势图同口径。大会类型分布图使用「自然人」口径（23人）。业务人员表格到款为毛到款口径。线索漏斗为6月单月数据（82条），非历史累计。数据来源：健康小屋-BI.xlsx → Obsidian yiru_new/基础数据/。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.02-1648 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
 </div>
 
 </div>
