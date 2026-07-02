@@ -114,8 +114,8 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
 .refund-table tr:last-child td{border-bottom:none}
 @media(max-width:900px){body{padding:12px}.kpis{grid-template-columns:repeat(2,1fr)}.row2,.row3{grid-template-columns:1fr}}
 /* 可点击数值 */
-.kpi-card .value.clickable{color:#1677ff;cursor:pointer;text-decoration:underline;text-underline-offset:4px;transition:color .15s}
-.kpi-card .value.clickable:hover{color:#4096ff}
+.kpi-card .value.clickable{cursor:pointer}
+.val.clickable{cursor:pointer}
 /* 明细弹窗 */
 .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.45);z-index:9999;justify-content:center;align-items:center;padding:20px}
 .modal-overlay.show{display:flex}
@@ -160,7 +160,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
   </div>
   <div class="kpi-card">
     <div class="label">售卖卡数（张）</div>
-    <div class="value">155</div>
+    <div class="value clickable" onclick="showDetail('cards')">155</div>
     <div class="sub"><span class="tag tag-warn">91.2%</span><span style="color:#8c8c8c">目标170张</span></div>
     <div class="bar-bg"><div class="bar-fill" style="width:91%;background:#faad14"></div></div>
   </div>
@@ -172,7 +172,7 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
   </div>
   <div class="kpi-card">
     <div class="label">6月OPC到款（万元）</div>
-    <div class="value">0.49</div>
+    <div class="value clickable" onclick="showDetail('opc')">0.49</div>
     <div class="sub"><span class="tag tag-down">9.8%</span><span style="color:#8c8c8c">目标5万</span></div>
     <div class="bar-bg"><div class="bar-fill" style="width:10%;background:#ff4d4f"></div></div>
   </div>
@@ -237,8 +237,8 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
     <div class="panel-body">
       <div class="chart-box" id="chartMeeting"></div>
       <div class="grid-3" style="margin-top:8px">
-        <div class="metric-sm"><div class="val" style="color:#1677ff">11人</div><div class="lbl">沙龙 · 3场</div></div>
-        <div class="metric-sm"><div class="val" style="color:#13c2c2">12人</div><div class="lbl">OPC沙龙 · 1场</div></div>
+        <div class="metric-sm"><div class="val clickable" style="color:#1677ff;cursor:pointer" onclick="showDetail('yinliu','沙龙')">11人</div><div class="lbl">沙龙 · 3场</div></div>
+        <div class="metric-sm"><div class="val clickable" style="color:#13c2c2;cursor:pointer" onclick="showDetail('yinliu','OPC沙龙')">12人</div><div class="lbl">OPC沙龙 · 1场</div></div>
         <div class="metric-sm"><div class="val" style="color:#ff4d4f">0人</div><div class="lbl">商机大会 · 0场</div></div>
       </div>
       <div class="insight-box" style="margin-top:12px"><b>📊 解析</b>：6月自然人数23人（业绩口径17人），沙龙11人占47.8%，OPC沙龙12人占52.2%。商机大会全月缺席，该渠道是高客单价主要来源，5月曾贡献7人。</div>
@@ -253,9 +253,9 @@ hr.divider{border:none;border-top:1px solid #f0f0f0;margin:16px 0}
     <div class="panel-body">
       <div class="chart-box-sm" id="chartPayment"></div>
       <div class="grid-3" style="margin-top:0">
-        <div class="metric-sm"><div class="val" style="color:#1677ff">¥34.5万</div><div class="lbl">订金 · 5客户 · 5笔</div></div>
-        <div class="metric-sm"><div class="val" style="color:#52c41a">¥32.0万</div><div class="lbl">全款 · 3客户 · 3笔</div></div>
-        <div class="metric-sm"><div class="val" style="color:#faad14">¥10.0万</div><div class="lbl">尾款 · 1客户 · 1笔</div></div>
+        <div class="metric-sm"><div class="val clickable" style="color:#1677ff;cursor:pointer" onclick="showDetail('payment','订金')">¥34.5万</div><div class="lbl">订金 · 5客户 · 5笔</div></div>
+        <div class="metric-sm"><div class="val clickable" style="color:#52c41a;cursor:pointer" onclick="showDetail('payment','全款')">¥32.0万</div><div class="lbl">全款 · 3客户 · 3笔</div></div>
+        <div class="metric-sm"><div class="val clickable" style="color:#faad14;cursor:pointer" onclick="showDetail('payment','尾款')">¥10.0万</div><div class="lbl">尾款 · 1客户 · 1笔</div></div>
       </div>
       <div class="insight-box" style="margin-top:12px">
         <b>📊 结构解读</b>：订金45.1% / 全款41.8% / 尾款13.1%。6/30当日集中到款¥53.5万（金璐瑶21.5万单笔最大）。全款客户3人（金振生/任海涛/吕建军），其中2人老客跟进。
@@ -853,12 +853,17 @@ var detailData = {
   ]
 };
 
-function showDetail(type) {
+function showDetail(type, filter) {
   var title, cols, rows;
   if (type === 'payment') {
-    title = '6月到款明细（共' + detailData.payment.length + '笔，毛到款¥77.6万）';
+    rows = detailData.payment.slice();
+    var sumTitle = '';
+    if (filter) {
+      rows = rows.filter(function(r) { return r[4] === filter; });
+      sumTitle = '（筛选：' + filter + '）';
+    }
+    title = '6月到款明细' + sumTitle + '（共' + rows.length + '笔）';
     cols = ['日期','业务员','客户','金额(万)','款项','售卡','业务类型'];
-    rows = detailData.payment;
     var sum = 0; rows.forEach(function(r) { sum += parseFloat(r[3]); });
     rows.push(['<b>合计</b>','','','<b>' + sum.toFixed(2) + '</b>','','','']);
   } else if (type === 'refund') {
@@ -866,12 +871,30 @@ function showDetail(type) {
     cols = ['退款日期','业务员','客户','金额(万)','原款项','原到款月','备注'];
     rows = detailData.refund;
   } else if (type === 'yinliu') {
-    var ok = detailData.yinliu.filter(function(r) { return r[1] === '已核实'; });
-    title = '6月引流上会明细（共' + detailData.yinliu.length + '条，已核实' + ok.length + '条）';
+    rows = detailData.yinliu.slice();
+    if (filter) {
+      rows = rows.filter(function(r) { return r[4] === filter; });
+    }
+    var ok = rows.filter(function(r) { return r[1] === '已核实'; });
+    title = '6月引流上会明细（' + (filter||'全部') + '，共' + rows.length + '条，已核实' + ok.length + '条）';
     cols = ['业务员','状态','客户','日期','大会类型','业绩人数','会议名称','客户公司'];
-    rows = detailData.yinliu.map(function(r) {
+    rows = rows.map(function(r) {
       return [r[0], r[1] === '已核实' ? '<span class="tag-ok">✓ 已核实</span>' : '<span class="tag-no">✗ 不符合</span>', r[2], r[3], r[4], r[5], r[6], r[7]];
     });
+  } else if (type === 'cards') {
+    rows = detailData.payment.filter(function(r) { return r[5] !== '—'; });
+    title = '6月售卡明细（共售卡155张，' + rows.length + '笔交易）';
+    cols = ['日期','业务员','客户','售卡(张)','金额(万)','款项','业务类型'];
+    rows = rows.map(function(r) { return [r[0],r[1],r[2],r[5],r[3],r[4],r[6]]; });
+    var totalCards = 0, totalAmt = 0;
+    rows.forEach(function(r) { totalCards += parseInt(r[3]); totalAmt += parseFloat(r[4]); });
+    rows.push(['<b>合计</b>','','','<b>' + totalCards + '张</b>','<b>' + totalAmt.toFixed(2) + '</b>','','']);
+  } else if (type === 'opc') {
+    rows = detailData.payment.filter(function(r) { return r[6] === 'AIOPC'; });
+    title = '6月OPC到款明细（共' + rows.length + '笔，合计¥0.49万）';
+    cols = ['日期','业务员','客户','金额(万)','款项','售卡','业务类型'];
+    var sum = 0; rows.forEach(function(r) { sum += parseFloat(r[3]); });
+    rows.push(['<b>合计</b>','','','<b>' + sum.toFixed(2) + '</b>','','','']);
   }
   document.getElementById('modalTitle').innerHTML = title;
   var h = '<table><thead><tr>';
