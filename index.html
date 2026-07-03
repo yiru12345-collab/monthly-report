@@ -971,6 +971,7 @@ window.goDetail = function showDetail(type, filter) {
   document.getElementById('modalOverlay').classList.add('show');
   document.body.style.overflow = 'hidden';
 }
+window.showDetail = goDetail;
 window.closeModal = function closeModal(e) {
   if (e && e.target !== document.getElementById('modalOverlay')) return;
   document.getElementById('modalOverlay').classList.remove('show');
