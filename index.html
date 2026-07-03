@@ -855,7 +855,7 @@ var detailData = {
   ]
 };
 
-function showDetail(type, filter) {
+window.goDetail = function showDetail(type, filter) {
   var title, cols, rows;
   if (type === 'person') {
     var p = filter;
@@ -971,11 +971,12 @@ function showDetail(type, filter) {
   document.getElementById('modalOverlay').classList.add('show');
   document.body.style.overflow = 'hidden';
 }
-function closeModal(e) {
+window.closeModal = function closeModal(e) {
   if (e && e.target !== document.getElementById('modalOverlay')) return;
   document.getElementById('modalOverlay').classList.remove('show');
   document.body.style.overflow = '';
 }
+console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0703-0900');
 </script>
 <!-- 明细弹窗 -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
