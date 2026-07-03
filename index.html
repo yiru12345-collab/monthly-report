@@ -597,7 +597,7 @@ span.clickable{cursor:pointer}
     <div class="panel-header"><span>线索转化漏斗 · 6月</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartFunnel"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：6月新增线索<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','all')">82条</span>，已联系<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','contacted')">60条</span>（对接率73%），加微信<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','wechat')">12条</span>（转化率20%），入群/重点客户<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','group')">5条</span>，意向确定<span class="clickable" style="cursor:pointer" onclick="showDetail('clue','intent')">2条</span>，暂无成交。线索量充足但微信转化偏低，未加微信客户大多"已沟通但未加"，建议7月优化首轮话术提升加微率。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：6月新增线索82条，已联系60条（对接率73%），加微信12条（转化率20%），入群/重点客户5条，意向确定2条，暂无成交。线索量充足但微信转化偏低，未加微信客户大多"已沟通但未加"，建议7月优化首轮话术提升加微率。</div>
     </div>
   </div>
 </div>
@@ -748,12 +748,12 @@ initChart('chartLiveSplit',{
   ]
 });
 
-// Funnel (6月82条)
-initChart('chartFunnel',{
+// Funnel (6月82条) — clickable chart
+var funnelChart = initChart('chartFunnel',{
   tooltip:{trigger:'item',formatter:'{b}: {c}人'},
   series:[{
     type:'funnel',left:'15%',width:'70%',sort:'descending',gap:2,
-    label:{show:true,position:'inside',fontSize:11,formatter:'{b} {c}人'},
+    label:{show:true,position:'inside',fontSize:11,formatter:'{b} {c}人',cursor:'pointer'},
     data:[
       {value:82,name:'6月线索',itemStyle:{color:blue}},
       {value:60,name:'已联系',itemStyle:{color:'#4096ff'}},
@@ -763,6 +763,10 @@ initChart('chartFunnel',{
       {value:0,name:'合作',itemStyle:{color:red}}
     ]
   }]
+});
+funnelChart.on('click', function(params) {
+  var clueMap = {'6月线索':'all','已联系':'contacted','加微信':'wechat','加社群':'group','意向确定':'intent'};
+  if (clueMap[params.name]) showDetail('clue', clueMap[params.name]);
 });
 
 // Payment structure (legend hidden — use small cards below as guide)
