@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>康小虎元气堂 · 运营周报 2026-W27 (6.29-7.5)</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;color:#262626;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:24px 20px}
+.header{background:linear-gradient(135deg,#1677ff,#0958d9);color:#fff;padding:28px 32px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.header .meta{font-size:13px;opacity:.85;margin-top:6px}
+.header .meta span{margin-right:16px}
+.header .highlight-badge{display:inline-block;background:rgba(255,255,255,.2);padding:2px 10px;border-radius:10px;margin-left:8px;font-size:12px}
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:12px;color:#8c8c8c;margin-bottom:4px}
+.kpi-card .value{font-size:28px;font-weight:700;margin-bottom:2px}
+.kpi-card .sub{font-size:12px;color:#8c8c8c}
+.kpi-card .trend{font-size:12px;margin-top:2px;font-weight:600}
+.kpi-card .trend.up{color:#52c41a}
+.kpi-card .trend.down{color:#ff4d4f}
+.kpi-card .trend.flat{color:#8c8c8c}
+.legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.panel{background:#fff;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #f0f0f0}
+.panel-header h2{font-size:16px;font-weight:600;color:#262626}
+.panel-header .subtitle{font-size:12px;color:#8c8c8c}
+.chart-box{width:100%;height:300px}
+.chart-box.sm{height:260px}
+.chart-box.lg{height:340px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.metric-box{background:#fafafa;border-radius:8px;padding:14px;text-align:center}
+.metric-box .val{font-size:24px;font-weight:700}
+.metric-box .lbl{font-size:12px;color:#8c8c8c;margin-top:2px}
+.metric-box .chg{font-size:11px;font-weight:600;margin-top:2px}
+.metric-box .chg.up{color:#52c41a}
+.metric-box .chg.down{color:#ff4d4f}
+.insight-box{background:#f6ffed;border-left:3px solid #52c41a;padding:12px 16px;border-radius:4px;margin-top:12px;font-size:13px;line-height:1.8}
+.insight-box.warn{background:#fffbe6;border-color:#faad14}
+.insight-box.info{background:#e6f7ff;border-color:#1677ff}
+.insight-box b{color:#262626}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{padding:8px 10px;text-align:center;border-bottom:1px solid #f0f0f0}
+th{background:#fafafa;font-weight:600;color:#595959;font-size:11px}
+td.hl{color:#1677ff;font-weight:600}
+td.up{color:#52c41a;font-weight:600}
+td.down{color:#ff4d4f;font-weight:600}
+.ops-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ops-card{border:1px solid #f0f0f0;border-radius:8px;padding:16px}
+.ops-card h3{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.ops-card .tag{display:inline-block;padding:1px 8px;border-radius:8px;font-size:11px;font-weight:600}
+.ops-card .tag.green{background:#f6ffed;color:#52c41a}
+.ops-card .tag.blue{background:#e6f7ff;color:#1677ff}
+.ops-card .tag.orange{background:#fffbe6;color:#faad14}
+.ops-card .tag.red{background:#fff2f0;color:#ff4d4f}
+.ops-card ul{padding-left:18px;font-size:13px;line-height:1.9}
+.ops-card ul li{margin-bottom:2px}
+.footnote{text-align:center;font-size:11px;color:#bbb;margin-top:8px;padding:12px}
+.footnote b{color:#8c8c8c}
+@media(max-width:768px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .grid-2,.ops-grid{grid-template-columns:1fr}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>康小虎元气堂 · 运营周报 <span class="highlight-badge">W27</span></h1>
+  <div class="meta">
+    <span>周期：2026.06.29 – 07.05</span>
+    <span>数据源：健康小屋-BI</span>
+  </div>
+</div>
+
+<!-- KPI Row -->
+<div class="kpi-row">
+  <div class="kpi-card">
+    <div class="label">短视频发布量</div>
+    <div class="value">23<span style="font-size:14px;color:#8c8c8c">条</span></div>
+    <div class="sub">上周16条</div>
+    <div class="trend up">▲ +43.8%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">短视频播放量</div>
+    <div class="value">3.1<span style="font-size:14px;color:#8c8c8c">万</span></div>
+    <div class="sub">上周1.8万</div>
+    <div class="trend up">▲ +77.0%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">均播播放量</div>
+    <div class="value">1,364</div>
+    <div class="sub">上周1,108</div>
+    <div class="trend up">▲ +23.1%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">B端直播场次</div>
+    <div class="value">3<span style="font-size:14px;color:#8c8c8c">场</span></div>
+    <div class="sub">上周2场 · C端3场</div>
+    <div class="trend up">▲ +50%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">B端新增线索</div>
+    <div class="value">39<span style="font-size:14px;color:#8c8c8c">条</span></div>
+    <div class="sub">短视频36条 · 直播3条</div>
+    <div class="trend up">▲ +11.4%</div>
+  </div>
+</div>
+
+<!-- Section 1: Core Trend -->
+<div class="grid-2">
+  <div class="panel">
+    <div class="panel-header"><h2>短视频 · 近4周发布量 & 播放量趋势</h2></div>
+    <div class="chart-box lg" id="chartVideoTrend"></div>
+    <div class="insight-box info" style="margin-top:10px">
+      <b>📊 趋势解析</b>：发布量连续3周增长（15→16→23），本周放量+44%。播放量从5.4k跃升至3.1万，<b style="color:#1677ff">增幅+77%</b>，核心驱动力为1条爆款视频（播放16,400）。均播从1,108提升至1,364，内容质量明显改善。
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-header"><h2>本周爆款视频 · 播放量分层</h2></div>
+    <div class="chart-box lg" id="chartViral"></div>
+    <div class="insight-box" style="margin-top:10px">
+      <b>📊 解析</b>：本周产出4条爆款（1000+/2000+/4000+/1w+各1条），<b style="color:#52c41a">1w+视频为历史新高</b>。上周仅3条爆款且无1000+/1w+。新政策内容测试显著拉高了内容上限。
+    </div>
+  </div>
+</div>
+
+<!-- Section 2: Detailed Video Analysis -->
+<div class="panel">
+  <div class="panel-header">
+    <h2>短视频 · 本周 vs 上周核心指标对比</h2>
+    <span class="subtitle">6.29-7.5 vs 6.22-6.28</span>
+  </div>
+  <div class="grid-3">
+    <div class="metric-box">
+      <div class="lbl">发布条数</div>
+      <div class="val">23 <span style="font-size:14px">vs 16</span></div>
+      <div class="chg up">▲ +43.8%</div>
+    </div>
+    <div class="metric-box">
+      <div class="lbl">总播放量</div>
+      <div class="val">31,381 <span style="font-size:14px">vs 17,728</span></div>
+      <div class="chg up">▲ +77.0%</div>
+    </div>
+    <div class="metric-box">
+      <div class="lbl">均播播放量</div>
+      <div class="val">1,364 <span style="font-size:14px">vs 1,108</span></div>
+      <div class="chg up">▲ +23.1%</div>
+    </div>
+    <div class="metric-box">
+      <div class="lbl">1000+ 爆款</div>
+      <div class="val">1 <span style="font-size:14px">vs 0</span></div>
+      <div class="chg up">▲ NEW</div>
+    </div>
+    <div class="metric-box">
+      <div class="lbl">2000+ 爆款</div>
+      <div class="val">1 <span style="font-size:14px">vs 2</span></div>
+      <div class="chg down">▼ -50%</div>
+    </div>
+    <div class="metric-box">
+      <div class="lbl">4000+ / 1w+ 爆款</div>
+      <div class="val">2 <span style="font-size:14px">vs 1</span></div>
+      <div class="chg up">▲ +100%</div>
+    </div>
+  </div>
+  <div class="insight-box" style="margin-top:14px">
+    <b>🔥 本周亮点</b>：<b style="color:#1677ff">1条视频播放量突破16,400</b>，刷新历史最高纪录，为测试新政策（招商资质后）内容的首批数据成果。该视频带来大量留资转化。
+  </div>
+</div>
+
+<!-- Section 3: Live Streaming -->
+<div class="grid-2">
+  <div class="panel">
+    <div class="panel-header"><h2>直播 · 周度对比</h2></div>
+    <div class="chart-box" id="chartLive"></div>
+  </div>
+  <div class="panel">
+    <div class="panel-header"><h2>直播详细数据</h2></div>
+    <table>
+      <thead><tr><th>指标</th><th>本周</th><th>上周</th><th>环比</th></tr></thead>
+      <tbody>
+        <tr><td>B端场次</td><td class="hl">3场</td><td>2场</td><td class="up">+50%</td></tr>
+        <tr><td>B端总观看</td><td class="hl">610人</td><td>432人</td><td class="up">+41.2%</td></tr>
+        <tr><td>B端场均观看</td><td class="hl">203人</td><td>216人</td><td class="down">-6.0%</td></tr>
+        <tr><td>C端场次</td><td>3场</td><td>2场</td><td class="up">+50%</td></tr>
+        <tr><td>C端总观看</td><td>126人</td><td>15人</td><td class="up">+740%</td></tr>
+      </tbody>
+    </table>
+    <div class="insight-box" style="margin-top:12px">
+      <b>📊 解析</b>：B端直播恢复至3场/周，总观看+41%。C端本周数据大幅回升（84人峰值场次），但仍是辅助渠道。直播线索贡献3条，占B端线索7.7%。
+    </div>
+  </div>
+</div>
+
+<!-- Section 4: Lead Conversion Funnel -->
+<div class="panel">
+  <div class="panel-header">
+    <h2>线索转化漏斗 · 本周核心链路</h2>
+    <span class="subtitle">B端线索 39条 → 短视频36条 + 直播3条</span>
+  </div>
+  <div class="grid-2">
+    <div class="chart-box sm" id="chartLeadsSource"></div>
+    <div>
+      <div class="grid-2" style="margin-bottom:12px">
+        <div class="metric-box"><div class="val" style="color:#1677ff">39</div><div class="lbl">B端新增线索</div><div class="chg up">上周35条 ▲ +11.4%</div></div>
+        <div class="metric-box"><div class="val" style="color:#13c2c2">15</div><div class="lbl">加微信</div><div class="chg">转化率 38.5%</div></div>
+        <div class="metric-box"><div class="val" style="color:#faad14">4</div><div class="lbl">进群</div><div class="chg">加微→进群 26.7%</div></div>
+        <div class="metric-box"><div class="val" style="color:#ff4d4f">0</div><div class="lbl">OPC新注册</div><div class="chg">进群→注册 0%</div></div>
+      </div>
+      <div class="insight-box info">
+        <b>📊 链路解析</b>：本周短视频线索36条（占比92.3%），直播仅3条。加微率38.5%处于正常水平，进群转化26.7%。<b style="color:#faad14">OPC注册本周挂零</b>，进群后缺乏有效的注册引导动作。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 5: Operations Review & Next Week Plan -->
+<div class="panel">
+  <div class="panel-header"><h2>运营复盘 & 下周计划</h2></div>
+  <div class="ops-grid">
+    <div class="ops-card">
+      <h3><span class="tag green">✅ 本周完成</span></h3>
+      <ul>
+        <li><b>新政策内容测试</b>：测试招商资质后内容数据，效果显著——播放量、留资量均大幅提升，1条视频突破1w+创历史新高</li>
+        <li><b>AI工具赋能增效</b>：AI辅助短视频制作，工作提效约<b>30%</b>，释放更多精力研究爆款脚本</li>
+        <li><b>短视频放量</b>：发布量+44%（16→23条），播放量+77%（1.8万→3.1万），均播+23%</li>
+        <li><b>直播恢复</b>：B端直播3场，总观看610人，较上周+41%</li>
+      </ul>
+    </div>
+    <div class="ops-card">
+      <h3><span class="tag blue">🔬 正在推进</span></h3>
+      <ul>
+        <li><b>百岁计划健康大使招募</b>：研究新政策模式下，如何通过线上短视频内容引流线下上会，间接提供精准意向客户购买康养卡</li>
+        <li><b>爆款内容方法论沉淀</b>：基于本周1w+爆款数据，提炼可复用的选题/脚本/发布策略</li>
+        <li><b>OPC注册转化优化</b>：针对加微→进群后注册率0%的问题，优化进群后7天引导SOP</li>
+      </ul>
+    </div>
+    <div class="ops-card">
+      <h3><span class="tag orange">⚠️ 待关注</span></h3>
+      <ul>
+        <li><b>OPC新注册为0</b>：本周加微15人、进群4人但OPC注册0人，进群后缺乏有效转化动作</li>
+        <li><b>直播线索贡献低</b>：B端3场直播仅贡献3条线索（占7.7%），直播内容与留资钩子需优化</li>
+        <li><b>2000+爆款下降</b>：本周2000+爆款仅1条（上周2条），中等爆款内容储备不足</li>
+      </ul>
+    </div>
+    <div class="ops-card">
+      <h3><span class="tag red">🎯 下周重点</span></h3>
+      <ul>
+        <li><b>1. 短视频继续放量</b>：维持23条+/周节奏，重点复制1w+爆款的选题和脚本模式</li>
+        <li><b>2. 百岁计划内容上线</b>：完成健康大使招募相关短视频脚本，首批上线≥5条</li>
+        <li><b>3. OPC转化攻坚</b>：设计进群后7天引导SOP（Day1欢迎+Day3案例+Day7邀约注册）</li>
+        <li><b>4. 直播留资优化</b>：B端直播增加明确CTA（评论区留资/扫码加微），目标单场≥3条线索</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="footnote">
+  <b>数据口径</b>：B端线索 = 短视频留资 + 直播留资，统计周期 2026.06.29-07.05。环比对比上周 06.22-06.28。数据来源：健康小屋-BI。<br>
+  <span style="color:#d9d9d9;font-size:10px">W27运营周报 v1.0 | 可视化互动版</span>
+</div>
+
+</div>
+
+<script>
+(function(){
+var blue='#1677ff',amber='#faad14',red='#ff4d4f',green='#52c41a',purple='#722ed1',teal='#13c2c2';
+var textColor='#595959',axisColor='#d9d9d9';
+
+function initChart(id, opt) {
+  var dom = document.getElementById(id);
+  if (!dom) return;
+  var c = echarts.init(dom);
+  c.setOption(opt);
+  window.addEventListener('resize', function() { c.resize(); });
+}
+
+// 1. Video trend (last 4 weeks)
+initChart('chartVideoTrend', {
+  tooltip: { trigger: 'axis' },
+  legend: { data: ['发布量', '总播放量'], bottom: 0, textStyle: { fontSize: 11 } },
+  grid: { left: 50, right: 50, top: 20, bottom: 40 },
+  xAxis: { type: 'category', data: ['W24(6.8-14)', 'W25(6.15-21)', 'W26(6.22-28)', 'W27(6.29-7.5)'], axisLabel: { fontSize: 10, color: textColor } },
+  yAxis: [
+    { type: 'value', name: '条', nameTextStyle: { color: textColor, fontSize: 11 }, axisLabel: { color: textColor }, splitLine: { lineStyle: { color: '#f0f0f0' } } },
+    { type: 'value', name: '播放', nameTextStyle: { color: textColor, fontSize: 11 }, axisLabel: { color: textColor, formatter: function(v) { return (v/10000).toFixed(1) + '万'; } }, splitLine: { show: false } }
+  ],
+  series: [
+    { name: '发布量', type: 'bar', data: [15, 16, 16, 23], barWidth: 20, itemStyle: { color: blue, borderRadius: [4, 4, 0, 0] }, label: { show: true, position: 'top', fontSize: 10, color: blue } },
+    { name: '总播放量', type: 'line', yAxisIndex: 1, data: [5400, 14800, 17728, 31381], lineStyle: { color: green, width: 2.5 }, symbol: 'circle', symbolSize: 6, itemStyle: { color: green }, label: { show: true, position: 'top', fontSize: 10, color: green, formatter: function(p) { return (p.value/10000).toFixed(1) + '万'; } } }
+  ]
+});
+
+// 2. Viral breakdown pie
+initChart('chartViral', {
+  tooltip: { trigger: 'item', formatter: '{b}: {c}条 ({d}%)' },
+  legend: { orient: 'vertical', right: 10, top: 'center', textStyle: { fontSize: 11 } },
+  series: [{
+    type: 'pie', radius: ['45%', '72%'], center: ['40%', '50%'], label: { formatter: '{b}\n{c}条' }, emphasis: { label: { fontSize: 14, fontWeight: 'bold' } },
+    data: [
+      { value: 19, name: '<1000播放', itemStyle: { color: '#d9d9d9' } },
+      { value: 1, name: '1000+', itemStyle: { color: '#91caff' } },
+      { value: 1, name: '2000+', itemStyle: { color: blue } },
+      { value: 1, name: '4000+', itemStyle: { color: '#0958d9' } },
+      { value: 1, name: '1w+', itemStyle: { color: red } }
+    ]
+  }]
+});
+
+// 3. Live comparison bar
+initChart('chartLive', {
+  tooltip: { trigger: 'axis' },
+  legend: { data: ['B端观看', 'C端观看', 'B端场次', 'C端场次'], bottom: 0, textStyle: { fontSize: 10 } },
+  grid: { left: 50, right: 10, top: 16, bottom: 40 },
+  xAxis: { type: 'category', data: ['W26(上周)', 'W27(本周)'], axisLabel: { color: textColor } },
+  yAxis: [
+    { type: 'value', name: '观看人数', nameTextStyle: { fontSize: 10, color: textColor }, axisLabel: { color: textColor }, splitLine: { lineStyle: { color: '#f0f0f0' } } },
+    { type: 'value', name: '场次', nameTextStyle: { fontSize: 10, color: textColor }, axisLabel: { color: textColor }, max: 6, splitLine: { show: false } }
+  ],
+  series: [
+    { name: 'B端观看', type: 'bar', data: [432, 610], barWidth: 24, itemStyle: { color: blue, borderRadius: [4, 4, 0, 0] }, label: { show: true, position: 'top', fontSize: 10, color: blue } },
+    { name: 'C端观看', type: 'bar', data: [15, 126], barWidth: 24, itemStyle: { color: teal, borderRadius: [4, 4, 0, 0] }, label: { show: true, position: 'top', fontSize: 10, color: teal } },
+    { name: 'B端场次', type: 'line', yAxisIndex: 1, data: [2, 3], lineStyle: { color: blue, type: 'dashed', width: 1.5 }, symbol: 'diamond', symbolSize: 8, itemStyle: { color: blue } },
+    { name: 'C端场次', type: 'line', yAxisIndex: 1, data: [2, 3], lineStyle: { color: teal, type: 'dashed', width: 1.5 }, symbol: 'diamond', symbolSize: 8, itemStyle: { color: teal } }
+  ]
+});
+
+// 4. Lead source distribution
+initChart('chartLeadsSource', {
+  tooltip: { trigger: 'item', formatter: '{b}: {c}条 ({d}%)' },
+  series: [{
+    type: 'pie', radius: ['40%', '70%'], center: ['50%', '50%'],
+    label: { formatter: '{b}\n{c}条' },
+    data: [
+      { value: 36, name: '短视频留资', itemStyle: { color: blue } },
+      { value: 3, name: '直播留资', itemStyle: { color: amber } }
+    ]
+  }]
+});
+
+})();
+</script>
+</body>
+</html>
