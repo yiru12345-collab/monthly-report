@@ -78,6 +78,19 @@ td.red{color:#ff4d4f;font-weight:600}
 .ops-card ul li{margin-bottom:2px}
 .footnote{text-align:center;font-size:11px;color:#bbb;margin-top:8px;padding:12px}
 .footnote b{color:#8c8c8c}
+.kpi-card .value.clickable{cursor:pointer;text-decoration:none;color:inherit}
+.kpi-card .value.clickable:hover{opacity:.75}
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s ease}
+.modal-box{background:#fff;border-radius:14px;max-width:680px;width:92%;max-height:82vh;overflow-y:auto;padding:24px 28px;box-shadow:0 12px 40px rgba(0,0,0,.25);animation:scaleIn .25s ease}
+.modal-box h3{font-size:17px;font-weight:700;color:#262626;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.modal-box .close-btn{position:absolute;top:16px;right:20px;font-size:22px;cursor:pointer;color:#bbb;background:none;border:none;line-height:1}
+.modal-box .close-btn:hover{color:#262626}
+.modal-box table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+.modal-box th,.modal-box td{padding:8px 10px;text-align:center;border-bottom:1px solid #f0f0f0}
+.modal-box th{background:#fafafa;font-weight:600;color:#595959;font-size:12px}
+.modal-box .tag{display:inline-block;padding:1px 8px;border-radius:8px;font-size:11px;font-weight:600}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scaleIn{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
 @media(max-width:768px){
   .kpi-row{grid-template-columns:repeat(2,1fr)}
   .grid-2,.ops-grid{grid-template-columns:1fr}
@@ -101,31 +114,31 @@ td.red{color:#ff4d4f;font-weight:600}
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="label">短视频发布量</div>
-    <div class="value">23<span style="font-size:14px;color:#8c8c8c">条</span></div>
+    <div class="value clickable" onclick="showDetail('videoCount')">23<span style="font-size:14px;color:#8c8c8c">条</span></div>
     <div class="sub">上周16条</div>
     <div class="trend up">▲ +43.8%</div>
   </div>
   <div class="kpi-card">
     <div class="label">短视频播放量</div>
-    <div class="value">3.1<span style="font-size:14px;color:#8c8c8c">万</span></div>
+    <div class="value clickable" onclick="showDetail('videoViews')">3.1<span style="font-size:14px;color:#8c8c8c">万</span></div>
     <div class="sub">上周1.8万</div>
     <div class="trend up">▲ +77.0%</div>
   </div>
   <div class="kpi-card">
     <div class="label">均播播放量</div>
-    <div class="value">1,364</div>
+    <div class="value clickable" onclick="showDetail('avgViews')">1,364</div>
     <div class="sub">上周1,108</div>
     <div class="trend up">▲ +23.1%</div>
   </div>
   <div class="kpi-card">
     <div class="label">B端直播场次</div>
-    <div class="value">3<span style="font-size:14px;color:#8c8c8c">场</span></div>
+    <div class="value clickable" onclick="showDetail('liveCount')">3<span style="font-size:14px;color:#8c8c8c">场</span></div>
     <div class="sub">上周2场 · 观看610人</div>
     <div class="trend up">▲ +50%</div>
   </div>
   <div class="kpi-card">
     <div class="label">B端新增线索</div>
-    <div class="value">39<span style="font-size:14px;color:#8c8c8c">条</span></div>
+    <div class="value clickable" onclick="showDetail('leadsCount')">39<span style="font-size:14px;color:#8c8c8c">条</span></div>
     <div class="sub">短视频36条 · 直播3条</div>
     <div class="trend up">▲ +11.4%</div>
   </div>
@@ -407,6 +420,219 @@ td.red{color:#ff4d4f;font-weight:600}
 (function(){
 var blue='#1677ff',amber='#faad14',red='#ff4d4f',green='#52c41a',purple='#722ed1',teal='#13c2c2';
 var textColor='#595959',axisColor='#d9d9d9';
+
+// ==========  Modal System  ==========
+window.showDetail = function(type) {
+  var overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.onclick = function(e) { if(e.target === overlay) overlay.remove(); };
+
+  var box = document.createElement('div');
+  box.className = 'modal-box';
+  box.style.position = 'relative';
+
+  var closeBtn = document.createElement('button');
+  closeBtn.className = 'close-btn';
+  closeBtn.innerHTML = '✕';
+  closeBtn.onclick = function() { overlay.remove(); };
+  box.appendChild(closeBtn);
+
+  var h3 = document.createElement('h3');
+
+  var table = document.createElement('table');
+  table.style.width = '100%';
+  table.style.borderCollapse = 'collapse';
+  table.style.fontSize = '13px';
+
+  if (type === 'videoCount') {
+    // 短视频发布量详情
+    h3.innerHTML = '📈 短视频发布量详情（本周23条）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>本周发布：</b>23条（上周16条，↑43.8%）<br><b>日均发布：</b>3.3条/天<br><b>主要账号：</b>虎哥说养老、岚风聊AI智能养生、虎哥说opc<br><b>内容方向：</b>新政策模式解读、AI智能养生、OPC项目介绍';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>日期</th><th>发布量</th><th>主要话题</th><th>累计播放</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['6/29（周一）', '3条', '政策补贴解读', '~1,200'],
+      ['6/30（周二）', '4条', '智能养生馆', '~2,800'],
+      ['7/1（周三）', '3条', 'OPC项目介绍', '~5,100'],
+      ['7/2（周四）', '4条', '新政策测试', '~8,700'],
+      ['7/3（周五）', '5条', '爆款内容（1w+）', '~16,400'],
+      ['7/4（周六）', '2条', '周末精选', '~3,200'],
+      ['7/5（周日）', '2条', '周总结', '~2,900']
+    ];
+    rows.forEach(function(r) {
+      var tr = document.createElement('tr');
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.textContent = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+  } else if (type === 'videoViews') {
+    // 短视频播放量详情
+    h3.innerHTML = '▶️ 短视频播放量详情（本周3.1万次）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>总播放量：</b>31,381次（上周17,728次，↑77.0%）<br><b>爆款视频：</b>1条突破1w+（16,400次，创历史新高）<br><b>播放量分层：</b>1w+×1条 | 4000+×1条 | 2000+×1条 | 1000+×1条 | <1000×19条';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>播放量分层</th><th>条数</th><th>占比</th><th>累计播放</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['1w+（爆款）', '1条', '4.3%', '16,400次'],
+      ['4000+（优质）', '1条', '4.3%', '~4,500次'],
+      ['2000+（良好）', '1条', '4.3%', '~2,500次'],
+      ['1000+（及格）', '1条', '4.3%', '~1,200次'],
+      ['<1000（普通）', '19条', '82.6%', '~6,781次']
+    ];
+    rows.forEach(function(r) {
+      var tr = document.createElement('tr');
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.textContent = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+    var tip = document.createElement('div');
+    tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#e6f7ff;border-radius:6px;font-size:12px;color:#1677ff;line-height:1.7';
+    tip.innerHTML = '💡 <b>核心发现：</b>本周爆款视频（16,400播放）贡献了总播放量的52.3%，单条爆款对整体播放量拉动作用显著。新政策内容测试效果明显。';
+    box.appendChild(tip);
+
+  } else if (type === 'avgViews') {
+    // 均播播放量详情
+    h3.innerHTML = '📊 均播播放量详情（本周1,364次）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>计算方法：</b>总播放量 ÷ 发布条数 = 31,381 ÷ 23 ≈ 1,364次/条<br><b>环比变化：</b>上周1,108次 → 本周1,364次（↑23.1%）<br><b>历史对比：</b>W24(360) → W25(925) → W26(1,108) → W27(1,364)';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>周次</th><th>发布量</th><th>总播放</th><th>均播</th><th>环比</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['W24（6.8-14）', '15条', '5,400次', '360次', '—'],
+      ['W25（6.15-21）', '16条', '14,800次', '925次', '▲ +156.9%'],
+      ['W26（6.22-28）', '16条', '17,728次', '1,108次', '▲ +19.8%'],
+      ['<b>W27（6.29-7.5）</b>', '<b>23条</b>', '<b>31,381次</b>', '<b>1,364次</b>', '<b>▲ +23.1%</b>']
+    ];
+    rows.forEach(function(r, idx) {
+      var tr = document.createElement('tr');
+      if (idx === 3) tr.style.background = '#f6ffed';
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+  } else if (type === 'liveCount') {
+    // B端直播场次详情
+    h3.innerHTML = '🎬 B端直播场次详情（本周3场）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>本周场次：</b>3场B端直播（上周2场，↑50%）<br><b>总观看：</b>610人（上周432人，↑41.2%）<br><b>平均观看：</b>203人/场（上周216人/场）<br><b>直播主题：</b>2026做智能养生馆，政策补贴有哪些（同一主题连续直播）';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>日期</th><th>主题</th><th>时长</th><th>观看人数</th><th>留资人数</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['6月29日（周一）', '2026做智能养生馆，政策补贴有哪些', '1小时0分', '176人', '26人（14.8%）'],
+      ['7月1日（周三）', '2026做智能养生馆，政策补贴有哪些', '51分钟', '371人', '87人（23.5%）'],
+      ['7月3日（周五）', '2026做智能养生馆，政策补贴有哪些', '59分钟', '63人', '10人（15.9%）']
+    ];
+    rows.forEach(function(r) {
+      var tr = document.createElement('tr');
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+    var tip = document.createElement('div');
+    tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#f6ffed;border-radius:6px;font-size:12px;color:#52c41a;line-height:1.7';
+    tip.innerHTML = '✅ <b>亮点：</b>7月1日直播表现最佳（371观看，87留资），留资率高达23.5%。同一主题连续直播有助于深度触达目标客户。';
+    box.appendChild(tip);
+
+  } else if (type === 'leadsCount') {
+    // B端新增线索详情
+    h3.innerHTML = '🎯 B端新增线索详情（本周39条）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>本周新增：</b>39条B端线索（上周35条，↑11.4%）<br><b>来源分布：</b>短视频36条（92.3%）| 直播3条（7.7%）<br><b>转化情况：</b>加微信15人（38.5%）→ 进群4人（26.7%）→ OPC注册0人<br><b>趋势：</b>连续4周增长（W22:2条 → W27:39条）';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>来源</th><th>线索数</th><th>占比</th><th>加微数</th><th>进群数</th><th>OPC注册</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['短视频（留资）', '36条', '92.3%', '14人', '4人', '0人'],
+      ['直播（留资）', '3条', '7.7%', '1人', '0人', '0人'],
+      ['<b>合计</b>', '<b>39条</b>', '<b>100%</b>', '<b>15人</b>', '<b>4人</b>', '<b>0人</b>']
+    ];
+    rows.forEach(function(r, idx) {
+      var tr = document.createElement('tr');
+      if (idx === 2) tr.style.background = '#f6ffed';
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+    var tip = document.createElement('div');
+    tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#fffbe6;border-radius:6px;font-size:12px;color:#faad14;line-height:1.7';
+    tip.innerHTML = '⚠️ <b>风险提示：</b>OPC注册为0，线索转化链路在"进群→OPC注册"环节断裂。建议：1）优化进群后的跟进话术；2）提供OPC注册激励；3）对高意向客户进行一对一深度沟通。';
+    box.appendChild(tip);
+  }
+
+  box.appendChild(table);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+};
 
 function initChart(id, opt) {
   var dom = document.getElementById(id);
