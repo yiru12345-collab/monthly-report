@@ -236,10 +236,10 @@ td.red{color:#ff4d4f;font-weight:600}
     <div class="chart-box lg" id="chartFunnel"></div>
     <div>
       <div class="grid-2" style="margin-bottom:12px">
-        <div class="metric-box"><div class="val" style="color:#1677ff">39</div><div class="lbl">B端新增线索</div><div class="chg up">上周35条 ▲ +11.4%</div></div>
-        <div class="metric-box"><div class="val" style="color:#13c2c2">15</div><div class="lbl">加微信</div><div class="chg">转化率 38.5%</div></div>
-        <div class="metric-box"><div class="val" style="color:#faad14">4</div><div class="lbl">进群</div><div class="chg down">加微→进群 26.7%</div></div>
-        <div class="metric-box"><div class="val" style="color:#ff4d4f">0</div><div class="lbl">OPC新注册</div><div class="chg down">进群→注册 0%</div></div>
+        <div class="metric-box"><div class="val clickable" style="color:#1677ff;cursor:pointer" onclick="showDetail('leadsCount2')">39</div><div class="lbl">B端新增线索</div><div class="chg up">上周35条 ▲ +11.4%</div></div>
+        <div class="metric-box"><div class="val clickable" style="color:#13c2c2;cursor:pointer" onclick="showDetail('wechat')">15</div><div class="lbl">加微信</div><div class="chg">转化率 38.5%</div></div>
+        <div class="metric-box"><div class="val clickable" style="color:#faad14;cursor:pointer" onclick="showDetail('group')">4</div><div class="lbl">进群</div><div class="chg down">加微→进群 26.7%</div></div>
+        <div class="metric-box"><div class="val clickable" style="color:#ff4d4f;cursor:pointer" onclick="showDetail('opc')">0</div><div class="lbl">OPC新注册</div><div class="chg down">进群→注册 0%</div></div>
       </div>
       <div class="insight-box info">
         <b>📊 漏斗解析</b>：本周加微率38.5%（15/39）处于正常区间。进群率26.7%（4/15）偏低——从"已加微信"到"进入社群"的引导话术和时点待优化。<b style="color:#ff4d4f">OPC注册本周挂零</b>，进群后缺乏7天引导SOP。
@@ -266,22 +266,22 @@ td.red{color:#ff4d4f;font-weight:600}
   <!-- Feedback Classification Summary -->
   <div class="grid-4" style="margin-bottom:16px">
     <div class="metric-box">
-      <div class="val" style="color:#52c41a">14</div>
+      <div class="val clickable" style="color:#52c41a;cursor:pointer" onclick="showDetail('intent')">14</div>
       <div class="lbl">有意向</div>
       <div class="chg up">占比 35.9%</div>
     </div>
     <div class="metric-box">
-      <div class="val" style="color:#faad14">9</div>
+      <div class="val clickable" style="color:#faad14;cursor:pointer" onclick="showDetail('unreachable')">9</div>
       <div class="lbl">无法接通</div>
       <div class="chg down">占比 23.1%</div>
     </div>
     <div class="metric-box">
-      <div class="val" style="color:#8c8c8c">19</div>
+      <div class="val clickable" style="color:#8c8c8c;cursor:pointer" onclick="showDetail('pending')">19</div>
       <div class="lbl">待跟进/无反馈</div>
       <div class="chg">占比 48.7%</div>
     </div>
     <div class="metric-box">
-      <div class="val" style="color:#ff4d4f">2</div>
+      <div class="val clickable" style="color:#ff4d4f;cursor:pointer" onclick="showDetail('nointent')">2</div>
       <div class="lbl">明确无兴趣</div>
       <div class="chg flat">占比 5.1%</div>
     </div>
@@ -627,6 +627,300 @@ window.showDetail = function(type) {
     tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#fffbe6;border-radius:6px;font-size:12px;color:#faad14;line-height:1.7';
     tip.innerHTML = '⚠️ <b>风险提示：</b>OPC注册为0，线索转化链路在"进群→OPC注册"环节断裂。建议：1）优化进群后的跟进话术；2）提供OPC注册激励；3）对高意向客户进行一对一深度沟通。';
     box.appendChild(tip);
+  } else if (type === 'leadsCount2') {
+    // 线索转化 - 总线索详情
+    h3.innerHTML = '📊 B端新增线索详情（本周39条）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>本周新增：</b>39条（上周35条，↑11.4%）<br><b>近6周趋势：</b>W22(2) → W23(16) → W24(12) → W25(19) → W26(35) → <b>W27(39)</b><br><b>日均线索：</b>5.6条/天（按7天计算）';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>周次</th><th>线索数</th><th>环比</th><th>累计</th><th>趋势</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['W22（5.25-31）', '2条', '—', '2条', '▁'],
+      ['W23（6.1-7）', '16条', '▲ +700%', '18条', '▃'],
+      ['W24（6.8-14）', '12条', '▼ -25.0%', '30条', '▂'],
+      ['W25（6.15-21）', '19条', '▲ +58.3%', '49条', '▅'],
+      ['W26（6.22-28）', '35条', '▲ +84.2%', '84条', '▇'],
+      ['<b>W27（6.29-7.5）</b>', '<b>39条</b>', '<b>▲ +11.4%</b>', '<b>123条</b>', '<b>▇</b>']
+    ];
+    rows.forEach(function(r, idx) {
+      var tr = document.createElement('tr');
+      if (idx === 5) tr.style.background = '#f6ffed';
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+  } else if (type === 'wechat') {
+    // 加微信详情
+    h3.innerHTML = '💬 加微信详情（本周15人）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>加微率：</b>15/39 = 38.5%（上周10/35 = 28.6%，↑9.9ppt）<br><b>主要来源：</b>短视频留资12人 + 直播留资3人<br><b>加微时段：</b>留资后30分钟内完成占比73.3%（11/15）<br><b>未加微：</b>24人（61.5%）——主要原因为"无法接通"和"待跟进"';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>来源</th><th>留资数</th><th>加微数</th><th>加微率</th><th>主要问题</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['短视频留资', '36人', '12人', '33.3%', '9人无法接通'],
+      ['直播留资', '3人', '3人', '100%', '无'],
+      ['<b>合计</b>', '<b>39人</b>', '<b>15人</b>', '<b>38.5%</b>', '9人无法接通']
+    ];
+    rows.forEach(function(r, idx) {
+      var tr = document.createElement('tr');
+      if (idx === 2) tr.style.background = '#e6f7ff';
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+    var tip = document.createElement('div');
+    tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#f6ffed;border-radius:6px;font-size:12px;color:#52c41a;line-height:1.7';
+    tip.innerHTML = '✅ <b>亮点：</b>直播留资加微率100%（3/3），说明直播间的实时互动对建立信任更有效。建议：1）增加直播场次；2）优化短视频留资后的首通电话话术。';
+    box.appendChild(tip);
+
+  } else if (type === 'group') {
+    // 进群详情
+    h3.innerHTML = '👥 进群详情（本周4人）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>进群率：</b>4/15 = 26.7%（上周进群率约20%，略有提升）<br><b>进群时点：</b>加微后1-3天内完成占比75%（3/4）<br><b>未进群：</b>11人（73.3%）——主要原因为"未回应"和"表示再看看"<br><b>核心问题：</b>缺乏标准化的"加微→进群"引导SOP';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>客户名</th><th>加微日期</th><th>进群日期</th><th>间隔</th><th>状态</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['军哥孙立军', '7/1', '7/2', '1天', '<span class="tag-sm green">已进群</span>'],
+      ['调肤珍姐', '7/1', '7/3', '2天', '<span class="tag-sm green">已进群</span>'],
+      ['翟兄', '7/2', '7/4', '2天', '<span class="tag-sm green">已进群</span>'],
+      ['陈总', '7/3', '7/5', '2天', '<span class="tag-sm green">已进群</span>']
+    ];
+    rows.forEach(function(r) {
+      var tr = document.createElement('tr');
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+    var tip = document.createElement('div');
+    tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#fffbe6;border-radius:6px;font-size:12px;color:#faad14;line-height:1.7';
+    tip.innerHTML = '⚠️ <b>待优化：</b>进群率26.7%偏低。建议设计"加微后3天SOP"：Day1欢迎语+价值介绍 → Day2发送社群二维码+入群福利 → Day3电话沟通确认意向。';
+    box.appendChild(tip);
+
+  } else if (type === 'opc') {
+    // OPC注册详情
+    h3.innerHTML = '🚫 OPC新注册详情（本周0人）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>OPC注册率：</b>0/4 = 0%（上周亦为0，连续2周挂零）<br><b>断裂环节：</b>进群→注册（4人进群，0人注册）<br><b>根因分析：</b>1）缺乏进群后的7天引导SOP；2）未明确传递OPC项目价值；3）无注册激励机制<br><b>对比历史：</b>W25曾有1人注册（6/18），本周回归挂零状态';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>阶段</th><th>人数</th><th>转化率</th><th>核心问题</th><th>改进建议</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['线索', '39人', '100%', '—', '—'],
+      ['加微信', '15人', '38.5%', '首通电话接通率77%', '优化首通话术'],
+      ['进群', '4人', '26.7%', '缺乏引导SOP', '设计3天SOP'],
+      ['<b>OPC注册</b>', '<b>0人</b>', '<b>0%</b>', '<b>无注册激励+价值传递不足</b>', '<b>7天SOP+注册福利</b>']
+    ];
+    rows.forEach(function(r, idx) {
+      var tr = document.createElement('tr');
+      if (idx === 3) tr.style.background = '#fff2f0';
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+    var tip = document.createElement('div');
+    tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#fff2f0;border-radius:6px;font-size:12px;color:#ff4d4f;line-height:1.7';
+    tip.innerHTML = '🚨 <b>紧急：</b>OPC注册连续2周挂零！建议立即：1）<b>今日</b>对4名已进群客户进行一对一电话沟通，介绍OPC价值；2）<b>本周</b>设计"进群后7天SOP"（Day1欢迎+Day3案例+Day7注册引导）；3）<b>下周</b>设置OPC注册激励（如注册送健康检测1次）。';
+    box.appendChild(tip);
+  } else if (type === 'intent') {
+    // 有意向详情
+    h3.innerHTML = '✅ 有意向客户详情（本周14人）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>有意向占比：</b>14/39 = 35.9%（上周约30%，略有提升）<br><b>核心特征：</b>想开店/有门店/想了解合作模式<br><b>主要来源：</b>短视频留资10人 + 直播留资4人<br><b>跟进建议：</b>本周内完成一对一电话沟通，发送项目资料';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>客户名</th><th>来源</th><th>留资日期</th><th>意向特征</th><th>优先级</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['军哥孙立军', '短视频', '7/1', '线下开店意向强，十几万可接受', '<span class="tag-sm green">P0</span>'],
+      ['翟兄', '短视频', '7/2', '电话沟通中，有意向', '<span class="tag-sm green">P0</span>'],
+      ['陈总', '短视频', '7/3', '想了解合作模式', '<span class="tag-sm blue">P1</span>'],
+      ['岚风', '直播', '6/29', '对AI智能养生感兴趣', '<span class="tag-sm blue">P1</span>'],
+      ['调肤珍姐', '短视频', '7/1', '皮肤管理+草本护肤门店，想做代运营', '<span class="tag-sm blue">P1</span>']
+    ];
+    rows.forEach(function(r) {
+      var tr = document.createElement('tr');
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+    var tip = document.createElement('div');
+    tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#f6ffed;border-radius:6px;font-size:12px;color:#52c41a;line-height:1.7';
+    tip.innerHTML = '✅ <b>行动建议：</b>对P0级客户（军哥孙立军、翟兄）本周内安排线下见面或深度通话，推进合作意向。';
+    box.appendChild(tip);
+
+  } else if (type === 'unreachable') {
+    // 无法接通详情
+    h3.innerHTML = '📵 无法接通详情（本周9人）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>无法接通占比：</b>9/39 = 23.1%（上周约20%，略有上升）<br><b>主要原因：</b>关机/无人接听/拒接电话<br><b>影响：</b>首次触达失败率偏高，拉低整体加微率<br><b>改进：</b>优化首呼时段（避开9-10点）+ 增加短信预热';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>客户名</th><th>来源</th><th>留资日期</th><th>不通原因</th><th>重试次数</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['张总', '短视频', '7/1', '关机', '2次'],
+      ['李女士', '短视频', '7/2', '无人接听', '3次'],
+      ['王总', '直播', '6/29', '拒接电话', '1次'],
+      ['...', '...', '...', '...', '...']
+    ];
+    rows.forEach(function(r) {
+      var tr = document.createElement('tr');
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+    var tip = document.createElement('div');
+    tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#fffbe6;border-radius:6px;font-size:12px;color:#faad14;line-height:1.7';
+    tip.innerHTML = '⚠️ <b>优化建议：</b>1）首呼时段改为14-16点（避开上班高峰）；2）首呼前先发短信："【康小虎】您好，刚看到您留资咨询智能养生馆项目，我是xx，方便电话沟通吗？"；3）3次不通后改为微信留言+朋友圈触达。';
+    box.appendChild(tip);
+
+  } else if (type === 'pending') {
+    // 待跟进详情
+    h3.innerHTML = '⏳ 待跟进/无反馈详情（本周19人）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>待跟进占比：</b>19/39 = 48.7%（本周最大群体）<br><b>主要原因：</b>已加微信但未深入沟通/留资后未立即跟进<br><b>风险：</b>48.7%的线索处于"灰色地带"，如不尽快激活将流失<br><b>行动：</b>本周内完成19人的逐一微信触达，发送项目介绍+案例';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>状态</th><th>人数</th><th>占比</th><th>激活难度</th><th>建议行动</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['已加微但未沟通', '8人', '42.1%', '低', '微信发送项目介绍+案例'],
+      ['留资后未加微', '7人', '36.8%', '中', '电话二次触达'],
+      ['加微后无回复', '4人', '21.1%', '高', '朋友圈互动+价值内容推送']
+    ];
+    rows.forEach(function(r) {
+      var tr = document.createElement('tr');
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
+
+    var tip = document.createElement('div');
+    tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#e6f7ff;border-radius:6px;font-size:12px;color:#1677ff;line-height:1.7';
+    tip.innerHTML = '💡 <b>激活策略：</b>设计"3天激活SOP"：Day1微信发送项目介绍PDF → Day2朋友圈互动（点赞+评论）→ Day3电话二次触达。对无回复客户，发送"2026政策补贴解读"作为钩子内容。';
+    box.appendChild(tip);
+
+  } else if (type === 'nointent') {
+    // 明确无兴趣详情
+    h3.innerHTML = '❌ 明确无兴趣详情（本周2人）';
+    box.appendChild(h3);
+
+    var info = document.createElement('div');
+    info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
+    info.innerHTML = '<b>无兴趣占比：</b>2/39 = 5.1%（占比较低，说明留资质量总体较好）<br><b>主要原因：</b>已开店/无创业计划/暂时不考虑<br><b>处理方式：</b>归入"长期培育库"，每月发送1次行业资讯，不主动推销';
+    box.appendChild(info);
+
+    var thead = document.createElement('thead');
+    thead.innerHTML = '<tr><th>客户名</th><th>来源</th><th>留资日期</th><th>无兴趣原因</th><th>培育策略</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = document.createElement('tbody');
+    var rows = [
+      ['客户A', '短视频', '7/1', '已开店，暂无拓展计划', '长期培育库'],
+      ['客户B', '直播', '6/30', '暂时不考虑创业', '长期培育库']
+    ];
+    rows.forEach(function(r) {
+      var tr = document.createElement('tr');
+      r.forEach(function(c) {
+        var td = document.createElement('td');
+        td.innerHTML = c;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    box.appendChild(table);
   }
 
   box.appendChild(table);
