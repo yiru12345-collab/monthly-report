@@ -597,7 +597,7 @@ span.clickable{cursor:pointer}
     <div class="panel-header"><span>线索转化漏斗 · 6月</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartFunnel"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：6月新增线索82条，已联系75条（对接率91.5%），加微信20条（转化率24.4%），进群6条，意向确定3条（含2条OPC客户），暂无成交。线索量环比+34%，对接率大幅提升（5月87%→91.5%），加微率也有所改善（5月7%→24.4%），但最终转化为0，需加强意向客户跟进节奏。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：6月新增线索82条，已联系75条（对接率91.5%），加微信39条（加微率47.6%），进群25条（进群率30.5%），意向确定3条（含2条OPC客户），暂无成交。线索量环比+34%，对接率大幅提升（5月87%→91.5%），加微率跃升至47.6%，进群率也显著提高，但最终转化为0，需加强意向客户跟进节奏。</div>
     </div>
   </div>
 </div>
@@ -670,7 +670,7 @@ span.clickable{cursor:pointer}
 </div>
 
 <div class="footnote">
-  <b>数据口径说明</b>：KPI到款为净到款（毛77.1万-退款13万=64.1万），引流上会为自然人口径（23人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为6月单月数据（82条），非历史累计。短视频6月161条/播放量58,100，直播17场（B端8+C端9）。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.07-1045 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
+  <b>数据口径说明</b>：KPI到款为净到款（毛77.1万-退款13万=64.1万），引流上会为自然人口径（23人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为6月单月数据（82条→加微39→进群25），非历史累计。短视频6月161条/播放量58,100，直播17场（B端8+C端9）。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.07-1054 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
 </div>
 
 </div>
@@ -759,8 +759,8 @@ var funnelChart = initChart('chartFunnel',{
     data:[
       {value:82,name:'6月线索',itemStyle:{color:blue}},
       {value:75,name:'已联系',itemStyle:{color:'#4096ff'}},
-      {value:20,name:'加微信',itemStyle:{color:amber}},
-      {value:6,name:'加社群',itemStyle:{color:teal}},
+      {value:39,name:'加微信',itemStyle:{color:amber}},
+      {value:25,name:'加社群',itemStyle:{color:teal}},
       {value:3,name:'意向确定',itemStyle:{color:green}},
       {value:0,name:'合作',itemStyle:{color:red}}
     ]
@@ -917,12 +917,12 @@ window.goDetail = function showDetail(type, filter) {
     rows.push(['<b>合计</b>','','','<b>' + sum.toFixed(2) + '</b>','','','']);
   } else if (type === 'clue') {
     // show a summary note since full clue detail is too large to embed
-    var labels = {all:'全部82条',contacted:'已联系75条',wechat:'加微信20条',group:'进群/重点6条',intent:'意向确定3条'};
+    var labels = {all:'全部82条',contacted:'已联系75条',wechat:'加微信39条',group:'进群/重点25条',intent:'意向确定3条'};
     var tips = {
       all: '6月新增线索共82条，来自视频号/视频号直播，环比5月（61条）增长34.4%。具体每条线索明细请查阅 Obsidian "基础数据/11_9-线索情况.md"。',
       contacted: '已初步对接的75条线索中（对接率91.5%），大部分通过电话/微信沟通。未对接的7条多为联系方式无效或拒接。5月对接率87%，本月提升4.5个百分点。',
-      wechat: '加微信20条，微信转化率24.4%（20/82），较5月（4条/7%）大幅提升。其中顺之枫李、浮躁世界等已拉群进入深度沟通。',
-      group: '进群或标记为重点客户的6条线索：顺之枫李、勤芳、浮躁世界（OPC）、茶花（已退群）、张医生、嘉兴沈阿姨。其中AI王子非我莫属（OPC）、陈丽娟为重点客户。',
+      wechat: '加微信39条，微信转化率47.6%（39/82），较5月（4条/7%）大幅跃升。其中顺之枫李、浮躁世界等已拉群进入深度沟通。',
+      group: '进群或标记为重点客户的25条线索：顺之枫李、勤芳、浮躁世界（OPC）、茶花、张医生、嘉兴沈阿姨等。其中AI王子非我莫属（OPC）、陈丽娟为重点客户。',
       intent: '意向确定3条：陈丽娟（江西南昌，意向强烈）、AI王子非我莫属（OPC客户）、浮躁世界（OPC客户，已拉群）。7月需重点跟进转化。'
     };
     title = '线索漏斗 · ' + labels[filter];
@@ -983,7 +983,7 @@ window.closeModal = function closeModal(e) {
   document.getElementById('modalOverlay').classList.remove('show');
   document.body.style.overflow = '';
 }
-console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0707-1045');
+console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0707-1054');
 </script>
 <!-- 明细弹窗 -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
