@@ -162,9 +162,9 @@ span.clickable{cursor:pointer}
   </div>
   <div class="kpi-card">
     <div class="label">售卖卡数（张）</div>
-    <div class="value clickable" onclick="showDetail('cards')">155</div>
-    <div class="sub"><span class="tag tag-warn">91.2%</span><span style="color:#8c8c8c">目标170张</span></div>
-    <div class="bar-bg"><div class="bar-fill" style="width:91%;background:#faad14"></div></div>
+    <div class="value clickable" onclick="showDetail('cards')">154</div>
+    <div class="sub"><span class="tag tag-warn">90.6%</span><span style="color:#8c8c8c">目标170张</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:90.6%;background:#faad14"></div></div>
   </div>
   <div class="kpi-card">
     <div class="label">引流上会·自然人（人）</div>
@@ -231,7 +231,7 @@ span.clickable{cursor:pointer}
     </div>
     <div class="panel-body">
       <div class="chart-box" id="chartTrend"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：到款连续增长趋势在6月被退款打断——毛到款77.1万创历史新高，但退款13万使净到款降至64.1万（达成98.6%），首次未超额完成月度目标。售卡155张较5月回落但仍是次高月。引流自然人23人，达成率63.9%，距36人目标仍需加强。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：到款连续增长趋势在6月被退款打断——毛到款77.1万创历史新高，但退款13万使净到款降至64.1万（达成98.6%），首次未超额完成月度目标。售卡154张较5月回落但仍是次高月。引流自然人23人，达成率63.9%，距36人目标仍需加强。</div>
     </div>
   </div>
   <div class="panel">
@@ -363,7 +363,7 @@ span.clickable{cursor:pointer}
           <tr class="summary">
             <td>合计</td>
             <td>197.6</td><td>53.0</td>
-            <td style="color:#1677ff">77.6</td><td style="color:#1677ff">23</td><td style="color:#1677ff">155</td>
+            <td style="color:#1677ff">77.6</td><td style="color:#1677ff">23</td><td style="color:#1677ff">154</td>
             <td>61.7</td><td>19.5</td><td>181</td>
             <td>46</td><td>52.4</td><td>12.5</td>
             <td style="color:#722ed1">30</td><td style="color:#722ed1">13</td><td style="color:#722ed1">17</td>
@@ -670,7 +670,7 @@ span.clickable{cursor:pointer}
 </div>
 
 <div class="footnote">
-  <b>数据口径说明</b>：KPI到款为净到款（毛77.1万-退款13万=64.1万），引流上会为自然人口径（23人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为6月单月数据（82条→加微39→进群25），非历史累计。短视频6月161条/播放量58,100，直播17场（B端8+C端9）。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.07-1054 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
+  <b>数据口径说明</b>：KPI到款为净到款（毛77.1万-退款13万=64.1万），引流上会为自然人口径（23人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为6月单月数据（82条→加微39→进群25），非历史累计。短视频6月161条/播放量58,100，直播17场（B端8+C端9）。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.08-0945 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
 </div>
 
 </div>
@@ -697,7 +697,7 @@ initChart('chartTrend',{
   ],
   series:[
     {name:'小屋净到款',type:'bar',data:[5.86,52.4,61.11,64.1],barWidth:18,itemStyle:{color:blue,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:blue,formatter:'{c}万'}},
-    {name:'售卡数',type:'bar',data:[0,46,181,155],barWidth:18,itemStyle:{color:amber,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:amber}},
+    {name:'售卡数',type:'bar',data:[0,46,181,154],barWidth:18,itemStyle:{color:amber,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:amber}},
     {name:'引流上会(自然人)',type:'bar',data:[0,12,20,23],barWidth:18,itemStyle:{color:teal,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:teal}},
     {name:'到款目标',type:'line',data:[10,20,50,65],lineStyle:{color:blue,type:'dashed',width:1.5},symbol:'none',yAxisIndex:0},
     {name:'售卡目标',type:'line',data:[0,0,170,170],lineStyle:{color:amber,type:'dashed',width:1.5},symbol:'none',yAxisIndex:1},
@@ -950,7 +950,7 @@ window.goDetail = function showDetail(type, filter) {
     });
   } else if (type === 'cards') {
     rows = detailData.payment.filter(function(r) { return r[5] !== '—'; });
-    title = '6月售卡明细（共售卡155张，' + rows.length + '笔交易）';
+    title = '6月售卡明细（共售卡154张，' + rows.length + '笔交易）';
     cols = ['日期','业务员','客户','售卡(张)','金额(万)','款项','业务类型'];
     rows = rows.map(function(r) { return [r[0],r[1],r[2],r[5],r[3],r[4],r[6]]; });
     var totalCards = 0, totalAmt = 0;
@@ -983,7 +983,7 @@ window.closeModal = function closeModal(e) {
   document.getElementById('modalOverlay').classList.remove('show');
   document.body.style.overflow = '';
 }
-console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0707-1054');
+console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0708-0945');
 </script>
 <!-- 明细弹窗 -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
