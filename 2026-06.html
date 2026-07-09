@@ -776,14 +776,14 @@ funnelChart.on('click', function(params) {
 initChart('chartPayment',{
   tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
   grid:{left:56,right:56,top:16,bottom:24},
-  xAxis:{type:'category',data:['尾款','全款','订金'],axisLabel:{color:textColor,fontSize:12,fontWeight:'bold'},axisLine:{lineStyle:{color:axisColor}}},
+  xAxis:{type:'category',data:['订金','全款','尾款'],axisLabel:{color:textColor,fontSize:12,fontWeight:'bold'},axisLine:{lineStyle:{color:axisColor}}},
   yAxis:[
     {type:'value',name:'万元',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{lineStyle:{color:'#f0f0f0'}}},
     {type:'value',name:'客户(分项)',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{show:false},max:8}
   ],
   series:[
-    {name:'到款金额(万)',type:'bar',data:[10.0,32.0,34.5],barWidth:32,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?amber:p.dataIndex===1?green:blue}},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',formatter:'¥{c}万'}},
-    {name:'客户数',type:'bar',data:[1,3,5],barWidth:32,yAxisIndex:1,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?'#ffe58f':p.dataIndex===1?'#b7eb8f':'#91caff'}},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',formatter:'{c}人'}}
+    {name:'到款金额(万)',type:'bar',data:[34.5,32.0,10.0],barWidth:32,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?blue:p.dataIndex===1?green:amber}},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',formatter:'¥{c}万'}},
+    {name:'客户数',type:'bar',data:[5,3,1],barWidth:32,yAxisIndex:1,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?'#91caff':p.dataIndex===1?'#b7eb8f':'#ffe58f'}},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',formatter:'{c}人'}}
   ]
 });
 
