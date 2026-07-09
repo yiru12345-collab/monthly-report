@@ -251,7 +251,7 @@ span.clickable{cursor:pointer}
 <!-- 到款结构 + 退款结构 -->
 <div class="row3">
   <div class="panel">
-    <div class="panel-header"><span>6月到款结构 · 按款项类型 × 客户数</span><span style="font-size:11px;color:#8c8c8c;font-weight:400">毛到款¥77.1万（不含OPC产品¥0.49万）</span></div>
+    <div class="panel-header"><span>6月到款结构 · 按款项类型 × 客户数（分项）</span><span style="font-size:11px;color:#8c8c8c;font-weight:400">毛到款¥77.1万｜去重8客户</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartPayment"></div>
       <div class="grid-3" style="margin-top:0">
@@ -260,7 +260,8 @@ span.clickable{cursor:pointer}
         <div class="metric-sm"><div class="val clickable" style="color:#faad14;cursor:pointer" onclick="showDetail('payment','尾款')">¥10.0万</div><div class="lbl">尾款 · 1客户 · 1笔</div></div>
       </div>
       <div class="insight-box" style="margin-top:12px">
-        <b>📊 结构解读</b>：订金45.1% / 全款41.8% / 尾款13.1%。6/30当日集中到款¥53.5万（金璐瑶21.5万单笔最大）。全款客户3人（金振生/任海涛/吕建军），其中2人老客跟进。
+        <b>📊 结构解读</b>：订金45.1% / 全款41.8% / 尾款13.1%。6/30当日集中到款¥53.5万（金璐瑶21.5万单笔最大）。全款客户3人（金振生/任海涛/吕建军），其中2人老客跟进。<br>
+        <b>⚠️ 去重说明</b>：图表客户数 bars 合计9人次（订金5+全款3+尾款1），实际去重客户<b>8人</b>——<b style="color:#cf1322">杨亚峰</b>（蔡东辉）6/26付订金¥2.5万→6/30付尾款¥10.0万，<b>当月订金当月尾款</b>，合计¥12.5万/45张卡，跨订金&尾款两个分类导致客户数被重复计数1次。
       </div>
     </div>
   </div>
@@ -670,7 +671,7 @@ span.clickable{cursor:pointer}
 </div>
 
 <div class="footnote">
-  <b>数据口径说明</b>：KPI到款为净到款（毛77.1万-退款13万=64.1万），引流上会为自然人口径（23人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为6月单月数据（82条→加微39→进群25），非历史累计。短视频6月161条/播放量58,100，直播17场（B端8+C端9）。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.08-0945 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
+  <b>数据口径说明</b>：KPI到款为净到款（毛77.1万-退款13万=64.1万），引流上会为自然人口径（23人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为6月单月数据（82条→加微39→进群25），非历史累计。短视频6月161条/播放量58,100，直播17场（B端8+C端9）。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.09-1418 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
 </div>
 
 </div>
@@ -778,7 +779,7 @@ initChart('chartPayment',{
   xAxis:{type:'category',data:['尾款','全款','订金'],axisLabel:{color:textColor,fontSize:12,fontWeight:'bold'},axisLine:{lineStyle:{color:axisColor}}},
   yAxis:[
     {type:'value',name:'万元',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{lineStyle:{color:'#f0f0f0'}}},
-    {type:'value',name:'客户数',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{show:false},max:8}
+    {type:'value',name:'客户(分项)',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{show:false},max:8}
   ],
   series:[
     {name:'到款金额(万)',type:'bar',data:[10.0,32.0,34.5],barWidth:32,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?amber:p.dataIndex===1?green:blue}},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',formatter:'¥{c}万'}},
@@ -983,7 +984,7 @@ window.closeModal = function closeModal(e) {
   document.getElementById('modalOverlay').classList.remove('show');
   document.body.style.overflow = '';
 }
-console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0708-0945');
+console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0709-1418');
 </script>
 <!-- 明细弹窗 -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
