@@ -136,6 +136,22 @@ span.clickable{cursor:pointer}
 </style>
 </head>
 <body>
+<!-- v0710-1112 🔒 -->
+<!-- 密码锁屏 -->
+<div id="pwLock" style="position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#1a1a2e,#16213e);z-index:99999;display:flex;align-items:center;justify-content:center">
+<div style="text-align:center">
+  <div style="font-size:48px;margin-bottom:20px">🔒</div>
+  <div style="color:#fff;font-size:20px;font-weight:700;margin-bottom:8px">康小虎元气堂 · 6月业务运营月报</div>
+  <div style="color:#8c8c8c;font-size:13px;margin-bottom:24px">内部资料，请输入密码查看</div>
+  <input id="pwInput" type="password" placeholder="请输入密码" onkeydown="if(event.key==='Enter')checkPw()" style="width:240px;padding:12px 16px;border:1px solid #434343;border-radius:8px;font-size:16px;text-align:center;outline:none;background:#fff;color:#333">
+  <div style="margin-top:12px"><button onclick="checkPw()" style="padding:10px 48px;background:#1677ff;color:#fff;border:none;border-radius:8px;font-size:15px;cursor:pointer;font-weight:600">确 定</button></div>
+  <div id="pwError" style="color:#ff4d4f;font-size:13px;margin-top:12px;display:none">密码错误，请重试</div>
+</div>
+</div>
+<script>
+var CORRECT_PW='888888';
+function checkPw(){var v=document.getElementById('pwInput').value;if(v===CORRECT_PW){document.getElementById('pwLock').style.display='none';document.body.style.overflow=''}else{document.getElementById('pwError').style.display='block';document.getElementById('pwInput').value='';document.getElementById('pwInput').focus()}}
+</script>
 <div class="page">
 
 <div class="header">
@@ -984,7 +1000,7 @@ window.closeModal = function closeModal(e) {
   document.getElementById('modalOverlay').classList.remove('show');
   document.body.style.overflow = '';
 }
-console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0709-1436');
+console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0710-1058 🔒');
 </script>
 <!-- 明细弹窗 -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
