@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>康小虎元气堂 · 运营周报 2026-W27 (6.29-7.5)</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f5;color:#262626;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:24px 20px}
+.header{background:linear-gradient(135deg,#1677ff,#0958d9);color:#fff;padding:28px 32px;border-radius:12px;margin-bottom:20px}
+.header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.header .meta{font-size:13px;opacity:.85;margin-top:6px}
+.header .meta span{margin-right:16px}
+.header .highlight-badge{display:inline-block;background:rgba(255,255,255,.2);padding:2px 10px;border-radius:10px;margin-left:8px;font-size:12px}
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.kpi-card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.kpi-card .label{font-size:12px;color:#8c8c8c;margin-bottom:4px}
+.kpi-card .value{font-size:28px;font-weight:700;margin-bottom:2px}
+.kpi-card .sub{font-size:12px;color:#8c8c8c}
+.kpi-card .trend{font-size:12px;margin-top:2px;font-weight:600}
+.kpi-card .trend.up{color:#52c41a}
+.kpi-card .trend.down{color:#ff4d4f}
+.kpi-card .trend.flat{color:#8c8c8c}
+.legend-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.panel{background:#fff;border-radius:10px;padding:20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #f0f0f0}
+.panel-header h2{font-size:16px;font-weight:600;color:#262626}
+.panel-header .subtitle{font-size:12px;color:#8c8c8c}
+.chart-box{width:100%;height:300px}
+.chart-box.sm{height:260px}
+.chart-box.lg{height:340px}
+.chart-box.xl{height:400px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.metric-box{background:#fafafa;border-radius:8px;padding:14px;text-align:center}
+.metric-box .val{font-size:24px;font-weight:700}
+.metric-box .lbl{font-size:12px;color:#8c8c8c;margin-top:2px}
+.metric-box .chg{font-size:11px;font-weight:600;margin-top:2px}
+.metric-box .chg.up{color:#52c41a}
+.metric-box .chg.down{color:#ff4d4f}
+.insight-box{background:#f6ffed;border-left:3px solid #52c41a;padding:12px 16px;border-radius:4px;margin-top:12px;font-size:13px;line-height:1.8}
+.insight-box.warn{background:#fffbe6;border-color:#faad14}
+.insight-box.info{background:#e6f7ff;border-color:#1677ff}
+.insight-box.red{background:#fff2f0;border-color:#ff4d4f}
+.insight-box b{color:#262626}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{padding:8px 10px;text-align:center;border-bottom:1px solid #f0f0f0}
+th{background:#fafafa;font-weight:600;color:#595959;font-size:11px}
+th.tl,td.tl{text-align:left}
+td.hl{color:#1677ff;font-weight:600}
+td.up{color:#52c41a;font-weight:600}
+td.down{color:#ff4d4f;font-weight:600}
+td.warn{color:#faad14;font-weight:600}
+td.red{color:#ff4d4f;font-weight:600}
+.tag-sm{display:inline-block;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:600}
+.tag-sm.green{background:#f6ffed;color:#52c41a}
+.tag-sm.blue{background:#e6f7ff;color:#1677ff}
+.tag-sm.orange{background:#fffbe6;color:#faad14}
+.tag-sm.red{background:#fff2f0;color:#ff4d4f}
+.tag-sm.gray{background:#f5f5f5;color:#8c8c8c}
+.lead-card{border:1px solid #f0f0f0;border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:13px}
+.lead-card .lc-name{font-weight:600;color:#1677ff;margin-right:6px}
+.lead-card .lc-feedback{color:#595959;margin-top:4px;line-height:1.7}
+.lead-card .lc-meta{font-size:11px;color:#8c8c8c;margin-top:4px}
+.lead-card .lc-meta span{margin-right:10px}
+.ops-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ops-card{border:1px solid #f0f0f0;border-radius:8px;padding:16px}
+.ops-card h3{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.ops-card .tag{display:inline-block;padding:1px 8px;border-radius:8px;font-size:11px;font-weight:600}
+.ops-card .tag.green{background:#f6ffed;color:#52c41a}
+.ops-card .tag.blue{background:#e6f7ff;color:#1677ff}
+.ops-card .tag.orange{background:#fffbe6;color:#faad14}
+.ops-card .tag.red{background:#fff2f0;color:#ff4d4f}
+.ops-card ul{padding-left:18px;font-size:13px;line-height:1.9}
+.ops-card ul li{margin-bottom:2px}
+.footnote{text-align:center;font-size:11px;color:#bbb;margin-top:8px;padding:12px}
+.footnote b{color:#8c8c8c}
+.kpi-card .value.clickable{cursor:pointer;text-decoration:none;color:inherit}
+.kpi-card .value.clickable:hover{opacity:.75}
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s ease}
+.modal-box{background:#fff;border-radius:14px;max-width:680px;width:92%;max-height:82vh;overflow-y:auto;padding:24px 28px;box-shadow:0 12px 40px rgba(0,0,0,.25);animation:scaleIn .25s ease}
+.modal-box h3{font-size:17px;font-weight:700;color:#262626;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.modal-box .close-btn{position:absolute;top:16px;right:20px;font-size:22px;cursor:pointer;color:#bbb;background:none;border:none;line-height:1}
+.modal-box .close-btn:hover{color:#262626}
+.modal-box table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+.modal-box th,.modal-box td{padding:8px 10px;text-align:center;border-bottom:1px solid #f0f0f0}
+.modal-box th{background:#fafafa;font-weight:600;color:#595959;font-size:12px}
+.modal-box .tag{display:inline-block;padding:1px 8px;border-radius:8px;font-size:11px;font-weight:600}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}
+@keyframes scaleIn{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}
+@media(max-width:768px){
+  .kpi-row{grid-template-columns:repeat(2,1fr)}
+  .grid-2,.ops-grid{grid-template-columns:1fr}
+  .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>康小虎 · 运营周报 W28 (7.7-7.13)</h1>
+  <div class="meta"><span>📅 报告周期：7月7日 - 7月13日</span><span>📊 数据来源：健康小屋-BI</span><span class="highlight-badge">W28</span></div>
+</div>
+
+<!-- KPI Row: 视频量 / 播放量 / 均播 / 直播场次 / 线索 -->
+<div class="kpi-row">
+  <div class="kpi-card" style="cursor:pointer" onclick="showDetail('videoCount')">
+    <div class="label">📹 短视频发布量</div>
+    <div class="value clickable" onclick="showDetail('videoCount')">36<span style="font-size:14px;color:#8c8c8c">条</span></div>
+    <div class="trend up">▲ +57% vs W27</div>
+  </div>
+  <div class="kpi-card" style="cursor:pointer" onclick="showDetail('videoViews')">
+    <div class="label">👁️ 短视频播放量</div>
+    <div class="value clickable" onclick="showDetail('videoViews')">9.1<span style="font-size:14px;color:#8c8c8c">万</span></div>
+    <div class="trend up">▲ +190% vs W27</div>
+  </div>
+  <div class="kpi-card">
+    <div class="label">📈 平均播放量</div>
+    <div class="value">2,525</div>
+    <div class="trend up">▲ +85% vs W27</div>
+  </div>
+  <div class="kpi-card" style="cursor:pointer" onclick="showDetail('liveCount')">
+    <div class="label">🎥 直播场次</div>
+    <div class="value clickable" onclick="showDetail('liveCount')">10<span style="font-size:14px;color:#8c8c8c">场</span></div>
+    <div class="sub">B端5场 + C端5场</div>
+  </div>
+  <div class="kpi-card" style="cursor:pointer" onclick="showDetail('leadsCount')">
+    <div class="label">🎯 线索新增（7月累计）</div>
+    <div class="value clickable" onclick="showDetail('leadsCount')">85<span style="font-size:14px;color:#8c8c8c">条</span></div>
+    <div class="sub">加微6 · 进群4 · OPC 5</div>
+  </div>
+</div>
+
+<!-- 直播详情 Panel -->
+<div class="panel">
+  <div class="panel-header"><h2>🎥 直播详情 · W28</h2><span class="subtitle">B端5场 + C端5场</span></div>
+  <div class="grid-2">
+    <div class="ops-card">
+      <h3><span class="tag blue">B端 · 视频号</span> 5场</h3>
+      <table>
+        <tr><td class="tl">平均在线人数</td><td class="hl">221人</td></tr>
+        <tr><td class="tl">最高在线人数</td><td class="hl">326人</td></tr>
+        <tr><td class="tl">平均停留时长</td><td class="hl">87秒</td></tr>
+        <tr><td class="tl">新增关注</td><td class="up">5人</td></tr>
+        <tr><td class="tl">潜在线索</td><td class="hl">2条（已私信，待回复）</td></tr>
+      </table>
+    </div>
+    <div class="ops-card">
+      <h3><span class="tag green">C端 · 抖音</span> 5场</h3>
+      <table>
+        <tr><td class="tl">平均点赞</td><td class="up">5,800+</td></tr>
+        <tr><td class="tl">平均观看人数</td><td class="hl">71人</td></tr>
+        <tr><td class="tl">最高观看人数</td><td class="hl">92人</td></tr>
+        <tr><td class="tl">平均观看时长</td><td class="up">586秒</td></tr>
+        <tr><td class="tl">C端线索</td><td class="hl">1条（康养卡，跟进中）</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 私域转化 Panel -->
+<div class="panel">
+  <div class="panel-header"><h2>🔗 私域转化 · W28</h2><span class="subtitle">7.7-7.13 周数据</span></div>
+  <div class="grid-4">
+    <div class="metric-box">
+      <div class="val" style="color:#1677ff">6</div>
+      <div class="lbl">上周加微信</div>
+    </div>
+    <div class="metric-box">
+      <div class="val" style="color:#52c41a">4</div>
+      <div class="lbl">上周进群</div>
+    </div>
+    <div class="metric-box">
+      <div class="val" style="color:#722ed1">5</div>
+      <div class="lbl">OPC注册</div>
+    </div>
+    <div class="metric-box">
+      <div class="val" style="color:#ff4d4f">85</div>
+      <div class="lbl">7月累计线索</div>
+    </div>
+  </div>
+  <div class="insight-box red" style="margin-top:12px">
+    <b>⚠️ 风险提示</b>：上周四（7/10）加线索的微信被举报封号，正在努力解封中。解封后将追回进度补加客户。目前加微6/进群4/OPC5均为封号前数据。
+  </div>
+</div>
+
+<!-- 月度进度 Panel -->
+<div class="panel">
+  <div class="panel-header"><h2>📊 7月进度追踪</h2><span class="subtitle">截至7月13日</span></div>
+  <div class="grid-4">
+    <div class="metric-box">
+      <div class="val">85</div>
+      <div class="lbl">线索新增</div>
+      <div class="chg up">+48% vs 6月同期</div>
+    </div>
+    <div class="metric-box">
+      <div class="val">36</div>
+      <div class="lbl">短视频</div>
+      <div class="chg">7月已发</div>
+    </div>
+    <div class="metric-box">
+      <div class="val">9.1万</div>
+      <div class="lbl">播放量</div>
+      <div class="chg">7月累计</div>
+    </div>
+    <div class="metric-box">
+      <div class="val">10</div>
+      <div class="lbl">直播场次</div>
+      <div class="chg">B5+C5</div>
+    </div>
+  </div>
+</div>
+
+<!-- 运营复盘 -->
+<div class="panel">
+  <div class="panel-header"><h2>📝 运营复盘 · W28</h2></div>
+  <div class="ops-grid">
+    <div class="ops-card">
+      <h3><span class="tag green">✅ 已完成</span></h3>
+      <ul>
+        <li>短视频发布36条（7月累计），播放量9.1万</li>
+        <li>B端直播5场，平均在线221人，峰值326人</li>
+        <li>C端直播5场，平均观看71人，点赞5,800+</li>
+        <li>直播带来B端线索2条 + C端线索1条</li>
+        <li>加微信6人，进群4人，OPC注册5人</li>
+      </ul>
+    </div>
+    <div class="ops-card">
+      <h3><span class="tag red">⚠️ 卡点</span></h3>
+      <ul>
+        <li><b>微信封号</b>：周四（7/10）线索微信被举报封号，影响加微和跟进进度</li>
+        <li><b>行动</b>：正在解封中，预计本周恢复；解封后优先追回未跟进客户</li>
+        <li><b>线索转化</b>：7月累计85条线索，B端2条+C端1条在跟进，暂无成交</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ops-grid" style="margin-top:16px">
+    <div class="ops-card">
+      <h3><span class="tag blue">🎯 下周重点</span></h3>
+      <ul>
+        <li>微信解封后立即追回W28未跟进线索</li>
+        <li>B端直播维持≥5场/周，提升线索获取</li>
+        <li>C端直播提升观看人数（目标>100人/场）</li>
+        <li>短视频继续放量，目标40条/周</li>
+      </ul>
+    </div>
+    <div class="ops-card">
+      <h3><span class="tag orange">💡 趋势关注</span></h3>
+      <ul>
+        <li>7月线索85条（13天），6月同期57条，增速48%</li>
+        <li>B端直播平均在线221人，表现稳定</li>
+        <li>C端观看时长586秒远超B端87秒，内容粘性强</li>
+        <li>OPC注册5人，7月OPC变现需加速</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</div> <!-- container -->
+
+
+
+<script>
+var CORRECT_PW = '888888';
+
+// Detail data for KPI clicks
+var detailData = {
+  videoCount: {
+    title: '短视频发布量 · W28',
+    headers: ['平台','账号','标题','日期','播放量'],
+    rows: [
+      ['7月累计36条','-','-','7.7-7.13','90,919'],
+    ]
+  },
+  videoViews: {
+    title: '短视频播放量 · W28',
+    headers: ['指标','数值'],
+    rows: [
+      ['7月累计播放','90,919'],
+      ['平均单条播放','2,525'],
+      ['vs W27','+190%'],
+    ]
+  },
+  liveCount: {
+    title: '直播场次 · W28',
+    headers: ['端','场次','观看/在线','最高','停留'],
+    rows: [
+      ['B端视频号','5场','平均221人','326人','87s'],
+      ['C端抖音','5场','平均71人','92人','586s'],
+    ]
+  },
+  leadsCount: {
+    title: '线索 · 7月累计',
+    headers: ['指标','数值'],
+    rows: [
+      ['7月累计线索','85条'],
+      ['加微信(W28)','6人'],
+      ['进群(W28)','4人'],
+      ['OPC注册(W28)','5人'],
+      ['意向确定','2人'],
+    ]
+  }
+};
+
+var modalOverlay = document.getElementById('modalOverlay');
+var modalTitle = document.getElementById('modalTitle');
+var modalBody = document.getElementById('modalBody');
+
+window.showDetail = function(type) {
+  var d = detailData[type];
+  if (!d) return;
+  modalTitle.textContent = d.title;
+  var h = '<table><thead><tr>';
+  d.headers.forEach(function(hd) { h += '<th>' + hd + '</th>'; });
+  h += '</tr></thead><tbody>';
+  d.rows.forEach(function(row) {
+    h += '<tr>';
+    row.forEach(function(cell) { h += '<td>' + cell + '</td>'; });
+    h += '</tr>';
+  });
+  h += '</tbody></table>';
+  modalBody.innerHTML = h;
+  modalOverlay.classList.add('show');
+};
+
+window.closeModal = function() {
+  modalOverlay.classList.remove('show');
+};
+
+modalOverlay.addEventListener('click', function(e) {
+  if (e.target === modalOverlay) closeModal();
+});
+</script>
+</body>
+</html>
