@@ -61,6 +61,7 @@
   .prop-num.c2 { background: #ecfdf5; color: #059669; }
   .prop-num.c3 { background: #fef3c7; color: #b45309; }
   .prop-num.c4 { background: #f3e8ff; color: #7c3aed; }
+  .prop-num.c5 { background: #fce7f3; color: #db2777; }
 
   .prop-title h2 { font-size: 22px; color: #0f1d3d; font-weight: 800; }
   .prop-title .domain-tag {
@@ -87,6 +88,7 @@
   .prop-body h3.gold { color: #b45309; border-left-color: #f59e0b; }
   .prop-body h3.green { color: #059669; border-left-color: #10b981; }
   .prop-body h3.purple { color: #7c3aed; border-left-color: #8b5cf6; }
+  .prop-body h3.pink { color: #db2777; border-left-color: #ec4899; }
 
   .prop-body p { font-size: 15px; color: #334155; margin-bottom: 10px; }
   .prop-body .bold { font-weight: 700; }
@@ -492,15 +494,61 @@
 
 <!-- =========== 方法论提炼 =========== -->
 <div class="proposal" style="border: 2px solid #cbd5e1;">
+
+<!-- =========== 提案 05 =========== -->
+<div class="proposal">
+  <div class="prop-header">
+    <div class="prop-num c5">05</div>
+    <div class="prop-title">
+      <h2>运营日报智能生成与目标达成追踪体系</h2>
+      <span class="domain-tag">运营执行层 · 日报自动化</span>
+    </div>
+  </div>
+  <div class="prop-body">
+    <p><span class="field-tag value">【价值信息】</span></p>
+    <p>共享智能表格沉淀了大量结构化实时数据（到款、售卡、上会、引流等）后，仍面临"数据在手却看不见全貌"的瓶颈——管理层每日需人工翻查表格、手动计算达成率、逐项撰写运营简报，日均耗时约<strong class="bold">2 小时</strong>，且容易<strong class="bold">遗漏关键指标或错过异常信号</strong>。</p>
+    <p>我们已建成<strong class="bold">"取数→计算→生成→触达"四阶日报引擎</strong>：自动化任务每日定时通过智能表格 API 读取全量业务数据，自动完成达成率计算、环比趋势分析、红黄绿阈值标记与异常高亮，生成结构化日报卡片并即时推送至企微，实现管理层"打开手机即见今日全貌"。</p>
+
+    <p><span class="field-tag path">【创新路径】</span></p>
+    <h3 class="pink">已建成"取数→计算→生成→触达"四阶日报引擎</h3>
+    <div class="pipe">
+      <div class="pipe-node highlight">定时取数</div>
+      <span class="pipe-arr">→</span>
+      <div class="pipe-node highlight">多维计算</div>
+      <span class="pipe-arr">→</span>
+      <div class="pipe-node">结构化生成</div>
+      <span class="pipe-arr">→</span>
+      <div class="pipe-node">企微触达</div>
+    </div>
+    <p>1. <strong>取数</strong>：每日定时通过智能表格 API 读取当日全量业务数据（到款金额/客户/卡项、售卡明细、上会报名、引流转化等），数据源自提案 01 已建成的业务数据基座。2. <strong>计算</strong>：自动完成多维度指标计算——当日达成率、周累计进度、环比变化幅度、同比趋势，并对低于阈值的指标自动标注红黄绿三级预警。<strong class="bold">异常指标高亮后即时推送</strong>，从"事后发现"变为"当日预警"。3. <strong>生成</strong>：按固定模板输出结构化日报卡片，涵盖 KPI 摘要（到款总额/售卡数/转化率）、目标达成进度条、异常指标高亮清单、关键趋势一句话总结。4. <strong>触达</strong>：日报卡片即时推送至企微指定群聊/个人会话，<strong class="bold">管理层无需打开任何系统，打开手机即见今日运营全貌</strong>。</p>
+
+    <p><span class="field-tag result">【已实现成效】</span></p>
+    <div class="kpi-row">
+      <div class="kpi-item"><div class="num">2h→5min</div><div class="label">日报生成耗时</div></div>
+      <div class="kpi-item"><div class="num">24x</div><div class="label">效率提升</div></div>
+      <div class="kpi-item"><div class="num">日频次</div><div class="label">目标达成追踪</div></div>
+      <div class="kpi-item"><div class="num">零遗漏</div><div class="label">关键指标覆盖</div></div>
+    </div>
+    <p>日报生成耗时从日均约 2 小时压缩至<strong>5 分钟</strong>（24 倍效率提升）；目标达成率、到款进度、转化漏斗等关键指标实现每日实时追踪，零遗漏；异常指标自动高亮并即时推送至责任人；管理层首次实现"早上一打开企微即知昨日经营全貌"。量化金额：日报人工撰写替代（2h/天×22天/月×150元/h） + 异常漏报止损 = 年度保守节省约<strong>8.4 万元</strong>。</p>
+
+    <p><span class="field-tag summary">【总结与价值】</span></p>
+    <div class="insight">
+      共享表格是"数据库"，但数据库不自动产生洞察。本体系的核心增量在于——将沉默的结构化数据"翻译"为管理层可秒读的决策信号，填补了"数据入库"到"数据驱动决策"之间的最后一公里。该范式可装配至任意已建成数据基座的业务线，实现"有数据的地方，就有日报"。
+    </div>
+  </div>
+</div>
+
+<!-- =========== 方法论提炼 =========== -->
+<div class="proposal" style="border: 2px solid #cbd5e1;">
   <div class="prop-header" style="background:linear-gradient(135deg,#0a1628,#1a4a8b);color:white;border-bottom:none;">
     <div class="prop-num" style="background:rgba(255,255,255,0.15);color:white;width:auto;padding:6px 16px;border-radius:8px;font-size:15px;">方法论</div>
     <div class="prop-title">
       <h2 style="color:white;">从点状工具到"可装配式 AI 能力中台"</h2>
-      <span class="domain-tag" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);">四层体系 · 一个范式</span>
+      <span class="domain-tag" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);">五层体系 · 一个范式</span>
     </div>
   </div>
   <div class="prop-body">
-    <p>上述四套体系虽分属不同层级（采集层 / 决策层 / 知识层 / 协同层），但共享同一底层创新逻辑——<strong class="bold">"模块化装配式 AI 能力"</strong>。不是把 AI 当成单个工具用，而是把 AI 拆成可独立运行、可随意组合的能力单元，按业务需求"装配"出完整的自动化链路。</p>
+    <p>上述五套体系虽分属不同层级（采集层 / 执行层 / 决策层 / 知识层 / 协同层），但共享同一底层创新逻辑——<strong class="bold">"模块化装配式 AI 能力"</strong>。不是把 AI 当成单个工具用，而是把 AI 拆成可独立运行、可随意组合的能力单元，按业务需求"装配"出完整的自动化链路。</p>
 
     <h3>核心方法论三要素</h3>
 
@@ -508,36 +556,37 @@
 
     <p><strong>② 生态内闭环。</strong> 全部运行在企业微信 + 腾讯文档 + GitHub Pages + Obsidian 的现有工具生态内。零新增采购、零系统开发、零运维成本——纯靠"生态组合创新"实现互联网公司级别的数据基建。</p>
 
-    <p><strong>③ 数据贯通性。</strong> 四层之间数据单向贯通——采集层产出结构化数据，实时喂给决策层生成看板；决策层看板和报表自动沉淀到知识层形成企业记忆；协同层按日/周/月三频次调度全局任务。数据只流一次，价值循环释放。</p>
+    <p><strong>③ 数据贯通性。</strong> 五层之间数据单向贯通——采集层产出结构化数据；执行层每日读取基座数据自动生成日报与目标追踪；决策层汇总为周/月可视化看板；知识层沉淀为可检索的企业记忆；协同层按日/周/月三频次调度全局任务。数据只流一次，价值逐层释放。</p>
 
-    <h3 class="gold">四层体系 × 六大业务线——"装配式复制"矩阵</h3>
+    <h3 class="gold">五层体系 × 六大业务线——"装配式复制"矩阵</h3>
     <table style="width:100%; font-size:13px; border-collapse:collapse; margin:12px 0;">
       <tr style="background:#0a1628; color:white;">
         <td style="padding:8px 12px; font-weight:700;">业务线</td>
         <td style="padding:8px 12px; font-weight:700; text-align:center; background:#4338ca;">01 采集层</td>
+        <td style="padding:8px 12px; font-weight:700; text-align:center; background:#db2777;">05 执行层</td>
         <td style="padding:8px 12px; font-weight:700; text-align:center; background:#059669;">02 决策层</td>
         <td style="padding:8px 12px; font-weight:700; text-align:center; background:#b45309;">03 知识层</td>
         <td style="padding:8px 12px; font-weight:700; text-align:center; background:#7c3aed;">04 协同层</td>
         <td style="padding:8px 12px; font-weight:700; text-align:center;">可复刻</td>
       </tr>
-      <tr style="border-bottom:1px solid #e2e8f0;"><td style="padding:8px 12px; font-weight:600;">销售线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">销售日报 OCR</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">业绩排行榜看板</td><td style="padding:8px 12px; text-align:center; background:#fef3c7;">话术/竞品知识库</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">催报推送</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
-      <tr style="border-bottom:1px solid #e2e8f0; background:#f8fafc;"><td style="padding:8px 12px; font-weight:600;">会员运营线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">注册/缴费 OCR</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">转化漏斗看板</td><td style="padding:8px 12px; text-align:center; background:#fef3c7;">会员 FAQ 知识库</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">会员触达提醒</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
-      <tr style="border-bottom:1px solid #e2e8f0;"><td style="padding:8px 12px; font-weight:600;">供应链线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">出入库单据 OCR</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">库存周转看板</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">巡检/预警推送</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
-      <tr style="border-bottom:1px solid #e2e8f0; background:#f8fafc;"><td style="padding:8px 12px; font-weight:600;">HR/行政线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">考勤/报销 OCR</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">人效看板</td><td style="padding:8px 12px; text-align:center; background:#fef3c7;">制度/流程知识库</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">周期提醒</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
-      <tr style="border-bottom:1px solid #e2e8f0;"><td style="padding:8px 12px; font-weight:600;">客服线</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; background:#fef3c7;">FAQ/百问百答</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">工单自动分类</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
-      <tr><td style="padding:8px 12px; font-weight:600;">财务线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">到款截图 OCR</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">到款/对账看板</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">月结/报税提醒</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
+      <tr style="border-bottom:1px solid #e2e8f0;"><td style="padding:8px 12px; font-weight:600;">销售线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">销售日报 OCR</td><td style="padding:8px 12px; text-align:center; background:#fce7f3;">日报+达成率推送</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">业绩排行榜看板</td><td style="padding:8px 12px; text-align:center; background:#fef3c7;">话术/竞品知识库</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">催报推送</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
+      <tr style="border-bottom:1px solid #e2e8f0; background:#f8fafc;"><td style="padding:8px 12px; font-weight:600;">会员运营线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">注册/缴费 OCR</td><td style="padding:8px 12px; text-align:center; background:#fce7f3;">会员日报+转化追踪</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">转化漏斗看板</td><td style="padding:8px 12px; text-align:center; background:#fef3c7;">会员 FAQ 知识库</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">会员触达提醒</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
+      <tr style="border-bottom:1px solid #e2e8f0;"><td style="padding:8px 12px; font-weight:600;">供应链线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">出入库单据 OCR</td><td style="padding:8px 12px; text-align:center; background:#fce7f3;">库存日报+预警推送</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">库存周转看板</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">巡检/预警推送</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
+      <tr style="border-bottom:1px solid #e2e8f0; background:#f8fafc;"><td style="padding:8px 12px; font-weight:600;">HR/行政线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">考勤/报销 OCR</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">人效看板</td><td style="padding:8px 12px; text-align:center; background:#fef3c7;">制度/流程知识库</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">周期提醒</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
+      <tr style="border-bottom:1px solid #e2e8f0;"><td style="padding:8px 12px; font-weight:600;">客服线</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; background:#fef3c7;">FAQ/百问百答</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">工单自动分类</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
+      <tr><td style="padding:8px 12px; font-weight:600;">财务线</td><td style="padding:8px 12px; text-align:center; background:#eef2ff;">到款截图 OCR</td><td style="padding:8px 12px; text-align:center; background:#fce7f3;">资金日报+到款追踪</td><td style="padding:8px 12px; text-align:center; background:#ecfdf5;">到款/对账看板</td><td style="padding:8px 12px; text-align:center; color:#94a3b8;">—</td><td style="padding:8px 12px; text-align:center; background:#f3e8ff;">月结/报税提醒</td><td style="padding:8px 12px; text-align:center; font-weight:700; color:#059669;">✅</td></tr>
     </table>
 
     <p><span class="field-tag summary">【创新范式总结】</span></p>
     <div class="insight">
-      <p style="margin-bottom:10px;">本项目不是"用 AI 做了一个工具"，而是<strong>"用 AI 重构了一套企业运营操作系统"</strong>。它以四层装配式架构回答了 AI 落地最关键的三个问题——数据从哪来（采集层）、数据怎么用（决策层 + 知识层）、谁来调度这一切（协同层）。</p>
+      <p style="margin-bottom:10px;">本项目不是"用 AI 做了一个工具"，而是<strong>"用 AI 重构了一套企业运营操作系统"</strong>。它以五层装配式架构回答了 AI 落地最关键的三个问题——数据从哪来（采集层）、数据怎么用（执行层 + 决策层 + 知识层）、谁来调度这一切（协同层）。</p>
       <p style="font-weight:700; color:#b45309;">该范式可完整复刻至集团任意业务线，实现"一次建成、全员装配"的规模化 AI 能力。</p>
     </div>
   </div>
 </div>
 
 <div class="footer-bar">
-  锦上科技集团 · 运营中心 · 一茹 ｜ 四套体系均已完成并投入生产运行 ｜ 2026 年 7 月
+  锦上科技集团 · 运营中心 · 一茹 ｜ 五套体系均已完成并投入生产运行 ｜ 2026 年 7 月
 </div>
 
 </div>
