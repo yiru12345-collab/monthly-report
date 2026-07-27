@@ -126,9 +126,9 @@ td.red{color:#ff4d4f;font-weight:600}
 <div class="kpi-row">
   <div class="kpi-card">
     <div class="label">短视频发布量</div>
-    <div class="value clickable" onclick="showDetail('videoCount')">18<span style="font-size:14px;color:#8c8c8c">条</span></div>
+    <div class="value clickable" onclick="showDetail('videoCount')">22<span style="font-size:14px;color:#8c8c8c">条</span></div>
     <div class="sub">上周21条</div>
-    <div class="trend down">▼ -14.3%</div>
+    <div class="trend up">▲ +4.8%</div>
   </div>
   <div class="kpi-card">
     <div class="label">短视频播放量</div>
@@ -138,9 +138,9 @@ td.red{color:#ff4d4f;font-weight:600}
   </div>
   <div class="kpi-card">
     <div class="label">均播播放量</div>
-    <div class="value clickable" onclick="showDetail('avgViews')">1,374</div>
+    <div class="value clickable" onclick="showDetail('avgViews')">1,125</div>
     <div class="sub">上周3,000</div>
-    <div class="trend down">▼ -54.2%</div>
+    <div class="trend down">▼ -62.5%</div>
   </div>
   <div class="kpi-card">
     <div class="label">直播场次</div>
@@ -150,9 +150,9 @@ td.red{color:#ff4d4f;font-weight:600}
   </div>
   <div class="kpi-card">
     <div class="label">B端新增线索</div>
-    <div class="value clickable" onclick="showDetail('leadsCount')">17<span style="font-size:14px;color:#8c8c8c">条(本周)</span></div>
-    <div class="sub">7月累计135条 · 待确认来自直播</div>
-    <div class="trend down">▼ -77.0%</div>
+    <div class="value clickable" onclick="showDetail('leadsCount')">74<span style="font-size:14px;color:#8c8c8c">条(累计)</span></div>
+    <div class="sub">其中8条来自直播</div>
+    <div class="trend flat">7月累计</div>
   </div>
 </div>
 
@@ -162,14 +162,14 @@ td.red{color:#ff4d4f;font-weight:600}
     <div class="panel-header"><h2>短视频 · 近4周发布量 & 播放量趋势</h2></div>
     <div class="chart-box lg" id="chartVideoTrend"></div>
     <div class="insight-box info" style="margin-top:10px">
-      <b>📊 趋势解析</b>：发布量近4周 16→16→21→18，本周小幅回落。播放量从4.3万降至2.5万，<b style="color:#ff4d4f">降幅约-42.6%</b>，上周爆款集中播放回落。本周有1条1.3w+爆款和1条2000+，<b style="color:#1677ff">均播1,374仍高于W26-W27水平</b>。
+      <b>📊 趋势解析</b>：发布量近4周 16→16→21→22，本周持续放量。播放量从4.3万降至2.5万，<b style="color:#ff4d4f">降幅约-42.6%</b>，上周爆款集中播放回落。本周产出1条1.3w+爆款和1条2000+，<b style="color:#1677ff">评论量607条互动活跃</b>。均播1,125仍高于W24-W25水平。
     </div>
   </div>
   <div class="panel">
     <div class="panel-header"><h2>本周爆款视频 · 播放量分层</h2></div>
     <div class="chart-box lg" id="chartViral"></div>
     <div class="insight-box" style="margin-top:10px">
-      <b>📊 解析</b>：本周产出4条爆款（1w+×1 / 2000+×1 / 1000+×2），<b style="color:#1677ff">1w+视频（13,561播放）持续产出</b>。爆款占比22.2%（4/18），内容质量保持稳定。
+      <b>📊 解析</b>：本周产出4条爆款（1000+×2 / 2000+×1 / 1w+×1），<b style="color:#1677ff">1w+视频（13,561播放）持续产出</b>。爆款占比18.2%（4/22），评论量607互动活跃。
     </div>
   </div>
 </div>
@@ -183,8 +183,8 @@ td.red{color:#ff4d4f;font-weight:600}
   <div class="grid-3">
     <div class="metric-box">
       <div class="lbl">发布条数</div>
-      <div class="val">18 <span style="font-size:14px">vs 21</span></div>
-      <div class="chg down">▼ -14.3%</div>
+      <div class="val">22 <span style="font-size:14px">vs 21</span></div>
+      <div class="chg up">▲ +4.8%</div>
     </div>
     <div class="metric-box">
       <div class="lbl">总播放量</div>
@@ -193,8 +193,8 @@ td.red{color:#ff4d4f;font-weight:600}
     </div>
     <div class="metric-box">
       <div class="lbl">均播播放量</div>
-      <div class="val">1,374 <span style="font-size:14px">vs 3,000</span></div>
-      <div class="chg down">▼ -54.2%</div>
+      <div class="val">1,125 <span style="font-size:14px">vs 3,000</span></div>
+      <div class="chg down">▼ -62.5%</div>
     </div>
     <div class="metric-box">
       <div class="lbl">1000+ 爆款</div>
@@ -242,19 +242,19 @@ td.red{color:#ff4d4f;font-weight:600}
 <div class="panel">
   <div class="panel-header">
     <h2>线索转化漏斗 · 本周 B端链路</h2>
-    <span class="subtitle">W30线索17条 · 数据截止7/23，待补录后几日</span>
+    <span class="subtitle">W30线索累计74条 · 触达43条</span>
   </div>
   <div class="grid-2">
     <div class="chart-box lg" id="chartFunnel"></div>
     <div>
       <div class="grid-2" style="margin-bottom:12px">
         <div class="metric-box"><div class="val clickable" style="color:#1677ff;cursor:pointer" onclick="showDetail('leadsCount2')">17</div><div class="lbl">本周线索</div><div class="chg down">7月累计135条</div></div>
-        <div class="metric-box"><div class="val clickable" style="color:#13c2c2;cursor:pointer" onclick="showDetail('wechat')">—</div><div class="lbl">加微信</div><div class="chg">待更新</div></div>
-        <div class="metric-box"><div class="val clickable" style="color:#faad14;cursor:pointer" onclick="showDetail('group')">—</div><div class="lbl">进群</div><div class="chg">待更新</div></div>
-        <div class="metric-box"><div class="val clickable" style="color:#ff4d4f;cursor:pointer" onclick="showDetail('opc')">—</div><div class="lbl">OPC新注册</div><div class="chg">待更新</div></div>
+        <div class="metric-box"><div class="val clickable" style="color:#13c2c2;cursor:pointer" onclick="showDetail('wechat')">14</div><div class="lbl">加微信</div><div class="chg">触达43条</div></div>
+        <div class="metric-box"><div class="val clickable" style="color:#faad14;cursor:pointer" onclick="showDetail('group')">5</div><div class="lbl">进群</div><div class="chg">退群5人</div></div>
+        <div class="metric-box"><div class="val clickable" style="color:#ff4d4f;cursor:pointer" onclick="showDetail('opc')">99</div><div class="lbl">OPC注册(7月)</div><div class="chg">累计</div></div>
       </div>
       <div class="insight-box info">
-        <b>📊 漏斗解析</b>：本周线索17条（截止7/23数据，后几日待补录），较上周74条大幅下降。<b style="color:#faad14">关注点：线索数据可能不完整</b>——7/24-7/26三日数据需确认。加微/进群/OPC注册待业务侧同步更新。
+        <b>📊 漏斗解析</b>：7月累计B端线索74条（来自直播8条）。触达43条→加微14人（转化率32.6%）→进群5人→高价值2条。<b style="color:#faad14">老账号封禁</b>，新账号每日触达上限低，本周退群5人。
       </div>
     </div>
   </div>
@@ -263,7 +263,7 @@ td.red{color:#ff4d4f;font-weight:600}
     <div class="panel-header"><h2>近6周线索数量趋势</h2></div>
     <div class="chart-box" id="chartLeadsTrend"></div>
     <div class="insight-box" style="margin-top:10px">
-      <b>📊 趋势洞察</b>：线索量W29达到峰值74条，W30回落至17条（截止7/23数据，可能不完整）。短视频播放量同步回落（4.3万→2.5万），但直播场次大幅恢复（2场→5场）。<b style="color:#faad14">关注：W30线索完整数据需业务确认</b>。
+      <b>📊 趋势洞察</b>：线索量W29达到峰值，7月累计B端线索74条（含直播来源8条）。短视频持续放量（22条），直播恢复至5场/周。根据实际内容策略调整，<b style="color:#1677ff">线索质量有所提升</b>，累计25条优质线索，本周高价值线索2条（加盟/设备各1）。
     </div>
   </div>
 </div>
@@ -390,7 +390,7 @@ td.red{color:#ff4d4f;font-weight:600}
 
   <div class="insight-box info"><b>微信封号持续影响</b>：主号周四被封仍未解封（尝试第三方解封失败），已调新号在养号阶段。本周加微仅8人（W28为6人），进群2人。OPC注册基本完成，养号期间仍在维持注册链路。</div>
 
-  <div class="insight-box"><b>直播排期大幅恢复</b>：本周5场直播（B端3场/654观 + C端2场/99观，共753观），环比+106.3%。恢复至正常频次（5场/周），B端观看较W29（312人）翻倍增长。</div>
+  <div class="insight-box"><b>直播排期大幅恢复</b>：本周5场直播（B端3场/654观 + C端2场/99观，共753观），环比+106.3%。内容策略调整后，线索质量提升——本周新增3条优质线索（2条问设备、1条问加盟），累计25条优质线索。</div>
 
   <div class="ops-grid">
     <div class="ops-card">
@@ -398,7 +398,7 @@ td.red{color:#ff4d4f;font-weight:600}
       <ul>
         <li><b>AI赋能跑通</b>：短视频矩阵AI复刻创作流程初步跑通，间接提高线索质量</li>
         <li><b>爆款方法论</b>：基于2w+和1w+爆款数据，研究复刻短视频内容的方式和形式SOP</li>
-        <li><b>短视频维持18条</b>：发布量18条（上周21条），播放量2.5万，爆款4条含1w+1条（13,561播放）</li>
+        <li><b>短视频维持22条</b>：发布量22条（上周21条），播放量2.5万（24,746），评论607条，爆款4条（1w+×1/2000+×1/1000+×2）</li>
         <li><b>OPC注册进展</b>：本周OPC注册基本完成，新号养号期间维持注册链路</li>
       </ul>
     </div>
@@ -433,7 +433,7 @@ td.red{color:#ff4d4f;font-weight:600}
 
 <div class="footnote">
   <b>数据口径</b>：B端线索 = 短视频留资 + 直播留资，统计周期 2026.07.20-07.26（自然周）。环比对比上周 07.13-07.19。数据来源：健康小屋-BI。<br>
-  <span style="color:#d9d9d9;font-size:10px">W30运营周报 v1.0 | 可视化互动版 · 涵盖短视频/直播/线索全链路</span>
+  <span style="color:#d9d9d9;font-size:10px">W30运营周报 v2.0 | 可视化互动版 · 涵盖短视频/直播/线索全链路</span>
 </div>
 
 </div>
@@ -467,11 +467,11 @@ window.showDetail = function(type) {
   table.style.fontSize = '13px';
 
   if (type === 'videoCount') {
-    h3.innerHTML = '📈 短视频发布量详情（本周18条）';
+    h3.innerHTML = '📈 短视频发布量详情（本周22条）';
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>本周发布：</b>18条（上周21条，▼14.3%）<br><b>日均发布：</b>2.6条/天<br><b>主要账号：</b>虎哥说养老、岚风聊AI智能养生、虎哥说opc<br><b>内容方向：</b>政策解读、AI智能养生、OPC项目介绍';
+    info.innerHTML = '<b>本周发布：</b>22条（上周21条，▲4.8%）<br><b>日均发布：</b>3.1条/天<br><b>主要账号：</b>虎哥说养老、岚风聊AI智能养生、虎哥说opc<br><b>内容方向：</b>政策解读、AI智能养生、OPC项目介绍<br><b>评论量：</b>607条';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>日期</th><th>发布量</th><th>主要话题</th><th>累计播放</th></tr>';
@@ -524,11 +524,11 @@ window.showDetail = function(type) {
     box.appendChild(tip);
 
   } else if (type === 'avgViews') {
-    h3.innerHTML = '📊 均播播放量详情（本周1,374次）';
+    h3.innerHTML = '📊 均播播放量详情（本周1,125次）';
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>计算方法：</b>总播放量 ÷ 发布条数 = 24,746 ÷ 18 ≈ 1,374次/条<br><b>环比变化：</b>上周3,000次 → 本周1,374次（▼54.2%）<br><b>历史对比：</b>W26(1,108) → W27(1,108) → W28(3,000) → W29(3,000) → W30(1,374)';
+    info.innerHTML = '<b>计算方法：</b>总播放量 ÷ 发布条数 = 24,746 ÷ 22 ≈ 1,125次/条<br><b>环比变化：</b>上周3,000次 → 本周1,125次（▼62.5%）<br><b>历史对比：</b>W26(1,108) → W27(1,108) → W28(3,000) → W29(3,000) → W30(1,125)';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>周次</th><th>发布量</th><th>总播放</th><th>均播</th><th>环比</th></tr>';
@@ -538,7 +538,7 @@ window.showDetail = function(type) {
       ['W25（6.15-21）', '16条', '14,800次', '925次', '—'],
       ['W26（6.22-28）', '16条', '17,728次', '1,108次', '▲ +19.8%'],
       ['W29（7.13-7.19）', '21条', '43,127次', '3,000次', '▲ +171%'],
-      ['<b>W30（7.20-7.26）</b>', '<b>18条</b>', '<b>24,746次</b>', '<b>1,374次</b>', '<b>▼ -54.2%</b>']
+      ['<b>W30（7.20-7.26）</b>', '<b>22条</b>', '<b>24,746次</b>', '<b>1,125次</b>', '<b>▼ -62.5%</b>']
     ];
     rows.forEach(function(r, idx) {
       var tr = document.createElement('tr');
@@ -580,11 +580,11 @@ window.showDetail = function(type) {
     box.appendChild(tip);
 
   } else if (type === 'leadsCount') {
-    h3.innerHTML = '🎯 B端新增线索详情（7月累计135条）';
+    h3.innerHTML = '🎯 B端新增线索详情（7月累计74条）';
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>7月累计：</b>135条B端线索<br><b>本周(W30)新增：</b>17条（截止7/23，后几日待补录）<br><b>环比：</b>W29新增74条 → W30新增17条（▼-77%，可能数据不完整）<br><b>趋势：</b>W29达到峰值74条，W30回落，需确认数据完整性';
+    info.innerHTML = '<b>7月累计：</b>74条B端线索（其中8条来自直播）<br><b>触达：</b>43条（加微14人，转化率32.6%）<br><b>进群：</b>5人（退群5人，老账号封禁新号触达受限）<br><b>高价值线索：</b>2条（加盟、设备各1）<br><b>累计优质线索：</b>25条';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>周次</th><th>线索数</th><th>环比</th><th>累计</th></tr>';
@@ -608,11 +608,11 @@ window.showDetail = function(type) {
     box.appendChild(table);
 
   } else if (type === 'leadsCount2') {
-    h3.innerHTML = '📊 本周线索详情（W30：17条）';
+    h3.innerHTML = '📊 本周线索详情（7月累计74条）';
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>本周新增：</b>17条（上周74条，▼77%）<br><b>近6周趋势：</b>W25(19) → W26(35) → W27(39) → W28(46) → W29(74) → <b>W30(17*)</b><br><b>7月累计：</b>135条<br><b>*注：</b>截止7/23数据，后几日待补录';
+    info.innerHTML = '<b>7月累计：</b>74条B端线索（其中8条来自直播）<br><b>触达：</b>43条 → 加微14人（转化率32.6%）→ 进群5人 → 高价值2条<br><b>累计优质线索：</b>25条（内容策略调整后线索质量提升）<br><b>下周重点：</b>OPC内容AI赋能、爆款测试';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>周次</th><th>线索数</th><th>环比</th><th>累计</th><th>趋势</th></tr>';
@@ -901,9 +901,9 @@ initChart('chartFunnel', {
     label: { show: true, position: 'inside', fontSize: 12, formatter: '{b} {c}人', color: '#fff' },
     labelLine: { show: false },
     data: [
-      { value: 17, name: '本周线索', itemStyle: { color: blue } },
-      { value: 5, name: '已对接(29.4%)', itemStyle: { color: teal } },
-      { value: 2, name: '高意向(11.8%)', itemStyle: { color: amber } }
+      { value: 43, name: '触达线索', itemStyle: { color: blue } },
+      { value: 14, name: '加微(32.6%)', itemStyle: { color: teal } },
+      { value: 5, name: '进群(11.6%)', itemStyle: { color: amber } }
     ]
   }]
 });
