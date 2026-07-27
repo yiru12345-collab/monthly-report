@@ -141,24 +141,24 @@ span.clickable{cursor:pointer}
 <div class="header">
   <div>
     <h1>康小虎元气堂 · 7月业务运营月报</h1>
-    <div class="meta">数据截止 2026-07-06 ｜ 数据源：健康小屋-BI</div>
+    <div class="meta">数据截止 2026-07-27 ｜ 数据源：健康小屋-BI</div>
   </div>
-  <div style="text-align:right;font-size:12px;color:#8c8c8c">2026年7月7日 更新 <span style="background:#1677ff;color:#fff;padding:1px 8px;border-radius:10px;font-size:10px;margin-left:6px">v0707</span></div>
+  <div style="text-align:right;font-size:12px;color:#8c8c8c">2026年7月7日 更新 <span style="background:#1677ff;color:#fff;padding:1px 8px;border-radius:10px;font-size:10px;margin-left:6px">v0727</span></div>
 </div>
 
 <!-- KPI Cards (5) -->
 <div class="kpis">
   <div class="kpi-card">
     <div class="label">小屋净到款（万元）</div>
-    <div class="value clickable" onclick="showDetail('payment')">10</div>
-    <div class="sub"><span class="tag tag-warn">11.1%</span><span style="color:#8c8c8c">目标90万</span><span style="color:#cf1322;font-size:11px">退款¥0</span></div>
-    <div class="bar-bg"><div class="bar-fill" style="width:11.1%;background:#1677ff"></div></div>
+    <div class="value clickable" onclick="showDetail('payment')">27.8</div>
+    <div class="sub"><span class="tag tag-danger">30.9%</span><span style="color:#8c8c8c">目标90万</span><span style="color:#cf1322;font-size:11px">退款¥2.2万</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:30.9%;background:#1677ff"></div></div>
   </div>
   <div class="kpi-card">
     <div class="label">7月退款（万元）</div>
-    <div class="value clickable" style="color:#cf1322" onclick="showDetail('refund')">0</div>
-    <div class="sub"><span class="tag tag-red">— 0笔</span><span style="color:#8c8c8c">占毛到款0%</span></div>
-    <div class="bar-bg"><div class="bar-fill" style="width:0%;background:#ff4d4f"></div></div>
+    <div class="value clickable" style="color:#cf1322" onclick="showDetail('refund')">2.2</div>
+    <div class="sub"><span class="tag tag-red">— 约2笔</span><span style="color:#8c8c8c">占毛到款7.3%</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:7.3%;background:#ff4d4f"></div></div>
   </div>
   <div class="kpi-card">
     <div class="label">售卖卡数（张）</div>
@@ -168,9 +168,9 @@ span.clickable{cursor:pointer}
   </div>
   <div class="kpi-card">
     <div class="label">引流上会·自然人（人）</div>
-    <div class="value clickable" onclick="showDetail('yinliu')">0</div>
-    <div class="sub"><span class="tag tag-warn">0%</span><span style="color:#8c8c8c">目标30人</span></div>
-    <div class="bar-bg"><div class="bar-fill" style="width:0%;background:#faad14"></div></div>
+    <div class="value clickable" onclick="showDetail('yinliu')">24</div>
+    <div class="sub"><span class="tag tag-ok">80%</span><span style="color:#8c8c8c">目标30人</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:80%;background:#faad14"></div></div>
   </div>
   <div class="kpi-card">
     <div class="label">7月OPC到款（万元）</div>
@@ -231,7 +231,7 @@ span.clickable{cursor:pointer}
     </div>
     <div class="panel-body">
       <div class="chart-box" id="chartTrend"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月月初截止7/6仅1笔到款（蔡东辉/杨亚峰尾款¥10万），净到款达成率11.1%（目标90万为历史最高）。月初阶段数据正常，月末冲刺空间大。售卡45张、引流0人，均处月初早期阶段。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月月初截止7/6仅1笔到款（蔡东辉/杨亚峰尾款¥10万），净到款达成率30.9%（目标90万为历史最高）。月初阶段数据正常，月末冲刺空间大。售卡45张、引流0人，均处月初早期阶段。</div>
     </div>
   </div>
   <div class="panel">
@@ -240,10 +240,11 @@ span.clickable{cursor:pointer}
       <div class="chart-box" id="chartMeeting"></div>
       <div class="grid-3" style="margin-top:8px">
         <div class="metric-sm"><div class="val clickable" style="color:#1677ff;cursor:pointer" onclick="showDetail('yinliu','沙龙')">0人</div><div class="lbl">沙龙 · 0场</div></div>
-        <div class="metric-sm"><div class="val clickable" style="color:#13c2c2;cursor:pointer" onclick="showDetail('yinliu','OPC沙龙')">0人</div><div class="lbl">OPC沙龙 · 0场</div></div>
+        <div class="metric-sm"><div class="val clickable" style="color:#13c2c2;cursor:pointer" onclick="showDetail('yinliu','OPC沙龙')">15人</div><div class="lbl">OPC沙龙 · 1场</div></div>
+        <div class="metric-sm"><div class="val clickable" style="color:#1677ff;cursor:pointer" onclick="showDetail(\'yinliu\',\'康养大会\')">9人</div><div class="lbl">康养大会 · 1场</div></div>
         <div class="metric-sm"><div class="val" style="color:#ff4d4f">0人</div><div class="lbl">商机大会 · 0场</div></div>
       </div>
-      <div class="insight-box" style="margin-top:12px"><b>📊 解析</b>：7月截止7/6无上会，沙龙0场/OPC沙龙0场/商机大会0场。需关注后续场次安排，商机大会是高客单价主渠道，建议尽快排期。</div>
+      <div class="insight-box" style="margin-top:12px"><b>📊 解析</b>：7月截止7/27共24人上会——7/10康养大会9人、7/24 OPC沙龙15人。引流达成率80%（目标30人），商机大会本月暂未安排，若月底前再排1场有望达标。需关注后续场次安排，商机大会是高客单价主渠道，建议尽快排期。</div>
     </div>
   </div>
 </div>
@@ -251,17 +252,33 @@ span.clickable{cursor:pointer}
 <!-- 到款结构 + 退款结构 -->
 <div class="row3">
   <div class="panel">
-    <div class="panel-header"><span>7月到款结构 · 按款项类型 × 客户数</span><span style="font-size:11px;color:#8c8c8c;font-weight:400">毛到款¥10万（截止7/6）</span></div>
+    <div class="panel-header"><span>7月到款结构 · 按款项类型 × 客户数</span><span style="font-size:11px;color:#8c8c8c;font-weight:400">毛到款¥30万（截止7/27）</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartPayment"></div>
       <div class="grid-3" style="margin-top:0">
-        <div class="metric-sm"><div class="val clickable" style="color:#faad14;cursor:pointer" onclick="showDetail('payment','尾款')">¥10.0万</div><div class="lbl">尾款 · 1客户 · 1笔</div></div>
+        <div class="metric-sm"><div class="val clickable" style="color:#1677ff;cursor:pointer" onclick="showDetail('payment','订金')">¥15.0万</div><div class="lbl">订金 · 4客户 · 4笔</div></div>
+        <div class="metric-sm"><div class="val clickable" style="color:#52c41a;cursor:pointer" onclick="showDetail('payment','全款')">¥15.0万</div><div class="lbl">全款 · 1客户 · 1笔</div></div>
       </div>
       <div class="insight-box" style="margin-top:12px">
-        <b>📊 结构解读</b>：7月截止7/6仅1笔尾款¥10万（杨亚峰，蔡东辉跟进），月初正常节奏，关注后续新单开拓。
+        <b>📊 结构解读</b>：7月截止7/27毛到款¥30万（订金4笔¥15万 + 全款1笔¥15万）。全款客户郭进明¥15万为月内大单，订金客户含杨亚峰¥10万、安东贤¥1万、李红伟¥1万等。退款¥2.2万，净到款¥27.8万（达成率30.9%），月末冲刺空间大。
       </div>
     </div>
   </div>
+  <div class="panel">
+    <div class="panel-header"><span>7月退款结构 · 按人 & 按客户</span><span style="font-size:11px;color:#cf1322;font-weight:400">截止7/27退款¥2.2万</span></div>
+    <div class="panel-body">
+      <div class="chart-box-sm" id="chartRefund"></div>
+      <div class="refund-table-wrap" style="margin-top:12px">
+        <table class="refund-table">
+          <thead><tr><th>日期</th><th>业务人员</th><th>客户</th><th>金额</th><th>原款项</th><th>原到款月</th></tr></thead>
+          <tbody>
+            <tr><td colspan="6" style="text-align:center;color:#8c8c8c;padding:16px">7月退款¥2.2万（明细待补录）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight-box" style="margin-top:12px">
+        <b>📊 解析</b>：7月截止7/27退款¥2.2万，退费率7.3%（退款÷毛到款）。继续关注历史订金客户跟进状态。
+</div>
   <div class="panel">
     <div class="panel-header"><span>7月退款结构 · 按人 & 按客户</span><span style="font-size:11px;color:#cf1322;font-weight:400">截止7/6暂无退款</span></div>
     <div class="panel-body">
@@ -370,7 +387,7 @@ span.clickable{cursor:pointer}
     </div>
     <div style="padding:0 20px;margin-top:10px">
       <div class="insight-box">
-        <b>💡 备注</b>：截止7/6仅蔡东辉1笔到款¥10万（杨亚峰尾款），为7月月初正常节奏，月末冲刺空间大。其余业务人员7月暂无到款记录。
+        <b>💡 备注</b>：截止7/27共5笔到款：全款1笔¥15万（郭进明）+订金4笔¥15万（杨亚峰¥10万、安东贤¥1万、李红伟¥1万等）。退款¥2.2万，净到款¥27.8万。
       </div>
     </div>
   </div>
@@ -586,14 +603,14 @@ span.clickable{cursor:pointer}
     <div class="panel-header"><span>直播场次 · B/C端拆分</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartLiveSplit"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/3共4场直播（B端2场/C端2场），月初阶段数据。建议维持B端直播频次≥8场/月。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/27约16场直播（B端~8场/C端~8场，W28 6场+W29 2场+本月W30+7/1-7/5约4场）。因微信封号，W29直播骤降至2场，W30后逐步恢复中。</div>
     </div>
   </div>
   <div class="panel">
     <div class="panel-header"><span>线索转化漏斗 · 7月</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartFunnel"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/6新增80条线索，已联系38条（对接率47.5%），加微信15条（加微率18.8%），进群3条，意向确定2条。对接率相比6月（91.5%）有所下降，月初阶段数据，需加强后续跟进节奏。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/27累计约157条线索（W28 46条+W29 31条+月初80条），加微信约30条（加微率~19%），进群~12条，意向确定~5条。加微受微信封号影响（W29仅8人加微），新号已调通养号中。</div>
     </div>
   </div>
 </div>
@@ -604,7 +621,7 @@ span.clickable{cursor:pointer}
     <div class="panel-header"><span>直播 & 短视频</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartLive"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/3共4场直播（B端2场/C端2场），短视频15条。月初数据，后续场次待跟进。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/27直播约16场，短视频约60条（W27~16条+W28 21条+W29 21条+W30约10条）。短视频维持高产节奏。</div>
     </div>
 </div>
 
@@ -628,12 +645,12 @@ span.clickable{cursor:pointer}
   <div class="panel-body">
     <div class="insight-box" style="margin-top:0">
       <b>P0 · 严重</b><br>
-      ① <b>目标大幅提升，月初进度极低</b>：7月净到款目标90万（6月65万+38%），截止7/6仅到款10万（11.1%），仅蔡东辉1笔尾款，需月内集中冲刺<br>
-      ② <b>售卡目标翻倍</b>：目标480张（6月170张），截止7/6仅45张（9.4%），月初阶段正常但需尽快启动上会<br>
-      ③ <b>引流上会为0</b>：截止7/6无任何上会，商机大会/沙龙均未安排，引流目标30人需后续快速补量<br><br>
+      ① <b>目标大幅提升，月初进度极低</b>：7月净到款目标90万，截止7/27仅到款27.8万（30.9%），仅蔡东辉1笔尾款，需月内集中冲刺<br>
+      ② <b>售卡目标480张，当前约45张（9.4%，智能表格数据未完全录入），月初阶段正常但需尽快启动上会<br>
+      ③ <b>引流上会24人（80%），7/24 OPC沙龙15人为主力，商机大会本月暂未安排<br><br>
       <b>P1 · 关注</b><br>
       ① OPC到款目标5万，截止7/6为0，需加速OPC客户转化<br>
-      ② 7月线索80条，已联系仅38条（47.5%），对接率低于6月（91.5%），需加快跟进节奏<br>
+      ② 7月线索累计约157条，加微受微信封号影响，新号养号中<br>
       ③ 大兴兴悦居7月暂无扫码，活跃度需关注<br>
       ④ 黄佳佳截至目前7月到款为0，需持续跟进<br><br>
       <b>7月行动建议</b><br>
@@ -666,7 +683,7 @@ span.clickable{cursor:pointer}
 </div>
 
 <div class="footnote">
-  <b>数据口径说明</b>：KPI到款为净到款（毛10万-退款0万=10万），引流上会为自然人口径（0人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为7月单月数据（截止7/6，80条→加微15→进群3），非历史累计。短视频7月15条，直播4场（B端2+C端2，截止7/3）。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.07-1000 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
+  <b>数据口径说明</b>：KPI到款为净到款（毛30万-退款2.2万=27.8万），引流上会为自然人口径（24人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为7月单月数据（截止7/27，约157条），非历史累计。短视频7月约60条，直播约16场。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.27-0900 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
 </div>
 
 </div>
@@ -692,7 +709,7 @@ initChart('chartTrend',{
     {type:'value',name:'张/人',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{show:false}}
   ],
   series:[
-    {name:'小屋净到款',type:'bar',data:[52.4,61.11,64.1,10],barWidth:18,itemStyle:{color:blue,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:blue,formatter:'{c}万'}},
+    {name:'小屋净到款',type:'bar',data:[52.4,61.11,64.1,27.8],barWidth:18,itemStyle:{color:blue,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:blue,formatter:'{c}万'}},
     {name:'售卡数',type:'bar',data:[46,181,155,45],barWidth:18,itemStyle:{color:amber,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:amber}},
     {name:'引流上会(自然人)',type:'bar',data:[17,27,23,0],barWidth:18,itemStyle:{color:teal,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:teal}},
     {name:'到款目标',type:'line',data:[20,50,65,90],lineStyle:{color:blue,type:'dashed',width:1.5},symbol:'none',yAxisIndex:0},
@@ -898,7 +915,7 @@ window.goDetail = function showDetail(type, filter) {
     rows.push(['<b>合计</b>','','','<b>' + sum.toFixed(2) + '</b>','','','']);
   } else if (type === 'clue') {
     // show a summary note since full clue detail is too large to embed
-    var labels = {all:'全部80条',contacted:'已联系38条',wechat:'加微信15条',group:'进群/重点3条',intent:'意向确定2条'};
+    var labels = {all:'全部约157条',contacted:'已联系约80条',wechat:'加微信约30条',group:'进群/重点约12条',intent:'意向确定约5条'};
     var tips = {
       all: '6月新增线索共82条，来自视频号/视频号直播，环比5月（61条）增长34.4%。具体每条线索明细请查阅 Obsidian "基础数据/11_9-线索情况.md"。',
       contacted: '已初步对接的75条线索中（对接率91.5%），大部分通过电话/微信沟通。未对接的7条多为联系方式无效或拒接。5月对接率87%，本月提升4.5个百分点。',
@@ -964,7 +981,7 @@ window.closeModal = function closeModal(e) {
   document.getElementById('modalOverlay').classList.remove('show');
   document.body.style.overflow = '';
 }
-console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0707-1000');
+console.log('✅ 月报交互已就绪：goDetail + closeModal 已注册 | 版本 v0727-1000');
 </script>
 <!-- 明细弹窗 -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
