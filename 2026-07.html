@@ -235,30 +235,15 @@ span.clickable{cursor:pointer}
         <table class="refund-table">
           <thead><tr><th>日期</th><th>业务人员</th><th>客户</th><th>金额</th><th>原款项</th><th>原到款月</th></tr></thead>
           <tbody>
-            <tr><td colspan="6" style="text-align:center;color:#8c8c8c;padding:16px">7月退款¥2.2万（明细待补录）</td></tr>
+            <tr><td>7/7</td><td>孙德国</td><td>汤春盛</td><td style="color:#cf1322">¥0.60万</td><td>全款</td><td>7月</td></tr>
+            <tr><td>7/7</td><td>赵云峰</td><td>缪金燕</td><td style="color:#cf1322">¥1.00万</td><td>订金</td><td>7月</td></tr>
+            <tr><td>7/14</td><td>孙德国</td><td>周俊东</td><td style="color:#cf1322">¥0.60万</td><td>产品</td><td>7月</td></tr>
+            <tr style="font-weight:700"><td colspan="3">合计</td><td style="color:#cf1322">¥2.20万</td><td colspan="2"></td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight-box" style="margin-top:12px">
-        <b>📊 解析</b>：7月截止7/27退款¥2.2万，退费率7.3%（退款÷毛到款）。继续关注历史订金客户跟进状态。
-</div>
-  <div class="panel">
-    <div class="panel-header"><span>7月退款结构 · 按人 & 按客户</span><span style="font-size:11px;color:#cf1322;font-weight:400">截止7/6暂无退款</span></div>
-    <div class="panel-body">
-      <div class="chart-box-sm" id="chartRefund"></div>
-      <div class="refund-table-wrap" style="margin-top:12px">
-        <table class="refund-table">
-          <thead><tr><th>日期</th><th>业务人员</th><th>客户</th><th>金额</th><th>原款项</th><th>原到款月</th></tr></thead>
-          <tbody>
-            <tr><td colspan="6" style="text-align:center;color:#8c8c8c;padding:16px">7月截止7/6暂无退款</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight-box" style="margin-top:12px">
-        <b>📊 解析</b>：7月截止7/6暂无退款，良好。继续关注历史订金客户跟进状态。
-      </div>
-    </div>
-  </div>
+        <b>📊 解析</b>：7月退款¥2.2万（3笔）：孙德国→汤春盛¥0.6万（全款退）+周俊东¥0.6万（产品退），赵云峰→缪金燕¥1万（订金退）。退费率7.3%，保持关注。
 </div>
 
 <!-- 业务人员数据 · 全量19列 -->
@@ -394,7 +379,7 @@ span.clickable{cursor:pointer}
       <div class="os"><div class="num" style="color:#8c8c8c">—</div><div class="lb">7月待更新</div></div>
     </div>
     <div class="chart-box-sm" id="chartOpc"></div>
-    <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：展示5-6月OPC邀约数据作参考基准。6月合计116人，总体持平（113→116），宋磊(+10)、张浩然(+4)大幅增长，谢超(-9)下滑明显。7月OPC数据截止7/27暂未录入。</div>
+    <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：展示6月OPC邀约数据作参考基准（合计116人，宋磊22人/张浩然14人领跑）。7月OPC邀约数据截止7/27暂未录入，待月中更新。</div>
   </div>
 </div>
 
@@ -572,13 +557,13 @@ initChart('chartRefund',{
 // OPC
 initChart('chartOpc',{
   tooltip:{trigger:'axis'},
-  legend:{data:['5月邀约','6月邀约'],bottom:0,textStyle:{fontSize:11}},
+  legend:{data:['6月邀约','7月邀约'],bottom:0,textStyle:{fontSize:11}},
   grid:{left:50,right:20,top:16,bottom:36},
   xAxis:{type:'category',data:['任一鑫','田雨','谢超','罗姣','叶艳红','一茹','李令潇','宋磊','张浩然','董超'],axisLabel:{color:textColor,rotate:30,fontSize:10}},
   yAxis:{type:'value',axisLabel:{color:textColor},splitLine:{lineStyle:{color:'#f0f0f0'}}},
   series:[
-    {name:'5月邀约',type:'bar',data:[10,12,19,10,12,18,10,12,10,0],barWidth:12,itemStyle:{color:'#91caff'},label:{show:true,position:'top',fontSize:9}},
-    {name:'6月邀约',type:'bar',data:[10,11,10,10,10,16,10,22,14,3],barWidth:12,itemStyle:{color:blue},label:{show:true,position:'top',fontSize:9}}
+    {name:'6月邀约',type:'bar',data:[10,11,10,10,10,16,10,22,14,3],barWidth:12,itemStyle:{color:'#91caff'},label:{show:true,position:'top',fontSize:9}},
+    {name:'7月邀约',type:'bar',data:[0,0,0,0,0,0,0,0,0,0],barWidth:12,itemStyle:{color:blue},label:{show:true,position:'top',fontSize:9,formatter:'待录入'}}
   ]
 });
 
