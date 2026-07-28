@@ -609,7 +609,11 @@ window.goDetail = function showDetail(type, filter) {
     title = '7月引流上会明细（' + (filter||'全部') + '，共' + rows.length + '条，已核实' + ok.length + '条）';
     cols = ['业务员','状态','客户','日期','大会类型','自然人数','会议名称','客户公司'];
     rows = rows.map(function(r) {
-      return [r[0], r[1] === '已核实' ? '<span class="tag-ok">✓ 已核实</span>' : '<span class="tag-no">✗ 不符合</span>', r[2], r[3], r[4], r[5], r[6], r[7]];
+      var statusHtml;
+      if (r[1] === '已核实') statusHtml = '<span class="tag-ok">✓ 已核实</span>';
+      else if (r[1] === '未核实') statusHtml = '<span class="tag-warn">⏳ 未核实</span>';
+      else statusHtml = '<span class="tag-no">✗ 不符合</span>';
+      return [r[0], statusHtml, r[2], r[3], r[4], r[5], r[6], r[7]];
     });
   } else if (type === 'cards') {
     rows = detailData.payment.filter(function(r) { return r[5] !== '—'; });
