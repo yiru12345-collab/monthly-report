@@ -223,7 +223,7 @@ span.clickable{cursor:pointer}
         <div class="metric-sm"><div class="val clickable" style="color:#52c41a;cursor:pointer" onclick="showDetail('payment','全款')">¥15.0万</div><div class="lbl">全款 · 1客户 · 1笔</div></div>
       </div>
       <div class="insight-box" style="margin-top:12px">
-        <b>📊 结构解读</b>：7月截止7/28毛到款¥31万（订金5笔¥16万 + 全款2笔¥16万）。全款大单：郑毅→郭进明¥15万（含75张卡）、OPC：百岁会员¥1万（AIOPC）。订金客户：蔡东辉→杨亚峰1¥10万、赵云峰→安东贤¥1万+李红伟¥1万、孙德国→未知1¥3万+未知2¥1万。退款¥18.7万（5笔：孙德国→汤春盛¥0.6万/吕建军¥13.5万/周俊东¥0.6万，赵云峰→缪金燕¥1万/张福利¥3万），净到款¥12.3万（达成率14.8%），退款压力大。
+        <b>📊 结构解读</b>：7月截止7/28毛到款¥31万（订金5笔¥16万 + 全款1笔¥15万(小屋)+OPC1笔¥1万）。全款大单：郑毅→郭进明¥15万（含75张卡）、OPC：百岁会员¥1万（AIOPC）。订金客户：蔡东辉→杨亚峰1¥10万、赵云峰→安东贤¥1万+李红伟¥1万、孙德国→未知1¥3万+未知2¥1万。退款¥18.7万（5笔：孙德国→汤春盛¥0.6万/吕建军¥13.5万/周俊东¥0.6万，赵云峰→缪金燕¥1万/张福利¥3万），净到款¥12.3万（达成率13.7%），退款压力大。
       </div>
     </div>
   </div>
@@ -299,7 +299,7 @@ span.clickable{cursor:pointer}
   <div class="panel-body">
     <div class="insight-box" style="margin-top:0">
       <b>P0 · 严重</b><br>
-      ① <b>目标大幅提升，月中进度偏低</b>：7月净到款目标90万，截止7/28到款12.3万（14.8%）。郑毅¥15万全款领跑、蔡东辉¥10万订金，但退款18.7万严重拖累（吕建军¥13.5万为最大笔），需月末冲刺+控制退款<br>
+      ① <b>目标大幅提升，月中进度偏低</b>：7月净到款目标90万，截止7/28到款12.3万（13.7%）。郑毅¥15万全款领跑、蔡东辉¥10万订金，但退款18.7万严重拖累（吕建军¥13.5万为最大笔），需月末冲刺+控制退款<br>
       ② <b>售卡目标480张，当前净30张</b>（售75退45，退卡占60%），需尽快补录并启动上会<br>
       ③ <b>引流上会24人（80%），7/24 OPC沙龙15人为主力，商机大会本月暂未安排<br><br>
       <b>P1 · 关注</b><br>
@@ -423,7 +423,7 @@ var funnelChart = initChart('chartFunnel',{
     type:'funnel',left:'15%',width:'70%',sort:'descending',gap:2,
     label:{show:true,position:'inside',fontSize:11,formatter:'{b} {c}人',cursor:'pointer'},
     data:[
-      {value:157,name:'7月线索',itemStyle:{color:blue}},
+      {value:205,name:'7月线索',itemStyle:{color:blue}},
       {value:80,name:'已联系',itemStyle:{color:'#4096ff'}},
       {value:30,name:'加微信',itemStyle:{color:amber}},
       {value:12,name:'加社群',itemStyle:{color:teal}},
@@ -459,7 +459,7 @@ initChart('chartRefund',{
   xAxis:{type:'category',data:['孙德国','赵云峰'],axisLabel:{color:textColor,fontSize:12},axisLine:{lineStyle:{color:axisColor}}},
   yAxis:{type:'value',name:'万元',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{lineStyle:{color:'#f0f0f0'}},max:14},
   series:[
-    {name:'退款金额(万)',type:'bar',data:[1.2,1.0],barWidth:48,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?red:'#ff7875'}},label:{show:true,position:'top',fontSize:12,fontWeight:'bold',color:red,formatter:'¥{c}万'}}
+    {name:'退款金额(万)',type:'bar',data:[14.7,4.0],barWidth:48,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?red:'#ff7875'}},label:{show:true,position:'top',fontSize:12,fontWeight:'bold',color:red,formatter:'¥{c}万'}}
   ]
 });
 
