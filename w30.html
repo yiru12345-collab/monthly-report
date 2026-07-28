@@ -484,13 +484,10 @@ window.showDetail = function(type) {
     table.appendChild(thead);
     var tbody = document.createElement('tbody');
     var rows = [
-      ['7/6（周一）', '3条', '政策补贴解读', '~2,100'],
-      ['7/7（周二）', '3条', '智能养生馆', '~4,800'],
-      ['7/8（周三）', '3条', 'OPC项目介绍', '~9,200'],
-      ['7/9（周四）', '3条', '新政策测试', '~15,600'],
-      ['7/10（周五）', '4条', '爆款内容（1w+）', '~34,000'],
-      ['7/11（周六）', '3条', '周末精选', '~12,500'],
-      ['7/12（周日）', '2条', '周总结', '~6,400']
+      ['7/20-7/26', '22条', 'AI智能养生·OPC·政策解读', '24,746'],
+      ['日均', '3.1条/天', '虎哥说养老/岚风聊AI等', '—'],
+      ['爆款', '4条', '1w+×1/2000+×1/1000+×2', '—'],
+      ['评论量', '607条', '互动活跃', '—']
     ];
     rows.forEach(function(r) {
       var tr = document.createElement('tr');
@@ -515,7 +512,7 @@ window.showDetail = function(type) {
       ['1w+（爆款）', '1条', '5.6%', '13,561次'],
       ['2000+（良好）', '1条', '5.6%', '2,326次'],
       ['1000+（及格）', '2条', '11.1%', '~3,216次'],
-      ['<1000（普通）', '14条', '77.8%', '~5,643次']
+      ['<1000（普通）', '18条', '81.8%', '~5,643次']
     ];
     rows.forEach(function(r) {
       var tr = document.createElement('tr');
@@ -526,7 +523,7 @@ window.showDetail = function(type) {
     box.appendChild(table);
     var tip = document.createElement('div');
     tip.style.cssText = 'margin-top:12px;padding:10px 14px;background:#e6f7ff;border-radius:6px;font-size:12px;color:#1677ff;line-height:1.7';
-    tip.innerHTML = '💡 <b>核心发现：</b>本周爆款视频（13,561播放）贡献了总播放量的54.8%，单条爆款对整体拉动作用显著。虽播放量较上周回落，但爆款占比（22.2%）保持稳定。';
+    tip.innerHTML = '💡 <b>核心发现：</b>本周爆款视频（13,561播放）贡献了总播放量的54.8%，单条爆款对整体拉动作用显著。虽播放量较上周回落，但爆款占比（18.2%）保持稳定。';
     box.appendChild(tip);
 
   } else if (type === 'avgViews') {
@@ -586,7 +583,7 @@ window.showDetail = function(type) {
     box.appendChild(tip);
 
   } else if (type === 'leadsCount') {
-    h3.innerHTML = '🎯 B端新增线索详情（7月累计74条）';
+    h3.innerHTML = '🎯 B端线索漏斗详情（W30：74条）';
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
@@ -614,7 +611,7 @@ window.showDetail = function(type) {
     box.appendChild(table);
 
   } else if (type === 'leadsCount2') {
-    h3.innerHTML = '📊 本周线索详情（7月累计74条）';
+    h3.innerHTML = '📊 本周线索详情（W30：74条）';
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
@@ -646,17 +643,17 @@ window.showDetail = function(type) {
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>加微率：</b>6/46 = 13.0%<br><b>主要限制：</b>周四加粉微信被举报封号，加微动作受阻，实际加微量低于正常水平<br><b>来源：</b>短视频留资 + 直播留资<br><b>改进：</b>解封主账号 + 启用备用号，目标加微率回升至30%+';
+    info.innerHTML = '<b>触达→加微：</b>43条触达 → 14人加微（转化率32.6%）<br><b>限制：</b>老账号封禁中，新账号每日触达上限低（3-5人/天）<br><b>退群：</b>5人<br><b>社群：</b>共计99人<br><b>来源：</b>短视频留资 + 直播留资';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>事项</th><th>数值</th><th>说明</th></tr>';
     table.appendChild(thead);
     var tbody = document.createElement('tbody');
     var rows = [
-      ['本周加微', '6人', '微信封号期间受限'],
-      ['加微率', '13.0%', '6/46'],
-      ['进群', '4人', '加微→进群 66.7%'],
-      ['待解封', '主账号', '周四被举报封号']
+      ['触达线索', '43条', 'W30窗口'],
+      ['加微信', '14人', '转化率32.6%'],
+      ['进群', '5人', '退群5人'],
+      ['社群总量', '99人', '累计']
     ];
     rows.forEach(function(r) {
       var tr = document.createElement('tr');
@@ -671,21 +668,21 @@ window.showDetail = function(type) {
     box.appendChild(tip);
 
   } else if (type === 'group') {
-    h3.innerHTML = '👥 进群详情（本周4人）';
+    h3.innerHTML = '👥 进群详情（W30：5人进群·5人退群）';
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>进群率：</b>4/6 = 66.7%（加微→进群转化健康）<br><b>进群时点：</b>加微后1-3天内完成<br><b>核心问题：</b>加微基数小（受微信封号影响），导致进群绝对数偏低';
+    info.innerHTML = '<b>进群：</b>5人（加微14人→进群5人，转化率35.7%）<br><b>退群：</b>5人（老账号封禁，新号触达受限导致信任度偏低）<br><b>净增：</b>0人<br><b>社群总量：</b>99人<br><b>核心问题：</b>进群绝对数低+退群高，账号封禁是根本原因';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>客户名</th><th>加微日期</th><th>进群日期</th><th>间隔</th><th>状态</th></tr>';
     table.appendChild(thead);
     var tbody = document.createElement('tbody');
     var rows = [
-      ['军哥孙立军', '7/1', '7/2', '1天', '<span class="tag-sm green">已进群</span>'],
-      ['调肤珍姐', '7/1', '7/3', '2天', '<span class="tag-sm green">已进群</span>'],
-      ['翟兄', '7/2', '7/4', '2天', '<span class="tag-sm green">已进群</span>'],
-      ['陈总', '7/3', '7/5', '2天', '<span class="tag-sm green">已进群</span>']
+      ['W30新增进群', '5人', '—', '—', '<span class="tag-sm green">已进群</span>'],
+      ['W30退群', '5人', '老账号封禁', '—', '<span class="tag-sm red">已退群</span>'],
+      ['进群率', '35.7%', '5/14', '—', '<span class="tag-sm blue">待提升</span>'],
+      ['社群总量', '99人', '累计', '—', '<span class="tag-sm blue">维持</span>']
     ];
     rows.forEach(function(r) {
       var tr = document.createElement('tr');
@@ -700,21 +697,21 @@ window.showDetail = function(type) {
     box.appendChild(tip);
 
   } else if (type === 'opc') {
-    h3.innerHTML = '🚀 OPC新注册详情（本周5人）';
+    h3.innerHTML = '🚀 OPC注册详情（7月累计：99人）';
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>OPC注册：</b>5人（本周微信封号期间，仍通过短视频/直播直接链路完成注册）<br><b>说明：</b>OPC注册不完全依赖"进群"环节，部分客户通过其他路径直接注册<br><b>待建：</b>进群后7天引导SOP，系统化提升OPC转化';
+    info.innerHTML = '<b>7月累计：</b>99人（上月对比数据待更新）<br><b>说明：</b>OPC注册不依赖"进群"环节，部分客户通过短视频/直播直接链路注册<br><b>下周重点：</b>针对OPC内容线上获客进行AI赋能尝试，测试是否可提升爆款数量并增加获客量';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>阶段</th><th>人数</th><th>说明</th></tr>';
     table.appendChild(thead);
     var tbody = document.createElement('tbody');
     var rows = [
-      ['本周线索', '46人', 'W28周线索'],
-      ['加微信', '6人', '13.0%（微信封号受限）'],
-      ['进群', '4人', '66.7%（加微→进群）'],
-      ['<b>OPC注册</b>', '<b>5人</b>', '<b>含直接链路注册</b>']
+      ['7月累计', '99人', 'OPC注册总人数'],
+      ['本周重点', '—', 'OPC内容AI赋能测试'],
+      ['目标', '—', '提升爆款+增加获客量'],
+      ['<b>状态</b>', '<b>进行中</b>', '<b>下周启动</b>']
     ];
     rows.forEach(function(r, idx) {
       var tr = document.createElement('tr');
@@ -858,7 +855,7 @@ initChart('chartVideoTrend', {
     { type: 'value', name: '播放', nameTextStyle: { color: textColor, fontSize: 11 }, axisLabel: { color: textColor, formatter: function(v) { return (v/10000).toFixed(1) + '万'; } }, splitLine: { show: false } }
   ],
   series: [
-    { name: '发布量', type: 'bar', data: [16, 21, 21, 18], barWidth: 20, itemStyle: { color: blue, borderRadius: [4, 4, 0, 0] }, label: { show: true, position: 'top', fontSize: 10, color: blue } },
+    { name: '发布量', type: 'bar', data: [16, 21, 21, 22], barWidth: 20, itemStyle: { color: blue, borderRadius: [4, 4, 0, 0] }, label: { show: true, position: 'top', fontSize: 10, color: blue } },
     { name: '总播放量', type: 'line', yAxisIndex: 1, data: [17728, 62999, 43127, 24746], lineStyle: { color: green, width: 2.5 }, symbol: 'circle', symbolSize: 6, itemStyle: { color: green }, label: { show: true, position: 'top', fontSize: 10, color: green, formatter: function(p) { return (p.value/10000).toFixed(1) + '万'; } } }
   ]
 });
