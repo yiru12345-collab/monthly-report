@@ -459,7 +459,7 @@ initChart('chartRefund',{
   xAxis:{type:'category',data:['孙德国(3客户)','赵云峰(2客户)'],axisLabel:{color:textColor,fontSize:11},axisLine:{lineStyle:{color:axisColor}}},
   yAxis:[
     {type:'value',name:'万元',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{lineStyle:{color:'#f0f0f0'}}},
-    {type:'value',name:'卡数',nameTextStyle:{color:amber,fontSize:11},axisLabel:{color:amber},splitLine:{show:false}}
+    {type:'value',name:'卡数',nameTextStyle:{color:amber,fontSize:11},axisLabel:{color:amber},splitLine:{show:false},max:70}
   ],
   series:[
     {name:'退款金额(万)',type:'bar',data:[14.7,4.0],barWidth:36,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?red:'#ff7875'}},label:{show:true,position:'top',fontSize:12,fontWeight:'bold',color:red,formatter:'¥{c}万'}},
