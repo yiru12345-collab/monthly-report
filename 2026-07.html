@@ -157,13 +157,13 @@ span.clickable{cursor:pointer}
   <div class="kpi-card">
     <div class="label">7月退款（万元）</div>
     <div class="value clickable" style="color:#cf1322" onclick="showDetail('refund')">18.7</div>
-    <div class="sub"><span class="tag tag-red">— 约2笔</span><span style="color:#8c8c8c">占毛到款7.3%</span></div>
-    <div class="bar-bg"><div class="bar-fill" style="width:7.3%;background:#ff4d4f"></div></div>
+    <div class="sub"><span class="tag tag-red">5笔</span><span style="color:#8c8c8c">占毛到款58.4%</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:58.4%;background:#ff4d4f"></div></div>
   </div>
   <div class="kpi-card">
-    <div class="label">售卖卡数（张）</div>
+    <div class="label">售卖净卡数（张）</div>
     <div class="value clickable" onclick="showDetail('cards')">30</div>
-    <div class="sub"><span class="tag tag-warn">6.25%</span><span style="color:#8c8c8c">目标480张</span></div>
+    <div class="sub"><span class="tag tag-warn">6.25%</span><span style="color:#8c8c8c">目标480张</span><span style="color:#cf1322">退卡45张</span></div>
     <div class="bar-bg"><div class="bar-fill" style="width:6.25%;background:#faad14"></div></div>
   </div>
   <div class="kpi-card">
@@ -176,7 +176,7 @@ span.clickable{cursor:pointer}
     <div class="label">7月OPC到款（万元）</div>
     <div class="value clickable" onclick="showDetail('opc')">1</div>
     <div class="sub"><span class="tag tag-warn">20%</span><span style="color:#8c8c8c">目标5万</span></div>
-    <div class="bar-bg"><div class="bar-fill" style="width:0%;background:#ff4d4f"></div></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:20%;background:#ff4d4f"></div></div>
   </div>
 </div>
 
@@ -579,18 +579,18 @@ window.goDetail = function showDetail(type, filter) {
     rows.push(['<b>合计</b>','','','<b>' + sum.toFixed(2) + '</b>','','','']);
   } else if (type === 'clue') {
     // show a summary note since full clue detail is too large to embed
-    var labels = {all:'全部约157条',contacted:'已联系约80条',wechat:'加微信约30条',group:'进群/重点约12条',intent:'意向确定约5条'};
+    var labels = {all:'全部205条',contacted:'已联系约40条',wechat:'加微信约30条',group:'进群/重点约12条',intent:'意向确定约6条'};
     var tips = {
-      all: '7月截止7/27累计约157条线索（W28 46条+W29 31条+月初80条），来自视频号/视频号直播/短视频，较6月（82条）增长约91%。具体每条线索明细请查阅智能表格"9-线索情况"。',
-      contacted: '已初步对接约80条线索（对接率~51%），大部分通过电话/微信沟通。W29加微受微信封号影响仅8人，新号已调通养号中。',
-      wechat: '加微信约30条，加微率~19%。需关注：微信被封号期间加微受限，新号养好后目标加微率回升至25%+。',
-      group: '进群或重点客户约12条，含W28/W29高意向客户。进群率偏低，需强化社群引导话术。',
-      intent: '意向确定约5条。W29产出2w+和1w+爆款各1条，直接带来高质量留资线索。'
+      all: '7月截止7/28累计205条线索（W29 31条+W30 74条+），来自视频号/视频号直播/短视频。较6月增长显著。具体每条线索明细请查阅智能表格"9-线索情况"。',
+      contacted: '已初步对接约40条（对接率~20%），主要为任一鑫和一茹完成。W30新老账号封禁影响加微和进群，新号养号中。',
+      wechat: '加微信约30条。需关注：微信被封号期间加微受限，新号养好后目标加微率回升至25%+。',
+      group: '进群或重点客户约12条，含W30高意向客户。进群率偏低，退群5人需关注账号恢复。',
+      intent: '意向确定约6条。W30产出加盟/开店/OPC代理等高价值线索，金马工艺、华姐等为重点跟进对象。'
     };
     title = '线索漏斗 · ' + labels[filter];
     document.getElementById('modalTitle').innerHTML = title;
     var h = '<div style="padding:16px;line-height:1.8;color:#333">' + tips[filter] + '</div>';
-    h += '<div style="padding:0 16px 12px;color:#8c8c8c;font-size:12px">📋 完整327条线索数据请查阅 Obsidian → 基础数据/11_9-线索情况.md</div>';
+    h += '<div style="padding:0 16px 12px;color:#8c8c8c;font-size:12px">📋 完整线索数据请查阅智能表格 → 9-线索情况</div>';
     document.getElementById('modalBody').innerHTML = h;
     document.getElementById('modalOverlay').classList.add('show');
     document.body.style.overflow = 'hidden';
@@ -620,7 +620,7 @@ window.goDetail = function showDetail(type, filter) {
     rows.push(['<b>合计</b>','','','<b>' + totalCards + '张</b>','<b>' + totalAmt.toFixed(2) + '</b>','','']);
   } else if (type === 'opc') {
     rows = detailData.payment.filter(function(r) { return r[6] === 'AIOPC'; });
-    title = '7月OPC到款明细（共' + rows.length + '笔，暂无OPC专属到款）';
+    title = '7月OPC到款明细（共' + rows.length + '笔，¥1万）';
     cols = ['日期','业务员','客户','金额(万)','款项','售卡','业务类型'];
     var sum = 0; rows.forEach(function(r) { sum += parseFloat(r[3]); });
     rows.push(['<b>合计</b>','','','<b>' + sum.toFixed(2) + '</b>','','','']);
