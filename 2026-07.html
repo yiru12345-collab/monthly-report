@@ -264,7 +264,7 @@ span.clickable{cursor:pointer}
     <div class="panel-header"><span>线索转化漏斗 · 7月</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartFunnel"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/27累计约157条线索（W28 46条+W29 31条+月初80条），加微信约30条（加微率~19%），进群~12条，意向确定~5条。加微受微信封号影响（W29仅8人加微），新号已调通养号中。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/28累计205条线索（W29 31条+W30 74条+），加微信约30条（加微率~19%），进群~12条，意向确定~5条。加微受微信封号影响（W29仅8人加微），新号已调通养号中。</div>
     </div>
   </div>
 </div>
@@ -447,8 +447,8 @@ initChart('chartPayment',{
     {type:'value',name:'客户数',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{show:false},max:8}
   ],
   series:[
-    {name:'到款金额(万)',type:'bar',data:[15,15],barWidth:32,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?amber:p.dataIndex===1?green:blue}},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',formatter:'¥{c}万'}},
-    {name:'客户数',type:'bar',data:[4,1],barWidth:32,yAxisIndex:1,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?'#ffe58f':p.dataIndex===1?'#b7eb8f':'#91caff'}},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',formatter:'{c}人'}}
+    {name:'到款金额(万)',type:'bar',data:[16,15],barWidth:32,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?amber:p.dataIndex===1?green:blue}},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',formatter:'¥{c}万'}},
+    {name:'客户数',type:'bar',data:[5,1],barWidth:32,yAxisIndex:1,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?'#ffe58f':p.dataIndex===1?'#b7eb8f':'#91caff'}},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',formatter:'{c}人'}}
   ]
 });
 
