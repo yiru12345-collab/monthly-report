@@ -228,24 +228,24 @@ span.clickable{cursor:pointer}
     </div>
   </div>
   <div class="panel">
-    <div class="panel-header"><span>7月退款结构 · 按人 & 按客户</span><span style="font-size:11px;color:#cf1322;font-weight:400">截止7/28退款¥18.7万</span></div>
+    <div class="panel-header"><span>7月退款结构 · 按人 & 按客户</span><span style="font-size:11px;color:#cf1322;font-weight:400">截止7/28退款¥18.7万 · 退卡49张</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartRefund"></div>
       <div class="refund-table-wrap" style="margin-top:12px">
         <table class="refund-table">
-          <thead><tr><th>日期</th><th>业务人员</th><th>客户</th><th>金额</th><th>原款项</th><th>原到款月</th></tr></thead>
+          <thead><tr><th>日期</th><th>业务人员</th><th>客户</th><th>金额</th><th>退卡</th><th>原款项</th><th>原到款月</th></tr></thead>
           <tbody>
-            <tr><td>7/7</td><td>孙德国</td><td>汤春盛</td><td style="color:#cf1322">¥0.60万</td><td>全款</td><td>5月</td></tr>
-            <tr><td>7/7</td><td>赵云峰</td><td>缪金燕</td><td style="color:#cf1322">¥1.00万</td><td>订金</td><td>5月</td></tr>
-            <tr><td>7/14</td><td>孙德国</td><td>周俊东</td><td style="color:#cf1322">¥0.60万</td><td>产品</td><td>6月</td></tr>
-            <tr><td>7/17</td><td>赵云峰</td><td>张福利</td><td style="color:#cf1322">¥3.00万</td><td>订金</td><td>5月</td></tr>
-            <tr><td>7/21</td><td>孙德国</td><td>吕建军</td><td style="color:#cf1322">¥13.50万</td><td>全款</td><td>6月</td></tr>
-            <tr style="font-weight:700"><td colspan="3">合计</td><td style="color:#cf1322">¥18.70万</td><td colspan="2"></td></tr>
+            <tr><td>7/7</td><td>孙德国</td><td>汤春盛</td><td style="color:#cf1322">¥0.60万</td><td>2张</td><td>全款</td><td>5月</td></tr>
+            <tr><td>7/7</td><td>赵云峰</td><td>缪金燕</td><td style="color:#cf1322">¥1.00万</td><td>0</td><td>订金</td><td>5月</td></tr>
+            <tr><td>7/14</td><td>孙德国</td><td>周俊东</td><td style="color:#cf1322">¥0.60万</td><td>2张</td><td>产品</td><td>6月</td></tr>
+            <tr><td>7/17</td><td>赵云峰</td><td>张福利</td><td style="color:#cf1322">¥3.00万</td><td>0</td><td>订金</td><td>5月</td></tr>
+            <tr><td>7/21</td><td>孙德国</td><td>吕建军</td><td style="color:#cf1322">¥13.50万</td><td>45张</td><td>全款</td><td>6月</td></tr>
+            <tr style="font-weight:700"><td colspan="3">合计</td><td style="color:#cf1322">¥18.70万</td><td>49张</td><td colspan="2"></td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight-box" style="margin-top:12px">
-        <b>📊 解析</b>：7月退款¥18.7万（5笔）：孙德国→汤春盛¥0.6万（5月全款退）+吕建军¥13.5万（6月全款退）+周俊东¥0.6万（6月产品退），赵云峰→缪金燕¥1万（5月订金退）+张福利¥3万（5月订金退）。退费率58.4%，金额高需重点关注吕建军（¥13.5万）退回原因。
+        <b>📊 解析</b>：7月退款¥18.7万（5笔，退卡49张）：孙德国3笔¥14.7万（退卡49张：吕建军45+汤春盛2+周俊东2），赵云峰2笔¥4.0万（无卡）。退费率58.4%，吕建军单笔¥13.5万+45卡为最大退款，需重点关注退回原因。
 </div>
     </div>
   </div>
@@ -452,14 +452,18 @@ initChart('chartPayment',{
   ]
 });
 
-// Refund chart — by person (legend hidden — xAxis labels suffice)
+// Refund chart — by person with cards + clients
 initChart('chartRefund',{
   tooltip:{trigger:'axis',axisPointer:{type:'shadow'}},
-  grid:{left:60,right:30,top:16,bottom:24},
-  xAxis:{type:'category',data:['孙德国','赵云峰'],axisLabel:{color:textColor,fontSize:12},axisLine:{lineStyle:{color:axisColor}}},
-  yAxis:{type:'value',name:'万元',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{lineStyle:{color:'#f0f0f0'}},max:14},
+  grid:{left:60,right:60,top:16,bottom:28},
+  xAxis:{type:'category',data:['孙德国(3客户)','赵云峰(2客户)'],axisLabel:{color:textColor,fontSize:11},axisLine:{lineStyle:{color:axisColor}}},
+  yAxis:[
+    {type:'value',name:'万元',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{lineStyle:{color:'#f0f0f0'}}},
+    {type:'value',name:'卡数',nameTextStyle:{color:amber,fontSize:11},axisLabel:{color:amber},splitLine:{show:false}}
+  ],
   series:[
-    {name:'退款金额(万)',type:'bar',data:[14.7,4.0],barWidth:48,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?red:'#ff7875'}},label:{show:true,position:'top',fontSize:12,fontWeight:'bold',color:red,formatter:'¥{c}万'}}
+    {name:'退款金额(万)',type:'bar',data:[14.7,4.0],barWidth:36,itemStyle:{borderRadius:[4,4,0,0],color:function(p){return p.dataIndex===0?red:'#ff7875'}},label:{show:true,position:'top',fontSize:12,fontWeight:'bold',color:red,formatter:'¥{c}万'}},
+    {name:'退卡数(张)',type:'bar',data:[49,0],barWidth:36,yAxisIndex:1,itemStyle:{color:amber,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:11,fontWeight:'bold',color:amber,formatter:'{c}张'}}
   ]
 });
 
