@@ -150,9 +150,9 @@ span.clickable{cursor:pointer}
 <div class="kpis">
   <div class="kpi-card">
     <div class="label">小屋净到款（万元）</div>
-    <div class="value clickable" onclick="showDetail('payment')">13.3</div>
-    <div class="sub"><span class="tag tag-danger">14.8%</span><span style="color:#8c8c8c">目标90万</span><span style="color:#cf1322;font-size:11px">退款¥18.7万</span></div>
-    <div class="bar-bg"><div class="bar-fill" style="width:14.8%;background:#1677ff"></div></div>
+    <div class="value clickable" onclick="showDetail('payment')">12.3</div>
+    <div class="sub"><span class="tag tag-danger">13.7%</span><span style="color:#8c8c8c">目标90万</span><span style="color:#cf1322;font-size:11px">退款¥18.7万</span></div>
+    <div class="bar-bg"><div class="bar-fill" style="width:13.7%;background:#1677ff"></div></div>
   </div>
   <div class="kpi-card">
     <div class="label">7月退款（万元）</div>
@@ -174,8 +174,8 @@ span.clickable{cursor:pointer}
   </div>
   <div class="kpi-card">
     <div class="label">7月OPC到款（万元）</div>
-    <div class="value clickable" onclick="showDetail('opc')">0</div>
-    <div class="sub"><span class="tag tag-down">0%</span><span style="color:#8c8c8c">目标5万</span></div>
+    <div class="value clickable" onclick="showDetail('opc')">1</div>
+    <div class="sub"><span class="tag tag-warn">20%</span><span style="color:#8c8c8c">目标5万</span></div>
     <div class="bar-bg"><div class="bar-fill" style="width:0%;background:#ff4d4f"></div></div>
   </div>
 </div>
@@ -194,7 +194,7 @@ span.clickable{cursor:pointer}
     </div>
     <div class="panel-body">
       <div class="chart-box" id="chartTrend"></div>
-      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/28净到款13.3万（达成率14.8%），7笔到款（全款2笔¥16万+订金5笔¥16万）。引流24人（80%）已接近目标。4-7月趋势：到款52.4→61.11→64.1→13.3万，7月退款大增（5笔¥18.7万），净到款承压。</div>
+      <div class="insight-box" style="margin-top:8px"><b>📊 解析</b>：7月截止7/28净到款12.3万（达成率13.7%），6笔到款（全款1笔¥15万+订金5笔¥16万）。引流24人（80%）已接近目标。4-7月趋势：到款52.4→61.11→64.1→13.3万，7月退款大增（5笔¥18.7万），净到款承压。</div>
     </div>
   </div>
   <div class="panel">
@@ -215,7 +215,7 @@ span.clickable{cursor:pointer}
 <!-- 到款结构 + 退款结构 -->
 <div class="row3">
   <div class="panel">
-    <div class="panel-header"><span>7月到款结构 · 按款项类型 × 客户数</span><span style="font-size:11px;color:#8c8c8c;font-weight:400">毛到款¥32万（截止7/28）</span></div>
+    <div class="panel-header"><span>7月到款结构 · 按款项类型 × 客户数</span><span style="font-size:11px;color:#8c8c8c;font-weight:400">毛到款¥31万（截止7/28）</span></div>
     <div class="panel-body">
       <div class="chart-box-sm" id="chartPayment"></div>
       <div class="grid-3" style="margin-top:0">
@@ -223,7 +223,7 @@ span.clickable{cursor:pointer}
         <div class="metric-sm"><div class="val clickable" style="color:#52c41a;cursor:pointer" onclick="showDetail('payment','全款')">¥15.0万</div><div class="lbl">全款 · 1客户 · 1笔</div></div>
       </div>
       <div class="insight-box" style="margin-top:12px">
-        <b>📊 结构解读</b>：7月截止7/28毛到款¥32万（订金5笔¥16万 + 全款2笔¥16万）。全款大单：郑毅→郭进明¥15万（含75张卡）、百岁会员¥1万。订金客户：蔡东辉→杨亚峰1¥10万、赵云峰→安东贤¥1万+李红伟¥1万、孙德国→未知1¥3万+未知2¥1万。退款¥18.7万（5笔：孙德国→汤春盛¥0.6万/吕建军¥13.5万/周俊东¥0.6万，赵云峰→缪金燕¥1万/张福利¥3万），净到款¥13.3万（达成率14.8%），退款压力大。
+        <b>📊 结构解读</b>：7月截止7/28毛到款¥31万（订金5笔¥16万 + 全款2笔¥16万）。全款大单：郑毅→郭进明¥15万（含75张卡）、OPC：百岁会员¥1万（AIOPC）。订金客户：蔡东辉→杨亚峰1¥10万、赵云峰→安东贤¥1万+李红伟¥1万、孙德国→未知1¥3万+未知2¥1万。退款¥18.7万（5笔：孙德国→汤春盛¥0.6万/吕建军¥13.5万/周俊东¥0.6万，赵云峰→缪金燕¥1万/张福利¥3万），净到款¥13.3万（达成率14.8%），退款压力大。
       </div>
     </div>
   </div>
@@ -299,16 +299,16 @@ span.clickable{cursor:pointer}
   <div class="panel-body">
     <div class="insight-box" style="margin-top:0">
       <b>P0 · 严重</b><br>
-      ① <b>目标大幅提升，月中进度偏低</b>：7月净到款目标90万，截止7/28到款13.3万（14.8%）。郑毅¥15万全款领跑、蔡东辉¥10万订金，但退款18.7万严重拖累（吕建军¥13.5万为最大笔），需月末冲刺+控制退款<br>
+      ① <b>目标大幅提升，月中进度偏低</b>：7月净到款目标90万，截止7/28到款12.3万（14.8%）。郑毅¥15万全款领跑、蔡东辉¥10万订金，但退款18.7万严重拖累（吕建军¥13.5万为最大笔），需月末冲刺+控制退款<br>
       ② <b>售卡目标480张，智能表格暂未完全录入</b>（当前可见75张），需尽快补录并启动上会<br>
       ③ <b>引流上会24人（80%），7/24 OPC沙龙15人为主力，商机大会本月暂未安排<br><br>
       <b>P1 · 关注</b><br>
-      ① OPC到款目标5万，截止7/28为0，7月注册99人需加速OPC客户转化<br>
+      ① OPC到款目标5万，截止7/28为1万（百岁会员/AIOPC），7月注册99人需加速OPC客户转化<br>
       ② 7月线索累计约157条，加微受微信封号影响（W29仅8人），新号养号中<br>
       ③ 大兴兴悦居7月暂无扫码，活跃度需关注<br>
       ④ 黄佳佳截至目前7月到款为0（但引流贡献6人），需推动到款转化<br><br>
       <b>7月行动建议</b><br>
-      ▸ 月末冲刺：推进赵云峰/孙德国订金客户转全款，目标月底前净到款冲20万<br>
+      ▸ 月末冲刺：推进赵云峰/孙德国订金客户转全款，目标月底前净到款冲15万<br>
       ▸ 引导上会：7月最后几天安排1场商机大会，冲击引流30人目标<br>
       ▸ 新号加微恢复：微信新号养好后快速拉升加微率至25%+<br>
       ▸ 黄佳佳推动到款：引流6人但到款为0，需强化成交SOP<br>
@@ -336,7 +336,7 @@ span.clickable{cursor:pointer}
 </div>
 
 <div class="footnote">
-  <b>数据口径说明</b>：KPI到款为净到款（毛32万-退款18.7万=13.3万），引流上会为自然人口径（24人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为7月单月数据（截止7/28，205条），非历史累计。短视频7月164条，直播约21场。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.28-1630 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
+  <b>数据口径说明</b>：KPI到款为净到款（毛31万-退款18.7万=12.3万），引流上会为自然人口径（24人），趋势图同口径。业务人员表格到款为毛到款口径。线索漏斗为7月单月数据（截止7/28，205条），非历史累计。短视频7月164条，直播约21场。数据来源：健康小屋-BI.xlsx。<br><span style="color:#bbb;font-size:10px">版本 v2026.07.28-1630 | 完整交互版：KPI/业务人员/线索漏斗均可点击查看明细</span>
 </div>
 
 </div>
@@ -362,7 +362,7 @@ initChart('chartTrend',{
     {type:'value',name:'张/人',nameTextStyle:{color:textColor,fontSize:11},axisLabel:{color:textColor},splitLine:{show:false}}
   ],
   series:[
-    {name:'小屋净到款',type:'bar',data:[52.4,61.11,64.1,13.3],barWidth:18,itemStyle:{color:blue,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:blue,formatter:'{c}万'}},
+    {name:'小屋净到款',type:'bar',data:[52.4,61.11,64.1,12.3],barWidth:18,itemStyle:{color:blue,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:blue,formatter:'{c}万'}},
     {name:'售卡数',type:'bar',data:[46,181,155,75],barWidth:18,itemStyle:{color:amber,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:amber}},
     {name:'引流上会(自然人)',type:'bar',data:[17,27,23,24],barWidth:18,itemStyle:{color:teal,borderRadius:[4,4,0,0]},label:{show:true,position:'top',fontSize:10,color:teal}},
     {name:'到款目标',type:'line',data:[20,50,65,90],lineStyle:{color:blue,type:'dashed',width:1.5},symbol:'none',yAxisIndex:0},
