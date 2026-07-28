@@ -242,19 +242,19 @@ td.red{color:#ff4d4f;font-weight:600}
 <div class="panel">
   <div class="panel-header">
     <h2>线索转化漏斗 · 本周 B端链路</h2>
-    <span class="subtitle">W30线索累计74条 · 触达43条</span>
+    <span class="subtitle">W30线索累计74条 · 初步对接17条</span>
   </div>
   <div class="grid-2">
     <div class="chart-box lg" id="chartFunnel"></div>
     <div>
       <div class="grid-2" style="margin-bottom:12px">
         <div class="metric-box"><div class="val clickable" style="color:#1677ff;cursor:pointer" onclick="showDetail('leadsCount2')">74</div><div class="lbl">本周线索</div><div class="chg">7月累计203条</div></div>
-        <div class="metric-box"><div class="val clickable" style="color:#13c2c2;cursor:pointer" onclick="showDetail('wechat')">14</div><div class="lbl">加微信</div><div class="chg">触达43条</div></div>
+        <div class="metric-box"><div class="val clickable" style="color:#13c2c2;cursor:pointer" onclick="showDetail('wechat')">14</div><div class="lbl">加微信</div><div class="chg">初步对接17条</div></div>
         <div class="metric-box"><div class="val clickable" style="color:#faad14;cursor:pointer" onclick="showDetail('group')">5</div><div class="lbl">进群</div><div class="chg">退群5人</div></div>
         <div class="metric-box"><div class="val clickable" style="color:#ff4d4f;cursor:pointer" onclick="showDetail('opc')">99</div><div class="lbl">OPC注册(7月)</div><div class="chg">累计</div></div>
       </div>
       <div class="insight-box info">
-        <b>📊 漏斗解析</b>：7月累计B端线索74条（来自直播8条）。触达43条→加微14人（转化率32.6%）→进群5人→高价值2条。<b style="color:#faad14">老账号封禁</b>，新账号每日触达上限低，本周退群5人。
+        <b>📊 漏斗解析</b>：7月累计B端线索74条（来自直播8条）。初步对接17条→加微14人→进群5人→高价值2条。社群同事统计本周主动触达43条（含电话+微信）。<b style="color:#faad14">老账号封禁</b>，新账号每日触达上限低，本周退群5人。
       </div>
     </div>
   </div>
@@ -643,14 +643,14 @@ window.showDetail = function(type) {
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>触达→加微：</b>43条触达 → 14人加微（转化率32.6%）<br><b>限制：</b>老账号封禁中，新账号每日触达上限低（3-5人/天）<br><b>退群：</b>5人<br><b>社群：</b>共计99人<br><b>来源：</b>短视频留资 + 直播留资';
+    info.innerHTML = '<b>初步对接→加微：</b>17条初步对接 → 14人加微（转化率82.4%）<br><b>限制：</b>老账号封禁中，新账号每日触达上限低（3-5人/天）<br><b>退群：</b>5人<br><b>社群：</b>共计99人<br><b>来源：</b>短视频留资 + 直播留资';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>事项</th><th>数值</th><th>说明</th></tr>';
     table.appendChild(thead);
     var tbody = document.createElement('tbody');
     var rows = [
-      ['触达线索', '43条', 'W30窗口'],
+      ['初步对接', '17条', '表格标签'],
       ['加微信', '14人', '转化率32.6%'],
       ['进群', '5人', '退群5人'],
       ['社群总量', '99人', '累计']
@@ -904,7 +904,7 @@ initChart('chartFunnel', {
     label: { show: true, position: 'inside', fontSize: 12, formatter: '{b} {c}人', color: '#fff' },
     labelLine: { show: false },
     data: [
-      { value: 43, name: '触达线索', itemStyle: { color: blue } },
+      { value: 17, name: '初步对接', itemStyle: { color: blue } },
       { value: 14, name: '加微(32.6%)', itemStyle: { color: teal } },
       { value: 5, name: '进群(11.6%)', itemStyle: { color: amber } }
     ]
