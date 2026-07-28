@@ -223,7 +223,7 @@ td.red{color:#ff4d4f;font-weight:600}
   <div class="chart-box xl" id="chartLiveTrend"></div>
   <div class="grid-2" style="margin-top:14px">
     <table>
-      <thead><tr><th>指标</th><th>本周(W29)</th><th>上周(W28)</th><th>环比</th></tr></thead>
+      <thead><tr><th>指标</th><th>本周(W30)</th><th>上周(W29)</th><th>环比</th></tr></thead>
       <tbody>
         <tr><td>B端场次</td><td class="hl">3场</td><td>1场</td><td class="up">+200%</td></tr>
         <tr><td>B端总观看</td><td class="hl">654人</td><td>312人</td><td class="up">+109.6%</td></tr>
@@ -263,7 +263,7 @@ td.red{color:#ff4d4f;font-weight:600}
     <div class="panel-header"><h2>近6周线索数量趋势</h2></div>
     <div class="chart-box" id="chartLeadsTrend"></div>
     <div class="insight-box" style="margin-top:10px">
-      <b>📊 趋势洞察</b>：线索量W29达31条，W30跃升至74条（↑+138.7%），7月累计203条（含直播来源8条）。短视频持续放量（22条），直播恢复至5场/周。根据实际内容策略调整，<b style="color:#1677ff">线索质量有所提升</b>，累计25条优质线索，本周高价值线索2条（加盟/设备各1）。
+      <b>📊 趋势洞察</b>：线索量W29为31条，W30跃升至74条（↑+138.7%），W23-W30累计241条（含直播来源8条）。短视频持续放量（22条），直播恢复至5场/周。根据实际内容策略调整，<b style="color:#1677ff">线索质量有所提升</b>，累计25条优质线索，本周高价值线索2条（加盟/设备各1）。
     </div>
   </div>
 </div>
@@ -583,23 +583,23 @@ window.showDetail = function(type) {
     box.appendChild(tip);
 
   } else if (type === 'leadsCount') {
-    h3.innerHTML = '🎯 B端线索漏斗详情（W30：74条）';
+    h3.innerHTML = '🎯 B端线索漏斗详情（W30：74条 · 累计241）';
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>7月累计：</b>203条B端线索<br><b>W30本周：</b>74条（W29: 31条，↑ +138.7%）<br><b>初步对接：</b>17条（23.0%，W29: 5条/16.1%）<br><b>加微信→进群：</b>14人→5人（退群5人，老账号封禁新号触达受限）<br><b>高价值线索：</b>2条（加盟/设备各1）<br><b>来源：</b>视频号66条 + 视频号直播8条';
+    info.innerHTML = '<b>累计：</b>241条B端线索（W23-W30）<br><b>W30本周：</b>74条（W29: 31条，↑ +138.7%）<br><b>初步对接：</b>17条（23.0%，W29: 5条/16.1%）<br><b>加微信→进群：</b>14人→5人（退群5人，老账号封禁新号触达受限）<br><b>高价值线索：</b>2条（加盟/设备各1）<br><b>来源：</b>视频号66条 + 视频号直播8条';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>周次</th><th>线索数</th><th>环比</th><th>累计</th></tr>';
     table.appendChild(thead);
     var tbody = document.createElement('tbody');
     var rows = [
-      ['W23（6.1-7）', '16条', '▲ +700%', '18条'],
-      ['W24（6.8-14）', '12条', '▼ -25.0%', '30条'],
-      ['W25（6.15-21）', '19条', '▲ +58.3%', '49条'],
-      ['W26（6.22-28）', '35条', '▲ +84.2%', '84条'],
-      ['W28（7.6-7.12）', '46条', '▲ +17.9%', '130条'],
-      ['<b>W30（7.20-7.26）</b>', '<b>74条</b>', '<b>↑ +138.7%</b>', '<b>203条(月累)</b>']
+      ['W23（6.1-7）', '16条', '—', '16条'],
+      ['W24（6.8-14）', '12条', '▼ -25.0%', '28条'],
+      ['W25（6.15-21）', '19条', '▲ +58.3%', '47条'],
+      ['W26（6.22-28）', '35条', '▲ +84.2%', '82条'],
+      ['W28（7.6-7.12）', '43条', '▲ +10.3%', '125条'],
+      ['<b>W30（7.20-7.26）</b>', '<b>74条</b>', '<b>▲ +138.7%</b>', '<b>241条(累计)</b>']
     ];
     rows.forEach(function(r, idx) {
       var tr = document.createElement('tr');
@@ -615,19 +615,19 @@ window.showDetail = function(type) {
     box.appendChild(h3);
     var info = document.createElement('div');
     info.style.cssText = 'font-size:13px;color:#595959;margin-bottom:12px;line-height:1.8';
-    info.innerHTML = '<b>7月累计：</b>203条B端线索<br><b>W30本周：</b>74条（W29: 31条，↑ +138.7%）<br><b>初步对接：</b>17条（23.0%）→ 加微14人 → 进群5人<br><b>高价值线索：</b>2条（加盟/设备各1）<br><b>来源：</b>视频号66条+直播8条<br><b>下周重点：</b>OPC内容AI赋能、爆款测试';
+    info.innerHTML = '<b>累计：</b>241条B端线索（W25-W30累计）<br><b>W30本周：</b>74条（W29: 31条，↑ +138.7%）<br><b>初步对接：</b>17条（23.0%）→ 加微14人 → 进群5人<br><b>高价值线索：</b>2条（加盟/设备各1）<br><b>来源：</b>视频号66条+直播8条<br><b>下周重点：</b>OPC内容AI赋能、爆款测试';
     box.appendChild(info);
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th>周次</th><th>线索数</th><th>环比</th><th>累计</th><th>趋势</th></tr>';
     table.appendChild(thead);
     var tbody = document.createElement('tbody');
     var rows = [
-      ['W25（6.15-21）', '19条', '▲ +58.3%', '49条', '▅'],
-      ['W26（6.22-28）', '35条', '▲ +84.2%', '84条', '▇'],
-      ['W27（6.29-7.5）', '39条', '▲ +11.4%', '123条', '▇'],
-      ['W28（7.6-7.12）', '46条', '▲ +17.9%', '169条', '▇'],
-      ['W29（7.13-7.19）', '74条', '▲ +60.9%', '243条', '▇'],
-      ['<b>W30（7.20-7.26）</b>', '<b>74条</b>', '<b>↑ +138.7%</b>', '<b>203条(月累)</b>', '<b>▇</b>']
+      ['W25（6.15-21）', '19条', '—', '19条', '▅'],
+      ['W26（6.22-28）', '35条', '▲ +84.2%', '54条', '▇'],
+      ['W27（6.29-7.5）', '39条', '▲ +11.4%', '93条', '▇'],
+      ['W28（7.6-7.12）', '43条', '▲ +10.3%', '136条', '▇'],
+      ['W29（7.13-7.19）', '31条', '▼ -27.9%', '167条', '▃'],
+      ['<b>W30（7.20-7.26）</b>', '<b>74条</b>', '<b>▲ +138.7%</b>', '<b>241条(累计)</b>', '<b>▇</b>']
     ];
     rows.forEach(function(r, idx) {
       var tr = document.createElement('tr');
