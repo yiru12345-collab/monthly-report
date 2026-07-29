@@ -323,6 +323,22 @@
     background: #FFFFFF;
   }
   .case-video video { width: 100%; display: block; border-radius: 0 0 10px 10px; }
+  .case-gallery {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+    margin: 6px 0;
+  }
+  .case-gallery .gimg {
+    background: #FFFFFF; border: 1px solid #E3DED4; border-radius: 8px;
+    overflow: hidden;
+  }
+  .case-gallery .gimg .gi {
+    width: 100%; display: block; object-fit: cover; aspect-ratio: 16/10;
+    border-bottom: 1px solid #EFEAE0;
+  }
+  .case-gallery .gimg .gl {
+    padding: 6px 10px; font-size: 11px; color: #5A6B7E;
+    letter-spacing: 0.5px; text-align: center; background: #FAF8F3;
+  }
   .case-card {
     display: flex; align-items: center; gap: 10px;
     padding: 13px 16px; margin: 6px 0;
@@ -496,6 +512,13 @@
         <div class="pipe-node">结构化生成</div>
         <span class="pipe-arr">→</span>
         <div class="pipe-node">企微触达</div>
+      </div>
+      <h4>案例演示：日报自动化全流程截图</h4>
+      <div class="case-gallery">
+        <div class="gimg"><img class="gi" src="images/L2_1.png" alt="日报案例1"><div class="gl">企微群日报卡片推送效果</div></div>
+        <div class="gimg"><img class="gi" src="images/L2_2.png" alt="日报案例2"><div class="gl">智能表格自动取数数据源</div></div>
+        <div class="gimg"><img class="gi" src="images/L2_3.png" alt="日报案例3"><div class="gl">多维度指标计算与红黄绿预警</div></div>
+        <div class="gimg"><img class="gi" src="images/L2_4.png" alt="日报案例4"><div class="gl">目标达成率进度追踪</div></div>
       </div>
       <h4>已实现成效</h4>
       <div class="kpi-row">
