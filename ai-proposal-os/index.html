@@ -313,6 +313,16 @@
   }
 
   /* ── 案例卡片 ── */
+  .case-video {
+    margin: 10px 0 4px; background: #FAF8F3; border: 1px solid #E3DED4;
+    border-radius: 10px; overflow: hidden;
+  }
+  .case-video .vid-label {
+    padding: 9px 16px; font-size: 11.5px; color: #A8842C;
+    letter-spacing: 1.5px; font-weight: 600; border-bottom: 1px solid #E3DED4;
+    background: #FFFFFF;
+  }
+  .case-video video { width: 100%; display: block; border-radius: 0 0 10px 10px; }
   .case-card {
     display: flex; align-items: center; gap: 10px;
     padding: 13px 16px; margin: 6px 0;
@@ -445,6 +455,13 @@
         <div class="pipe-node">自动化催报</div>
         <span class="pipe-arr">→</span>
         <div class="pipe-node">自动校验</div>
+      </div>
+      <h4>案例演示：截-识-入 全流程实况</h4>
+      <div class="case-video">
+        <div class="vid-label">▶ 一线人员企微发截图 → AI OCR 识别 → 智能表格自动入库（实机录屏）</div>
+        <video controls preload="metadata">
+          <source src="L1_demo.mp4" type="video/mp4">
+        </video>
       </div>
       <h4>已实现成效</h4>
       <div class="kpi-row">
