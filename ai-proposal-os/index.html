@@ -232,6 +232,29 @@
   .method-card p { font-size: 13px; color: #5A6B7E; line-height: 1.9; }
   .method-card p b { color: #0B1F3A; font-weight: 600; }
 
+  /* ── 技术路径管线 ── */
+  .pipe {
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
+    background: #FAF8F3;
+    border: 1px solid #E3DED4;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 12.5px;
+  }
+  .pipe-node {
+    background: #FFFFFF; border: 1.5px solid #D3CFC5;
+    border-radius: 7px; padding: 7px 13px;
+    font-weight: 600; color: #0B1F3A;
+    white-space: nowrap; letter-spacing: 0.5px;
+  }
+  .pipe-node.hl {
+    background: #0B1F3A; color: #F4F1EB; border-color: #0B1F3A;
+  }
+  .pipe-arr {
+    color: #A8842C; font-weight: 700; font-size: 15px;
+  }
+
   /* ── 复刻矩阵 ── */
   .matrix-table { width: 100%; border-collapse: collapse; background: #FFFFFF; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 16px rgba(11,31,58,0.05); margin-bottom: 24px; font-size: 12.5px; border: 1px solid #E3DED4; }
   .matrix-table th { background: #0B1F3A; color: #F4F1EB; padding: 13px 10px; font-weight: 600; text-align: center; font-size: 12px; letter-spacing: 1px; }
@@ -412,6 +435,17 @@
         <div class="box out"><div class="lbl">↓ 下游输出 →</div><div class="val">腾讯文档智能表格 · 全业务线结构化数据底座（供 L2/L3 读取）</div></div>
       </div>
       <p>一线人员仅需将业绩凭证发送至企微群，机器人基于 <b>WebSocket 长连接 7×24h 在线实时接收</b>，多模态 AI OCR 结构化抽取金额、客户、卡项等字段，经 Webhook 实时写入智能表格对应子表；8 项编排任务定时催报，多源交叉校验自动标注异动数据，实现非结构化凭证到结构化数据资产的原生转化。</p>
+      <div class="pipe">
+        <div class="pipe-node hl">截图采集</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node hl">AI·OCR 识别</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node hl">智能表格入库</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">自动化催报</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">自动校验</div>
+      </div>
       <h4>已实现成效</h4>
       <div class="kpi-row">
         <div class="kpi-item"><div class="num">100%</div><div class="label">数据治理合规度（原约70%）</div></div>
@@ -437,6 +471,15 @@
         <div class="box out"><div class="lbl">↓ 下游输出 →</div><div class="val">每日结构化日报卡片（触达企微）+ 供 L3 汇总的日报数据</div></div>
       </div>
       <p>编排任务每日定时读取智能表格数据底座，自动完成达成率计算、环比趋势分析、<b>红黄绿三级阈值监控与异动高亮</b>，按固定模板输出日报卡片（KPI 摘要 + 达成进度条 + 异动清单），即时触达企微管理群。管理层移动端即可获取当日经营全貌，实现<b>从「事后追溯」到「当日预警」的决策范式转换</b>。</p>
+      <div class="pipe">
+        <div class="pipe-node hl">定时取数</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node hl">多维计算</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">结构化生成</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">企微触达</div>
+      </div>
       <h4>已实现成效</h4>
       <div class="kpi-row">
         <div class="kpi-item"><div class="num">5min</div><div class="label">日报编制耗时（原2h/天）</div></div>
@@ -462,6 +505,15 @@
         <div class="box out"><div class="lbl">↓ 下游输出 →</div><div class="val">交互式经营决策驾驶舱（ECharts HTML + GitHub Pages 永久外链）</div></div>
       </div>
       <p>自动取数 → KPI 智能计算（达成率 + 红黄绿阈值）→ ECharts 交互呈现（KPI 卡片 + 10+ 趋势图 + 可点击穿透明细）→ GitHub Pages 一键外链部署。管理层移动端浏览器即可随时访问，<b>零权限、零安装</b>，完全替代商业 BI 套件，实现经营决策驾驶舱的<b>自助化交付</b>。</p>
+      <div class="pipe">
+        <div class="pipe-node hl">自动取数</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node hl">KPI 智能计算</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">ECharts 交互呈现</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">GitHub Pages 永久外链</div>
+      </div>
       <h4>已实现成效</h4>
       <div class="kpi-row">
         <div class="kpi-item"><div class="num">2h</div><div class="label">月报编制耗时（原3天）</div></div>
@@ -509,6 +561,15 @@
         <div class="box out"><div class="lbl">↓ 下游输出 →</div><div class="val">标签化知识卡片 → 支撑 L1-L3 的 AI 语义理解与智能生成</div></div>
       </div>
       <p>四通道自动采集入库，ClaudeCode 自动生成标准化 frontmatter（标题/类型/标签/关联文档），文件名关键词自动路由子目录，构建三级存储架构。区别于常规知识库的"大而全"，核心在于<b>精细元数据治理与严谨语义逻辑</b>，使 AI 能按"时间+类型+主题+关联"四维精准检索，支撑复杂业务文档分钟级生成。</p>
+      <div class="pipe">
+        <div class="pipe-node hl">四通道采集</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node hl">精细标签化</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">三级存储</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">ClaudeCode AI 调用</div>
+      </div>
       <h4>典型案例：新京报专访董事长卢泰宇</h4>
       <p>15 个深度问题、横跨大赛/企业/行业三大板块、涉及 10+ 份源文件（逐字稿/品牌全案/复盘报告等）。传统模式至少 2 天，本体系<b>5 分钟输出完整稿件</b>，质量获高管认可。</p>
       <a href="新京报专访卢泰宇_采访参考回答.docx" download style="display:inline-block; margin-bottom:14px; padding:8px 18px; background:#0B1F3A; color:#F4F1EB; border-radius:7px; text-decoration:none; font-size:12.5px; font-weight:600; letter-spacing:0.5px;">📎 下载完整文档：新京报专访卢泰宇 — 采访参考回答.docx</a>
@@ -535,7 +596,15 @@
         <div class="box out"><div class="lbl">↓ 下游输出 →</div><div class="val">无人值守编排 → 驱动 L1-L4 全链路自动运行 + 全域协同</div></div>
       </div>
       <p>8 项编排任务全部 ACTIVE 生产运行，覆盖行业情报速报、数据催报、客户上会提醒、BI 看板分发、月度客户汇总等；wecom-unified Skill 构建企微通讯录/消息/文档/智能表格/日程/会议/待办 <b>6 业务环节协同矩阵</b>，单人完成原本 2-3 角色的全域办公，实现组织效能的<b>非线性跃升</b>。</p>
-
+      <div class="pipe">
+        <div class="pipe-node hl">定时触发</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node hl">自动取数</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">智能生成</div>
+        <span class="pipe-arr">→</span>
+        <div class="pipe-node">精准触达</div>
+      </div>
       <h4 style="margin-top:24px;font-size:14px;color:#A8842C;letter-spacing:1px;">▎ 8 项自动化编排任务（全部 ACTIVE 生产状态）</h4>
       <table class="matrix-table">
         <thead><tr><th>频次</th><th>任务</th><th>商业价值</th></tr></thead>
