@@ -28,7 +28,6 @@
     line-height: 1.6;
     min-height: 100vh;
   }
-
   .app { display: none; }
   .app.active { display: flex; height: 100vh; }
 
@@ -44,258 +43,192 @@
     background: var(--card);
     border-radius: 16px;
     padding: 48px 40px;
-    width: 380px;
+    width: 400px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     text-align: center;
   }
   .login-card h1 {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 8px;
+    font-size: 22px; font-weight: 600;
+    color: var(--primary); margin-bottom: 8px;
   }
   .login-card .subtitle {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 32px;
+    font-size: 13px; color: var(--text-muted); margin-bottom: 32px;
   }
   .login-card select {
-    width: 100%;
-    padding: 12px 16px;
+    width: 100%; padding: 12px 16px;
     border: 1.5px solid var(--border);
     border-radius: var(--radius);
-    font-size: 15px;
-    background: var(--bg);
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
+    font-size: 15px; background: var(--bg);
+    cursor: pointer; appearance: none; -webkit-appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23999' stroke-width='1.5'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
+    background-repeat: no-repeat; background-position: right 14px center;
   }
   .login-card button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: var(--radius);
-    background: var(--primary);
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    margin-top: 20px;
+    width: 100%; padding: 12px;
+    border: none; border-radius: var(--radius);
+    background: var(--primary); color: #fff;
+    font-size: 16px; font-weight: 500;
+    cursor: pointer; margin-top: 20px;
     transition: opacity 0.15s;
   }
   .login-card button:hover { opacity: 0.9; }
   .login-card button:disabled { opacity: 0.5; cursor: not-allowed; }
 
+  /* Settings toggle on login */
+  .settings-toggle {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; color: var(--text-muted); cursor: pointer;
+    margin-top: 16px; user-select: none;
+  }
+  .settings-toggle:hover { color: var(--primary); }
+  .settings-panel {
+    display: none; text-align: left;
+    background: var(--bg); border-radius: var(--radius);
+    padding: 16px; margin-top: 12px;
+  }
+  .settings-panel.active { display: block; }
+  .settings-panel label {
+    display: block; font-size: 12px; font-weight: 500;
+    color: var(--text-secondary); margin-bottom: 6px;
+  }
+  .settings-panel input {
+    width: 100%; padding: 8px 12px;
+    border: 1px solid var(--border); border-radius: 6px;
+    font-size: 13px; font-family: "SF Mono", monospace;
+    background: var(--card);
+  }
+  .settings-panel .help-text {
+    font-size: 11px; color: var(--text-muted); margin-top: 6px;
+    line-height: 1.5;
+  }
+  .settings-panel .help-text a { color: var(--primary); }
+  .settings-panel .status-indicator {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; margin-top: 8px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .dot.green { background: var(--primary); }
+  .dot.gray { background: #ccc; }
+
   /* Banner */
   .offline-banner {
-    background: #faeeda;
-    color: #854f0b;
-    text-align: center;
-    padding: 8px;
-    font-size: 12px;
-    border-bottom: 1px solid #f0c87a;
+    background: #f0f7f4; color: var(--primary);
+    text-align: center; padding: 8px;
+    font-size: 12px; border-bottom: 1px solid #d4ede3;
   }
-  .offline-banner a { color: var(--primary); font-weight: 600; }
 
   /* Sidebar */
   .sidebar {
-    width: 360px;
-    min-width: 360px;
+    width: 360px; min-width: 360px;
     background: var(--card);
     border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
   }
   .sidebar-header {
     padding: 20px;
     border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
   }
   .sidebar-header h2 {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--primary);
+    font-size: 16px; font-weight: 600; color: var(--primary);
   }
   .sidebar-header .user-badge {
-    font-size: 12px;
-    color: var(--text-muted);
-    background: var(--bg);
-    padding: 4px 12px;
-    border-radius: 20px;
+    font-size: 12px; color: var(--text-muted);
+    background: var(--bg); padding: 4px 12px; border-radius: 20px;
   }
-  .lead-list {
-    flex: 1;
-    overflow-y: auto;
-    padding: 12px;
-  }
+  .lead-list { flex: 1; overflow-y: auto; padding: 12px; }
   .lead-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: all 0.15s;
-    position: relative;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 14px;
+    margin-bottom: 10px; cursor: pointer; transition: all 0.15s;
   }
   .lead-card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
   .lead-card.active { border-color: var(--primary); background: var(--primary-light); }
   .lead-card .row1 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 6px;
   }
-  .lead-card .name {
-    font-size: 15px;
-    font-weight: 600;
-  }
+  .lead-card .name { font-size: 15px; font-weight: 600; }
   .lead-card .platform {
-    font-size: 11px;
-    color: var(--primary);
-    background: var(--primary-light);
-    padding: 2px 8px;
-    border-radius: 4px;
+    font-size: 11px; color: var(--primary);
+    background: var(--primary-light); padding: 2px 8px; border-radius: 4px;
   }
   .lead-card .row2 {
-    display: flex;
-    gap: 16px;
-    font-size: 12px;
-    color: var(--text-secondary);
+    display: flex; gap: 16px; font-size: 12px; color: var(--text-secondary);
   }
   .lead-card .phone { font-family: "SF Mono", "Menlo", monospace; }
 
   .search-bar {
-    padding: 12px 20px;
-    border-bottom: 1px solid var(--border);
+    padding: 12px 20px; border-bottom: 1px solid var(--border);
   }
   .search-bar input {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    font-size: 13px;
-    background: var(--bg);
+    width: 100%; padding: 8px 12px;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    font-size: 13px; background: var(--bg);
   }
 
   /* Main */
-  .main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
+  .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
   .main-header {
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
+    padding: 16px 24px; border-bottom: 1px solid var(--border);
     background: var(--card);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
   }
-  .main-header .tabs {
-    display: flex;
-    gap: 8px;
-  }
+  .main-header .tabs { display: flex; gap: 8px; }
   .main-header .tab {
-    padding: 6px 16px;
-    border-radius: 6px;
-    font-size: 13px;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    color: var(--text-secondary);
+    padding: 6px 16px; border-radius: 6px;
+    font-size: 13px; cursor: pointer; border: none;
+    background: transparent; color: var(--text-secondary);
   }
   .main-header .tab.active {
-    background: var(--primary-light);
-    color: var(--primary);
-    font-weight: 500;
+    background: var(--primary-light); color: var(--primary); font-weight: 500;
   }
   .stats-bar {
-    display: flex;
-    gap: 20px;
-    font-size: 12px;
-    color: var(--text-muted);
+    display: flex; gap: 20px;
+    font-size: 12px; color: var(--text-muted);
   }
-  .stats-bar span { white-space: nowrap; }
   .stats-bar b { color: var(--text); }
 
   .main-content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex: 1; overflow-y: auto; padding: 24px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
   }
 
   /* Call Panel */
-  .call-panel {
-    text-align: center;
-    max-width: 500px;
-    width: 100%;
-  }
+  .call-panel { text-align: center; max-width: 500px; width: 100%; }
   .call-panel .empty-state {
-    color: var(--text-muted);
-    padding: 60px 0;
+    color: var(--text-muted); padding: 60px 0;
   }
   .call-panel .empty-state .icon {
-    font-size: 48px;
-    margin-bottom: 16px;
-    opacity: 0.3;
+    font-size: 48px; margin-bottom: 16px; opacity: 0.3;
   }
   .call-panel .lead-info {
-    background: var(--bg);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    text-align: left;
+    background: var(--bg); border-radius: var(--radius);
+    padding: 16px 20px; margin-bottom: 24px; text-align: left;
   }
   .call-panel .lead-info .label {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 4px;
+    font-size: 12px; color: var(--text-muted); margin-bottom: 4px;
   }
-  .call-panel .lead-info .value {
-    font-size: 15px;
-    font-weight: 500;
-  }
+  .call-panel .lead-info .value { font-size: 15px; font-weight: 500; }
   .call-panel .lead-info .phone-value {
-    font-size: 20px;
-    font-family: "SF Mono", "Menlo", monospace;
-    color: var(--primary);
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-size: 20px; font-family: "SF Mono", "Menlo", monospace;
+    color: var(--primary); font-weight: 600; letter-spacing: 1px;
   }
 
   .record-btn {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+    width: 120px; height: 120px; border-radius: 50%;
     border: 4px solid var(--primary);
-    background: var(--card);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--primary);
-    transition: all 0.2s;
+    background: var(--card); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 600;
+    color: var(--primary); transition: all 0.2s;
     margin: 0 auto 16px;
   }
   .record-btn:hover { background: var(--primary-light); }
   .record-btn.recording {
-    background: var(--danger);
-    border-color: var(--danger);
-    color: #fff;
-    animation: pulse 1.5s infinite;
+    background: var(--danger); border-color: var(--danger);
+    color: #fff; animation: pulse 1.5s infinite;
   }
   .record-btn:disabled { opacity: 0.5; cursor: not-allowed; }
   @keyframes pulse {
@@ -303,67 +236,73 @@
     50% { box-shadow: 0 0 0 16px rgba(226, 75, 75, 0); }
   }
   .call-panel .timer {
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 28px; font-weight: 600;
     font-family: "SF Mono", "Menlo", monospace;
-    color: var(--text);
-    margin-bottom: 8px;
+    color: var(--text); margin-bottom: 8px;
   }
   .call-panel .hint {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 16px;
+    font-size: 12px; color: var(--text-muted); margin-top: 16px;
   }
   .call-panel .hint.recording-hint { color: var(--danger); }
 
+  /* Upload progress bar */
+  .upload-bar {
+    width: 100%; max-width: 400px;
+    background: var(--border); border-radius: 4px;
+    height: 4px; margin: 12px auto; overflow: hidden;
+  }
+  .upload-bar .fill {
+    height: 100%; background: var(--primary);
+    width: 0%; transition: width 0.3s;
+  }
+  .upload-status {
+    font-size: 12px; color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+  .upload-status.success { color: var(--primary); }
+  .upload-status.error { color: var(--danger); }
+  .upload-status.uploading { color: var(--warning); }
+
   /* History */
   .calls-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
+    width: 100%; border-collapse: collapse; font-size: 13px;
   }
   .calls-table th {
-    text-align: left;
-    padding: 10px 12px;
+    text-align: left; padding: 10px 12px;
     border-bottom: 1px solid var(--border);
-    color: var(--text-muted);
-    font-weight: 500;
-    font-size: 12px;
+    color: var(--text-muted); font-weight: 500; font-size: 12px;
   }
   .calls-table td {
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
+    padding: 10px 12px; border-bottom: 1px solid var(--border);
   }
 
   .btn {
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: none;
-    font-size: 13px;
-    cursor: pointer;
-    font-weight: 500;
+    padding: 8px 16px; border-radius: 6px;
+    border: none; font-size: 13px; cursor: pointer; font-weight: 500;
   }
   .btn-primary { background: var(--primary); color: #fff; }
   .btn-sm { padding: 4px 10px; font-size: 12px; }
   .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+  .btn-danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+
+  .file-link {
+    color: var(--primary); font-size: 12px;
+    text-decoration: none; display: flex; align-items: center; gap: 4px;
+  }
+  .file-link:hover { text-decoration: underline; }
 
   .toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--text);
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: var(--radius);
-    font-size: 13px;
-    z-index: 1000;
-    opacity: 0;
-    transform: translateY(-10px);
+    position: fixed; top: 20px; right: 20px;
+    background: var(--text); color: #fff;
+    padding: 12px 20px; border-radius: var(--radius);
+    font-size: 13px; z-index: 1000;
+    opacity: 0; transform: translateY(-10px);
     transition: all 0.3s;
   }
   .toast.show { opacity: 1; transform: translateY(0); }
   .toast.success { background: var(--primary); }
   .toast.error { background: var(--danger); }
+  .toast.warning { background: var(--warning); }
 </style>
 </head>
 <body>
@@ -371,19 +310,37 @@
 <!-- Login Screen -->
 <div class="login-screen active" id="loginScreen">
   <div class="login-card">
-    <h1>康小虎 · 外呼工作台</h1>
-    <p class="subtitle">线索电话跟进 · AI智能分析</p>
+    <h1>🌿 康小虎 · 外呼工作台</h1>
+    <p class="subtitle">线索电话跟进 · 录音自动上传 · AI智能分析</p>
     <select id="userSelect">
       <option value="">选择你的名字</option>
     </select>
     <button id="loginBtn" disabled>进入工作台</button>
+
+    <!-- GitHub Settings -->
+    <div class="settings-toggle" onclick="toggleSettings()">
+      ⚙️ 上传设置
+      <span id="settingsStatus"></span>
+    </div>
+    <div class="settings-panel" id="settingsPanel">
+      <label>GitHub Personal Access Token (Fine-grained)</label>
+      <input type="password" id="ghToken" placeholder="github_pat_...">
+      <div class="help-text">
+        需要具有 <code>contents:write</code> 权限的 token。<br>
+        <a href="https://github.com/settings/tokens?type=beta" target="_blank">点此创建 Fine-grained token →</a><br>
+        仓库选 <code>yiru12345-collab/monthly-report</code>，权限选 <b>Contents: Read and write</b>
+      </div>
+      <div class="status-indicator" id="ghStatus">
+        <span class="dot gray"></span> 未配置
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- Main App -->
 <div class="app" id="app">
   <div class="offline-banner">
-    ⚠️ 演示模式 — 录音功能可用，AI分析需连接后端服务。完整版请访问本地服务器。
+    🎙️ 录音自动上传至 GitHub 仓库 · 录音文件同步到 <b>outbound/recordings/</b> 目录
   </div>
   <!-- Sidebar -->
   <aside class="sidebar">
@@ -405,8 +362,9 @@
         <button class="tab" onclick="switchTab('history')">通话记录</button>
       </div>
       <div class="stats-bar">
-        <span>通话记录: <b id="callCount">0</b></span>
+        <span>通话: <b id="callCount">0</b></span>
         <span>线索: <b id="leadCount">0</b></span>
+        <span>已上传: <b id="uploadedCount">0</b></span>
       </div>
     </div>
     <div class="main-content" id="mainContent"></div>
@@ -416,10 +374,15 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ========== Team Members ==========
+// ========== Config ==========
+const GITHUB_REPO = 'yiru12345-collab/monthly-report';
+const GITHUB_BRANCH = 'main';
+const RECORDINGS_PATH = 'outbound/recordings';
+
+// ========== Team ==========
 const TEAM = ['一茹','赵云峰','皇甫毅','孙德国','蔡东辉','郑毅','黄佳佳','李熙怡','任一鑫','党凤梅','罗姣','李令潇','叶艳红','宋磊','张浩然','董超','谢超','田雨'];
 
-// ========== Sample Leads (from smart sheet) ==========
+// ========== Sample Leads ==========
 const SAMPLE_LEADS = [
   {"record_id":"r1","account_name":"北京盛世康源科技有限公司","phone":"138****6789","name":"张总","platform":"抖音","is_contacted":"已对接","is_cooperating":"跟进中","feedback":"对健康小屋项目感兴趣，需要进一步了解套餐详情","is_key":"是","gender":"男","age":"45"},
   {"record_id":"r2","account_name":"深圳市颐养健康管理有限公司","phone":"139****8901","name":"李女士","platform":"小红书","is_contacted":"未对接","is_cooperating":"否","feedback":"","is_key":"否","gender":"女","age":"38"},
@@ -444,9 +407,17 @@ let currentTab = 'call';
 let leads = [];
 let calls = [];
 
+// GitHub token from localStorage
+function getGHToken() {
+  return (localStorage.getItem('outbound_gh_token') || '').trim();
+}
+function setGHToken(token) {
+  localStorage.setItem('outbound_gh_token', token || '');
+}
+
 // ========== Init ==========
 function init() {
-  // Load calls from localStorage
+  // Load calls
   try {
     const saved = localStorage.getItem('outbound_calls');
     calls = saved ? JSON.parse(saved) : [];
@@ -456,8 +427,7 @@ function init() {
   const select = document.getElementById('userSelect');
   TEAM.forEach(m => {
     const opt = document.createElement('option');
-    opt.value = m;
-    opt.textContent = m;
+    opt.value = m; opt.textContent = m;
     select.appendChild(opt);
   });
   select.onchange = () => {
@@ -465,6 +435,29 @@ function init() {
   };
   document.getElementById('loginBtn').onclick = login;
   document.getElementById('searchInput').oninput = renderLeads;
+
+  // Restore GitHub token
+  const savedToken = getGHToken();
+  if (savedToken) {
+    document.getElementById('ghToken').value = savedToken;
+    updateGHStatus(true);
+  }
+  document.getElementById('ghToken').oninput = function() {
+    setGHToken(this.value);
+    updateGHStatus(!!this.value.trim());
+  };
+}
+
+function toggleSettings() {
+  document.getElementById('settingsPanel').classList.toggle('active');
+}
+
+function updateGHStatus(configured) {
+  const el = document.getElementById('ghStatus');
+  const dot = configured ? 'green' : 'gray';
+  const text = configured ? '已配置 (录音将自动上传)' : '未配置 (录音仅存本地)';
+  el.innerHTML = `<span class="dot ${dot}"></span> ${text}`;
+  document.getElementById('settingsStatus').textContent = configured ? ' ✓' : '';
 }
 
 function login() {
@@ -473,8 +466,6 @@ function login() {
   document.getElementById('loginScreen').classList.remove('active');
   document.getElementById('app').classList.add('active');
   document.getElementById('currentUser').textContent = currentUser;
-
-  // Everyone sees all sample leads for demo
   leads = [...SAMPLE_LEADS];
   updateStats();
   renderLeads();
@@ -485,6 +476,8 @@ function login() {
 function updateStats() {
   document.getElementById('callCount').textContent = calls.length;
   document.getElementById('leadCount').textContent = leads.length;
+  const uploaded = calls.filter(c => c.uploaded).length;
+  document.getElementById('uploadedCount').textContent = uploaded;
 }
 
 function renderLeads() {
@@ -548,6 +541,7 @@ function renderMain() {
     }
 
     const l = selectedLead;
+    const hasGH = !!getGHToken();
     container.innerHTML = `
       <div class="call-panel">
         <div class="lead-info">
@@ -566,7 +560,9 @@ function renderMain() {
         </div>
         <div id="timerDisplay" class="timer" style="display:none;">00:00</div>
         <button class="record-btn" id="recordBtn" onclick="toggleRecording()">开始录音</button>
+        <div id="uploadArea"></div>
         <div class="hint" id="recordHint">点击后开始录音，用手机拨打客户，开启外放</div>
+        ${hasGH ? '' : '<div class="hint" style="color:var(--warning);margin-top:4px;">⚠️ 未配置GitHub Token，录音仅保存在本地。点登录页「⚙️ 上传设置」配置</div>'}
       </div>`;
   } else {
     // History tab
@@ -575,25 +571,48 @@ function renderMain() {
       container.innerHTML = '<div class="call-panel"><div class="empty-state"><div class="icon">📋</div><p style="font-size:15px;font-weight:500;">暂无通话记录</p><p style="font-size:13px;color:#999;">完成一次外呼后会出现在这里</p></div></div>';
       return;
     }
-    container.innerHTML = `<div style="width:100%;max-width:700px;">
+    container.innerHTML = `<div style="width:100%;max-width:800px;">
       <table class="calls-table">
-        <thead><tr><th>客户</th><th>电话</th><th>时间</th><th>时长</th><th>操作</th></tr></thead>
-        <tbody>${myCalls.slice().reverse().map(c => `
-          <tr>
-            <td>${c.lead_name || '-'}</td>
-            <td style="font-family:monospace;">${c.lead_phone || '-'}</td>
-            <td style="font-size:12px;">${c.started_at || '-'}</td>
-            <td>${c.duration || '-'}</td>
-            <td>
-              <button class="btn btn-sm btn-primary" onclick="downloadAudio('${c.call_id}')">下载录音</button>
-              <button class="btn btn-sm btn-ghost" onclick="deleteCall('${c.call_id}')">删除</button>
-            </td>
-          </tr>
-        `).join('')}</tbody>
+        <thead><tr><th>客户</th><th>电话</th><th>时间</th><th>时长</th><th>存储状态</th><th>操作</th></tr></thead>
+        <tbody>${myCalls.slice().reverse().map(c => renderCallRow(c)).join('')}</tbody>
       </table>
-      <p style="margin-top:16px;font-size:12px;color:#999;text-align:center;">录音保存在浏览器本地，AI分析需连接后端服务</p>
+      <p style="margin-top:16px;font-size:12px;color:#999;text-align:center;">
+        录音自动上传至 <code>yiru12345-collab/monthly-report/${RECORDINGS_PATH}/</code> · AI分析待接入
+      </p>
     </div>`;
   }
+}
+
+function renderCallRow(c) {
+  let statusHtml = '';
+  let actionsHtml = '';
+
+  if (c.uploaded && c.github_url) {
+    statusHtml = `<a class="file-link" href="${c.github_url}" target="_blank">📁 已上传</a>`;
+    actionsHtml = `<button class="btn btn-sm btn-ghost" onclick="copyLink('${c.github_url}')">复制链接</button>`;
+  } else if (c.upload_error) {
+    statusHtml = `<span style="color:var(--danger);font-size:12px;" title="${c.upload_error}">❌ 上传失败</span>`;
+    actionsHtml = `<button class="btn btn-sm btn-primary" onclick="retryUpload('${c.call_id}')">重试</button>`;
+  } else {
+    statusHtml = `<span style="color:var(--text-muted);font-size:12px;">📦 仅本地</span>`;
+    actionsHtml = getGHToken()
+      ? `<button class="btn btn-sm btn-primary" onclick="retryUpload('${c.call_id}')">上传</button>`
+      : `<button class="btn btn-sm btn-ghost" onclick="downloadAudio('${c.call_id}')">下载</button>`;
+  }
+
+  return `
+    <tr>
+      <td>${c.lead_name || '-'}</td>
+      <td style="font-family:monospace;">${c.lead_phone || '-'}</td>
+      <td style="font-size:12px;">${c.started_at || '-'}</td>
+      <td>${c.duration || '-'}</td>
+      <td>${statusHtml}</td>
+      <td style="display:flex;gap:6px;">
+        ${actionsHtml}
+        <button class="btn btn-sm btn-danger" onclick="deleteCall('${c.call_id}')">删除</button>
+      </td>
+    </tr>
+  `;
 }
 
 // ========== Recording ==========
@@ -608,14 +627,10 @@ async function toggleRecording() {
 async function startRecording() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    // Try to use WAV for better compatibility
     let mimeType = 'audio/webm;codecs=opus';
-    if (!MediaRecorder.isTypeSupported(mimeType)) {
-      mimeType = 'audio/webm';
-    }
-    if (!MediaRecorder.isTypeSupported(mimeType)) {
-      mimeType = 'audio/mp4';
-    }
+    if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = 'audio/webm';
+    if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = 'audio/mp4';
+
     mediaRecorder = new MediaRecorder(stream, { mimeType: mimeType });
     audioChunks = [];
 
@@ -623,7 +638,7 @@ async function startRecording() {
       if (e.data.size > 0) audioChunks.push(e.data);
     };
     mediaRecorder.onstop = () => {
-      saveRecording();
+      saveAndUpload();
       stream.getTracks().forEach(t => t.stop());
     };
     mediaRecorder.onerror = (e) => {
@@ -631,7 +646,7 @@ async function startRecording() {
       toast('录音出错', 'error');
     };
 
-    mediaRecorder.start(1000); // collect data every second
+    mediaRecorder.start(1000);
     recordStartTime = Date.now();
 
     const btn = document.getElementById('recordBtn');
@@ -652,7 +667,6 @@ async function startRecording() {
 
 function stopRecording() {
   if (!mediaRecorder || mediaRecorder.state !== 'recording') return;
-
   mediaRecorder.stop();
   clearInterval(timerInterval);
 
@@ -672,7 +686,7 @@ function updateTimer() {
   document.getElementById('timerDisplay').textContent = `${m}:${s}`;
 }
 
-function saveRecording() {
+function saveAndUpload() {
   const mimeType = mediaRecorder.mimeType || 'audio/webm';
   const ext = mimeType.includes('mp4') ? 'm4a' : 'webm';
   const audioBlob = new Blob(audioChunks, { type: mimeType });
@@ -680,9 +694,16 @@ function saveRecording() {
   const duration = Math.floor((Date.now() - recordStartTime) / 1000);
   const startedAt = new Date(recordStartTime).toLocaleString('zh-CN');
 
-  // Save to localStorage (base64)
+  // Show upload area
+  const uploadArea = document.getElementById('uploadArea');
+  if (uploadArea) {
+    uploadArea.innerHTML = `
+      <div class="upload-bar"><div class="fill" id="uploadFill"></div></div>
+      <div class="upload-status uploading" id="uploadStatus">⏳ 正在上传到 GitHub...</div>`;
+  }
+
   const reader = new FileReader();
-  reader.onload = function() {
+  reader.onload = async function() {
     const call = {
       call_id: callId,
       lead_name: selectedLead ? (selectedLead.name || selectedLead.account_name) : '未知',
@@ -693,24 +714,45 @@ function saveRecording() {
       duration_sec: duration,
       audio_data: reader.result,
       audio_type: mimeType,
+      audio_size: audioBlob.size,
       created: Date.now(),
+      uploaded: false,
+      github_url: null,
+      upload_error: null,
     };
     calls.push(call);
 
-    // Keep only last 50 calls to avoid localStorage overflow
-    if (calls.length > 50) calls = calls.slice(-50);
+    // Keep only last 200 calls
+    if (calls.length > 200) calls = calls.slice(-200);
 
     try {
       localStorage.setItem('outbound_calls', JSON.stringify(calls));
     } catch(e) {
-      toast('存储空间不足，请清理旧录音', 'error');
-      // Remove oldest to make room
-      calls = calls.slice(-20);
-      try { localStorage.setItem('outbound_calls', JSON.stringify(calls)); } catch(e2) {}
+      // Remove oldest calls to make room
+      calls = calls.slice(-100);
+      try { localStorage.setItem('outbound_calls', JSON.stringify(calls)); } catch(e2) {
+        toast('存储空间不足，请清理旧录音', 'error');
+      }
     }
 
-    toast(`录音已保存 (${formatDuration(duration)})`, 'success');
     updateStats();
+
+    // Try GitHub upload
+    const token = getGHToken();
+    if (token) {
+      try {
+        await uploadToGitHub(call, reader.result);
+      } catch(e) {
+        console.error('GitHub upload failed:', e);
+        call.upload_error = e.message;
+        updateCallInStorage(call);
+        updateUploadUI('error', e.message);
+        toast('上传失败: ' + e.message, 'error');
+      }
+    } else {
+      updateUploadUI('local', 'GitHub Token 未配置，录音仅保存在本地');
+      toast(`录音已保存 (${formatDuration(duration)}) · 未配置上传`, 'warning');
+    }
 
     // Reset UI
     const btn = document.getElementById('recordBtn');
@@ -720,6 +762,128 @@ function saveRecording() {
     document.getElementById('recordHint').textContent = '点击后开始录音，用手机拨打客户，开启外放';
   };
   reader.readAsDataURL(audioBlob);
+}
+
+function updateUploadUI(status, msg) {
+  const fill = document.getElementById('uploadFill');
+  const statusEl = document.getElementById('uploadStatus');
+  if (!fill || !statusEl) return;
+
+  if (status === 'uploading') {
+    fill.style.width = '50%';
+    statusEl.className = 'upload-status uploading';
+    statusEl.textContent = '⏳ 正在上传到 GitHub...';
+  } else if (status === 'success') {
+    fill.style.width = '100%';
+    statusEl.className = 'upload-status success';
+    statusEl.textContent = '✅ ' + msg;
+  } else if (status === 'error') {
+    fill.style.width = '100%';
+    fill.style.background = 'var(--danger)';
+    statusEl.className = 'upload-status error';
+    statusEl.textContent = '❌ ' + msg;
+  } else {
+    fill.style.width = '0%';
+    statusEl.className = 'upload-status uploading';
+    statusEl.textContent = '📦 ' + msg;
+  }
+}
+
+// ========== GitHub API Upload ==========
+async function uploadToGitHub(call, dataUrl) {
+  const token = getGHToken();
+  if (!token) throw new Error('未配置 GitHub Token');
+
+  // Build file path: outbound/recordings/YYYY-MM/username/call_id.webm
+  const now = new Date();
+  const month = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  const safeName = (call.lead_name || 'unknown').replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g, '_').substring(0, 20);
+  const fileName = `${safeName}_${call.call_id}.webm`;
+  const filePath = `${RECORDINGS_PATH}/${month}/${call.user_name}/${fileName}`;
+
+  // Extract base64 content (strip data URL prefix)
+  const base64Content = dataUrl.split(',')[1];
+
+  updateUploadUI('uploading');
+
+  // GitHub Contents API: PUT /repos/{owner}/{repo}/contents/{path}
+  const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`;
+  const body = JSON.stringify({
+    message: `📞 外呼录音: ${call.lead_name} | ${call.user_name} | ${call.started_at}`,
+    content: base64Content,
+    branch: GITHUB_BRANCH,
+  });
+
+  const resp = await fetch(apiUrl, {
+    method: 'PUT',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      'Accept': 'application/vnd.github.v3+json',
+    },
+    body: body,
+  });
+
+  if (!resp.ok) {
+    const err = await resp.json().catch(() => ({}));
+    if (resp.status === 401) throw new Error('Token 无效或已过期，请重新配置');
+    if (resp.status === 403) throw new Error('Token 权限不足，需要 contents:write 权限');
+    if (resp.status === 409) throw new Error('文件已存在: ' + filePath);
+    throw new Error(err.message || `上传失败 (HTTP ${resp.status})`);
+  }
+
+  const result = await resp.json();
+  const githubUrl = result.content.html_url || result.content.url;
+
+  // Update call record
+  call.uploaded = true;
+  call.github_url = githubUrl;
+  call.github_path = filePath;
+  call.upload_error = null;
+  updateCallInStorage(call);
+
+  updateStats();
+  updateUploadUI('success', `已上传 → ${filePath}`);
+  toast(`✅ 录音已自动上传到 GitHub`, 'success');
+
+  // Update history tab if visible
+  if (currentTab === 'history') renderMain();
+}
+
+function updateCallInStorage(call) {
+  const idx = calls.findIndex(c => c.call_id === call.call_id);
+  if (idx >= 0) calls[idx] = call;
+  try { localStorage.setItem('outbound_calls', JSON.stringify(calls)); } catch(e) {}
+}
+
+async function retryUpload(callId) {
+  const call = calls.find(c => c.call_id === callId);
+  if (!call || !call.audio_data) {
+    toast('录音数据不存在', 'error');
+    return;
+  }
+  if (call.uploaded) {
+    toast('已上传，无需重试');
+    return;
+  }
+
+  toast('正在重新上传...', 'warning');
+  try {
+    await uploadToGitHub(call, call.audio_data);
+  } catch(e) {
+    call.upload_error = e.message;
+    updateCallInStorage(call);
+    toast('上传失败: ' + e.message, 'error');
+  }
+  renderMain();
+}
+
+function copyLink(url) {
+  navigator.clipboard.writeText(url).then(() => {
+    toast('链接已复制');
+  }).catch(() => {
+    toast('复制失败，请手动复制', 'error');
+  });
 }
 
 function downloadAudio(callId) {
@@ -735,7 +899,7 @@ function downloadAudio(callId) {
 }
 
 function deleteCall(callId) {
-  if (!confirm('确定删除这条通话记录？')) return;
+  if (!confirm('确定删除这条通话记录？录音文件无法从 GitHub 自动删除')) return;
   calls = calls.filter(c => c.call_id !== callId);
   localStorage.setItem('outbound_calls', JSON.stringify(calls));
   updateStats();
@@ -755,7 +919,7 @@ function toast(msg, type = 'success') {
   el.textContent = msg;
   el.className = 'toast ' + type + ' show';
   clearTimeout(el._timeout);
-  el._timeout = setTimeout(() => { el.className = 'toast'; }, 3000);
+  el._timeout = setTimeout(() => { el.className = 'toast'; }, 4000);
 }
 
 // Start
